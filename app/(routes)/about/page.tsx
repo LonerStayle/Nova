@@ -62,8 +62,11 @@ export default function AboutPage() {
           Parody Disclosure
         </p>
         <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
-          This entire site is a parody.
+          이 사이트는 패러디입니다.
         </h2>
+        <p className="mt-1.5 font-mono text-[11px] uppercase tracking-widest text-muted-foreground/70">
+          This entire site is a parody.
+        </p>
         <div className="mt-6 space-y-4">
           <Callout variant="accent" title="요약 (Summary)">
             <p className="leading-relaxed">
