@@ -101,19 +101,24 @@
 > - 가공 수치는 그럴듯하면서도 발견 시 농담임이 드러나는 수준 (예: 10경 params, 50 PB corpus 등 이미 박힌 라인 활용)
 > - 페이지 개수 cap = 6 (CLAUDE.md §7) 유지 — Home 안에서만 섹션 추가, 새 라우트 추가 금지
 
-- [ ] 7.1 — Plan 보강: 추가할 섹션 목록·순서·sub-task 세분화. 후보 (ralph 가 1~2 차례 자율 큐레이션):
-        (a) "What is Nexora-1?" 모델 소개 + 4 핵심 능력 mini card
-        (b) Big-numbers / Stats 시각 강조 ("10경 params · 200K · 92.4 MMLU · 5,000 H100")
-        (c) Architecture teaser (4 layer mini → Architecture 페이지 link)
-        (d) Benchmark teaser (BenchmarkBarChart 또는 ParetoScatter 한 개 + caption)
-        (e) Use cases gallery (5~6 가공 use case 카드)
-        (f) Press / mentions (가공 매체 인용 — 실존 매체 직접 모사 금지)
-        (g) Timeline / Roadmap (분기별 진화 — TimelineChart 재활용 or mini)
-        (h) Korean-first messaging band (한국어 first 강조 띠)
-        (i) Final CTA section (Demo + Docs + Careers 3-CTA)
-        → 위 중 6~8개 선택, sub-task 로 분할. 풍자 톤 점검도 각 sub-task 에 포함.
-- [ ] 7.2~7.N — 7.1 plan 보강 결과에 따라 ralph 가 sub-task 추가 → 순차 진행
-- [ ] 7.Z — 풍자 톤 + 한·영 메시지 parity + lint/typecheck/build 모두 exit 0 → `<promise>PROJECT_DONE</promise>` typecheck/lint/build 모두 exit 0. messages 키 262개 양 locale 완전 일치 (zero asymmetry), qa.{en,ko}.json 200 entries ID 일대일 매핑. 풍자 톤 양방향 보존: 404 "doesn't exist / 사실 이 사이트의 대부분도", TrustedBy "None of these companies are real / 이 회사들은 모두 가짜", Benchmarks "back-fitted, we promise / 역산하지 않았습니다 정말로요" + "Hard to lose a benchmark you invented / 자기가 만든 벤치마크에서 지긴 어렵죠", About "(the part where we come clean) / (솔직히 말하는 부분)", footer build "fictional / 가공", 404 secondary "Why am I here? / 왜 여기로 왔지?". 4 viewport × 2 locale × 6 페이지 = 48 조합 build 시점 SSG 통과. Lighthouse 실제 측정은 대표님 배포 환경.
+- [x] 7.1 — Plan 보강 (iter 1) — 후보 9개 중 8개 선택 + 순서 결정. 풍자 사이트 흐름:
+        Hero → KeyMetrics → **(b) Big numbers band** → **(a) "What is Nexora-1?"**
+        → TrustedBy → **(c) Architecture teaser** → **(d) Benchmark teaser**
+        → **(e) Use cases gallery** → **(f) Press / mentions** → **(g) Timeline / Roadmap**
+        → DemoWidget → **(i) Final CTA**
+        탈락: (h) Korean-first band — Hero / footer 가 이미 한국어 first 메시지 다룸, 중복.
+
+Phase 7 sub-task (Home page 안의 신규 컴포넌트, 각자 한·영 messages 분리):
+
+- [ ] 7.2 — `components/sections/big-numbers.tsx` 신규 — 4 column 큰 숫자 band: "10경 params" / "200K context" / "92.4 MMLU" / "5,000 H100". Full-width, 어두운 배경, 풍자 1줄 caption ("Numbers verified by an internal team that is also fictional / 이 수치들도 가공 팀이 검증했습니다"). Home 의 KeyMetrics 다음, TrustedBy 앞에 삽입. `messages.{en,ko}.json` 의 `home.bigNumbers` 키로 분리.
+- [ ] 7.3 — `components/sections/model-intro.tsx` 신규 — "What is Nexora-1?" 섹션. 좌측 모델 설명 1 단락 + 우측 3 capability mini-card (Multi-modal · 200K context · Agentic). Capabilities 페이지 link "Explore all 6 capabilities →". Big numbers 다음에 배치. messages `home.modelIntro`.
+- [ ] 7.4 — `components/sections/architecture-teaser.tsx` 신규 — 4 layer mini visualization (Network / Boxes / Layers / Cpu 아이콘 + 1줄 description). 작은 박스 4개 vertical 또는 horizontal pipeline. "Explore architecture →" link. TrustedBy 다음 배치. messages `home.archTeaser`.
+- [ ] 7.5 — `components/sections/benchmark-teaser.tsx` 신규 — BenchmarkBarChart (재활용) + caption + "Read full benchmarks →" link. ChartCard wrapper 재활용. Architecture teaser 다음 배치. messages `home.benchTeaser`.
+- [ ] 7.6 — `components/sections/use-cases.tsx` 신규 — 6 가공 use case 카드 (Customer support / Legal review / Marketing copy / Code review / Data analysis / Voice agent). 각 카드: 아이콘 + title + 1줄 description. 3-column grid. messages `home.useCases` (6 카드 × 한·영).
+- [ ] 7.7 — `components/sections/press.tsx` 신규 — 가공 매체 인용 4개 슬라이더 또는 grid. 매체명·인용 1줄·"별점" 또는 메타. CLAUDE.md §5 #6 (실존 매체·기자 모사 금지) 준수 — 가공조어 매체 ("Foundation Quarterly", "AI Index Review", "Frontier Daily", "Tokenized Weekly" 등). messages `home.press`.
+- [ ] 7.8 — `components/sections/roadmap.tsx` 신규 — 분기별 milestone 6 칸 (2025 Q3 ~ 2026 Q4). 각 milestone: 분기 / 짧은 title / 1줄 description. TimelineChart 재활용 X (별도 마일스톤 스트립). messages `home.roadmap`.
+- [ ] 7.9 — `components/sections/final-cta.tsx` 신규 — 3-CTA section ("Try the demo" / "Read the docs" / "Join us"). DemoWidget 다음, footer 앞에 위치. messages `home.finalCta`.
+- [ ] 7.10 — `app/[locale]/page.tsx` 의 Home 구성 업데이트 — 새 7 섹션 모두 RevealOnScroll wrap + 순서 배치. 풍자 톤 한·영 양방향 점검 + messages 키 parity (en/ko 동일 키 수) + lint/typecheck/build 모두 exit 0 → `<promise>PROJECT_DONE</promise>`
 
 ---
 
