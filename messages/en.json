@@ -994,5 +994,100 @@
       "retryBody": "The official SDKs auto-retry 429 and 5xx with exponential backoff + jitter (base 500ms, max 60s, max 5 attempts). Pass maxRetries=0 to opt out. Retried calls inherit the same request_id prefix with a -rN suffix — useful in support tickets.",
       "footnote": "Every error is logged, request_id-tagged, and ignored by an internal team that has been on PTO since 2025. We'll get to it."
     }
+  },
+  "careers": {
+    "metaDescription": "Join {company} — building frontier AI from Seoul. Hiring across research, engineering, safety, product, and operations.",
+    "hero": {
+      "eyebrow": "Careers",
+      "title": "Build the frontier from Seoul.",
+      "subtitle": "We are a team of 60. We ship like 600. We argue like 6.",
+      "description": "{company} is hiring across research, infrastructure, safety, product, and operations. We're small enough that you'll meet every team in your first week and large enough that your work will reach the entire stack.",
+      "ctaPrimary": "See open roles",
+      "ctaSecondary": "Why Nexora"
+    },
+    "whyNexora": {
+      "eyebrow": "Why Nexora",
+      "heading": "Four reasons people stay.",
+      "body": "Frontier research, Korean-first quality, leverage that small teams keep talking about, and constitutional safety as a feature rather than a tax.",
+      "values": {
+        "frontier": {
+          "name": "Frontier research, in production",
+          "description": "Every research idea ships within a quarter or gets killed in writing. Papers that don't influence a release don't get written. The pipeline from notebook to /v1/messages is short on purpose."
+        },
+        "korean": {
+          "name": "Korean-first, English-second, footnote-third",
+          "description": "We build for the language we speak, then translate up. Korean tokenization, Korean evaluation, Korean error messages — none of it is a port from an English-first model. Both languages are first-class because both languages have to be."
+        },
+        "smallTeam": {
+          "name": "Small team, large leverage",
+          "description": "60 people, no middle management, one weekly all-hands that ends on time. Decision throughput beats headcount throughput at this scale — and we are at this scale on purpose."
+        },
+        "safety": {
+          "name": "Constitutional safety, as a feature",
+          "description": "Safety is wired into the substrate (L1 Harness, the constitutional check that runs before output reaches L2). It's not a separate team you hand things off to — it's the same team writing the kernels."
+        }
+      }
+    },
+    "openRoles": {
+      "eyebrow": "Open roles",
+      "heading": "Hiring across the stack.",
+      "body": "Seoul HQ in Gangnam, hybrid by default (3 days in office), remote within KST ±3h for some roles. Korean fluency required for ~half the roles; the other half is bilingual or English-first.",
+      "headcountNote": "Currently 60. Hiring 18 over the next two quarters.",
+      "ctaApply": "Apply",
+      "departments": {
+        "research": "Research",
+        "engineering": "Engineering",
+        "safety": "Safety",
+        "product": "Product",
+        "operations": "Operations"
+      },
+      "employmentTypes": {
+        "fullTime": "Full-time",
+        "contract": "Contract"
+      },
+      "locations": {
+        "seoulHybrid": "Seoul · Hybrid (3 days)",
+        "seoulOnsite": "Seoul · On-site",
+        "remoteKst": "Remote · KST ±3h"
+      },
+      "roles": {
+        "researchEng": {
+          "title": "Research Engineer · Foundation Models",
+          "summary": "Own pretraining pipeline ablations for the next Nexora-1 series. PyTorch + custom CUDA kernels, weekly eval cycles."
+        },
+        "mlInfra": {
+          "title": "ML Infrastructure Engineer",
+          "summary": "100,000-GPU training fleet. You will think about MFU, scheduler fairness, and Korean power grid load curves more than you expected."
+        },
+        "agentResearch": {
+          "title": "Agent Research Scientist",
+          "summary": "Drive AgentEval Pro from 90.2 to 94+. Multi-step planning, self-correction, long-horizon credit assignment — pick your favorite."
+        },
+        "safety": {
+          "title": "Safety Researcher · Constitutional AI",
+          "summary": "Design the next generation of the constitutional supervisor layer. Red-team intake, automated critic agents, public Model Card."
+        },
+        "frontend": {
+          "title": "Senior Frontend Engineer · Console",
+          "summary": "Build the developer console at console.nexora.ai. Next.js, TypeScript, opinionated about empty states."
+        },
+        "devrel": {
+          "title": "Developer Relations · Korean Market",
+          "summary": "First DevRel hire. Write the docs you wished existed when you were trying to ship your first integration. Korean fluency required."
+        },
+        "platformPM": {
+          "title": "Product Manager · Platform",
+          "summary": "Own the developer-facing roadmap end to end. SDKs, pricing tiers, console, billing — make every surface make sense to a half-asleep engineer at 2 a.m."
+        },
+        "design": {
+          "title": "Senior Product Designer",
+          "summary": "Visual system for the platform — docs, console, marketing, model cards. Tight loop with engineering, opinion on typography expected."
+        },
+        "recruiter": {
+          "title": "Technical Recruiter · Engineering",
+          "summary": "We're hiring 18 over two quarters. Find them, brief them honestly, and protect their time. Senior-IC track if you want it."
+        }
+      }
+    }
   }
 }

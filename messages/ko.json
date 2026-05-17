@@ -994,5 +994,100 @@
       "retryBody": "공식 SDK 는 429 와 5xx 를 지수 backoff + jitter 로 자동 재시도 (base 500ms · max 60s · max 5회). maxRetries=0 으로 opt-out. 재시도 호출은 같은 request_id prefix 에 -rN suffix — support 티켓에 유용.",
       "footnote": "모든 에러는 로깅 · request_id 태깅 · 2025년부터 PTO 인 내부 팀에 의해 무시됩니다. 곧 보겠습니다."
     }
+  },
+  "careers": {
+    "metaDescription": "{company} 합류하기 — 서울에서 frontier AI 를 만듭니다. 리서치 · 엔지니어링 · 안전 · 프로덕트 · 오퍼레이션 전반 채용 중.",
+    "hero": {
+      "eyebrow": "합류하기",
+      "title": "서울에서 frontier 를 만듭니다.",
+      "subtitle": "60명 규모. 600명처럼 출시합니다. 6명처럼 토론합니다.",
+      "description": "{company} 은 리서치 · 인프라 · 안전 · 프로덕트 · 오퍼레이션 전반에서 채용 중입니다. 첫 주에 모든 팀을 만날 수 있을 만큼 작고, 작업이 전체 스택에 닿을 만큼 큰 규모입니다.",
+      "ctaPrimary": "공석 보기",
+      "ctaSecondary": "Why Nexora"
+    },
+    "whyNexora": {
+      "eyebrow": "Why Nexora",
+      "heading": "사람들이 남는 4가지 이유.",
+      "body": "프론티어 리서치, Korean-first 품질, 작은 팀이 가지는 leverage, 세금이 아닌 기능으로서의 constitutional 안전성.",
+      "values": {
+        "frontier": {
+          "name": "Frontier 리서치, in production",
+          "description": "모든 리서치 아이디어는 분기 안에 출시되거나 문서로 정리되어 종료됩니다. 출시에 영향 없는 논문은 쓰지 않습니다. 노트북에서 /v1/messages 까지의 파이프라인은 의도적으로 짧습니다."
+        },
+        "korean": {
+          "name": "Korean-first, English-second, footnote-third",
+          "description": "쓰는 언어로 만들고 위로 번역합니다. 한국어 토크나이제이션 · 한국어 평가 · 한국어 에러 메시지 — English-first 모델의 포트가 아닙니다. 두 언어 모두 first-class — 그래야만 하기 때문에."
+        },
+        "smallTeam": {
+          "name": "Small team, large leverage",
+          "description": "60명 · 중간관리 없음 · 시간 안에 끝나는 주간 전체회의. 이 규모에서는 의사결정 throughput 이 headcount throughput 을 이깁니다 — 그리고 의도적으로 이 규모입니다."
+        },
+        "safety": {
+          "name": "Constitutional 안전성 — 기능으로서",
+          "description": "Safety 는 substrate 에 박혀 있습니다 (L1 Harness · L2 도달 전 constitutional check). 별도 팀에 인계하는 게 아니라 — 커널을 짜는 같은 팀이 동시에 만듭니다."
+        }
+      }
+    },
+    "openRoles": {
+      "eyebrow": "공석",
+      "heading": "스택 전반 채용 중.",
+      "body": "강남 서울 본사, 기본 하이브리드 (주 3일 오피스), 일부 포지션은 KST ±3h 리모트 가능. 약 절반은 한국어 능통 필수 — 나머지는 이중언어 또는 영어 우선.",
+      "headcountNote": "현재 60명. 향후 2분기 동안 18명 추가 채용.",
+      "ctaApply": "지원하기",
+      "departments": {
+        "research": "Research",
+        "engineering": "Engineering",
+        "safety": "Safety",
+        "product": "Product",
+        "operations": "Operations"
+      },
+      "employmentTypes": {
+        "fullTime": "정규직",
+        "contract": "계약직"
+      },
+      "locations": {
+        "seoulHybrid": "서울 · 하이브리드 (주 3일)",
+        "seoulOnsite": "서울 · 상주",
+        "remoteKst": "리모트 · KST ±3h"
+      },
+      "roles": {
+        "researchEng": {
+          "title": "Research Engineer · Foundation Models",
+          "summary": "다음 Nexora-1 시리즈의 pretraining 파이프라인 ablation 담당. PyTorch + 커스텀 CUDA 커널, 주간 eval 사이클."
+        },
+        "mlInfra": {
+          "title": "ML Infrastructure Engineer",
+          "summary": "100,000-GPU 트레이닝 fleet. MFU · 스케줄러 fairness · 한국 전력망 부하 곡선을 예상보다 자주 생각하게 됩니다."
+        },
+        "agentResearch": {
+          "title": "Agent Research Scientist",
+          "summary": "AgentEval Pro 90.2 → 94+ 견인. Multi-step planning · self-correction · long-horizon credit assignment — 취향대로 선택."
+        },
+        "safety": {
+          "title": "Safety Researcher · Constitutional AI",
+          "summary": "다음 세대 constitutional supervisor 레이어 설계. Red-team intake · 자동 critic agent · 공개 Model Card."
+        },
+        "frontend": {
+          "title": "Senior Frontend Engineer · Console",
+          "summary": "console.nexora.ai 개발자 콘솔 구축. Next.js · TypeScript · empty state 에 대한 강한 의견."
+        },
+        "devrel": {
+          "title": "Developer Relations · Korean Market",
+          "summary": "첫 DevRel. 처음 통합할 때 있었으면 좋았을 docs 를 작성. 한국어 능통 필수."
+        },
+        "platformPM": {
+          "title": "Product Manager · Platform",
+          "summary": "개발자 facing 로드맵 end to end 소유. SDK · 가격 티어 · 콘솔 · 빌링 — 새벽 2시 반쯤 잠 깬 엔지니어가 봐도 말이 되도록."
+        },
+        "design": {
+          "title": "Senior Product Designer",
+          "summary": "플랫폼 비주얼 시스템 — docs · 콘솔 · 마케팅 · model card. 엔지니어링과 타이트한 루프, 타이포그래피에 의견 있을 것."
+        },
+        "recruiter": {
+          "title": "Technical Recruiter · Engineering",
+          "summary": "2분기 18명 채용. 발굴 · 정직한 브리핑 · 시간 보호. 원하시면 senior-IC 트랙."
+        }
+      }
+    }
   }
 }
