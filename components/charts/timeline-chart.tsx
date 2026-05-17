@@ -12,6 +12,7 @@ import {
 } from "recharts";
 
 import { timelineData } from "@/lib/data/benchmarks";
+import { chartTooltipContentStyle } from "@/lib/charts/style";
 
 export function TimelineChart() {
   return (
@@ -66,14 +67,7 @@ export function TimelineChart() {
           domain={[60, 100]}
           width={32}
         />
-        <Tooltip
-          contentStyle={{
-            background: "hsl(var(--background))",
-            border: "1px solid hsl(var(--border))",
-            borderRadius: 8,
-            fontSize: 12,
-          }}
-        />
+        <Tooltip contentStyle={chartTooltipContentStyle} />
         <Legend
           wrapperStyle={{ fontSize: 11, paddingTop: 8 }}
           iconType="line"

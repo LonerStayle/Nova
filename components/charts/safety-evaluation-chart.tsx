@@ -12,6 +12,10 @@ import {
 } from "recharts";
 
 import { safetyData } from "@/lib/data/security";
+import {
+  chartTooltipContentStyle,
+  chartTooltipCursorFill,
+} from "@/lib/charts/style";
 
 export function SafetyEvaluationChart() {
   return (
@@ -45,13 +49,8 @@ export function SafetyEvaluationChart() {
           width={150}
         />
         <Tooltip
-          contentStyle={{
-            background: "hsl(var(--background))",
-            border: "1px solid hsl(var(--border))",
-            borderRadius: 8,
-            fontSize: 12,
-          }}
-          cursor={{ fill: "hsl(var(--muted) / 0.4)" }}
+          contentStyle={chartTooltipContentStyle}
+          cursor={chartTooltipCursorFill}
           formatter={(value: number | string) => [`${value}%`, ""]}
         />
         <Legend

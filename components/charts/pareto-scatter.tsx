@@ -12,6 +12,10 @@ import {
 } from "recharts";
 
 import { paretoData } from "@/lib/data/benchmarks";
+import {
+  chartTooltipContentStyle,
+  chartTooltipCursorScatter,
+} from "@/lib/charts/style";
 
 const nexoraSeries = paretoData.filter((point) => point.isNexora);
 const otherSeries = paretoData.filter((point) => !point.isNexora);
@@ -70,13 +74,8 @@ export function ParetoScatter() {
           />
         </YAxis>
         <Tooltip
-          contentStyle={{
-            background: "hsl(var(--background))",
-            border: "1px solid hsl(var(--border))",
-            borderRadius: 8,
-            fontSize: 12,
-          }}
-          cursor={{ strokeDasharray: "3 3" }}
+          contentStyle={chartTooltipContentStyle}
+          cursor={chartTooltipCursorScatter}
           formatter={(value: number | string, key: string) => {
             if (key === "cost") return [`$${value}`, "Cost / 1M tokens"];
             if (key === "performance") return [`${value}`, "Composite Score"];

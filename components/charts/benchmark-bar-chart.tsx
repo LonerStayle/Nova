@@ -12,6 +12,10 @@ import {
 } from "recharts";
 
 import { benchmarkModels, benchmarkScores } from "@/lib/data/benchmarks";
+import {
+  chartTooltipContentStyle,
+  chartTooltipCursorFill,
+} from "@/lib/charts/style";
 
 const modelColors: Record<(typeof benchmarkModels)[number], string> = {
   "Nexora-1": "hsl(var(--brand-accent))",
@@ -51,13 +55,8 @@ export function BenchmarkBarChart() {
           width={36}
         />
         <Tooltip
-          contentStyle={{
-            background: "hsl(var(--background))",
-            border: "1px solid hsl(var(--border))",
-            borderRadius: 8,
-            fontSize: 12,
-          }}
-          cursor={{ fill: "hsl(var(--muted) / 0.4)" }}
+          contentStyle={chartTooltipContentStyle}
+          cursor={chartTooltipCursorFill}
         />
         <Legend
           wrapperStyle={{ fontSize: 11, paddingTop: 8 }}

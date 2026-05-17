@@ -87,9 +87,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:border focus:border-border focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:shadow-md focus:outline-none focus:ring-2 focus:ring-[hsl(var(--brand-accent)/0.4)]"
+          >
+            Skip to main content
+          </a>
           <div className="flex min-h-screen flex-col">
             <SiteNav />
-            <div className="flex-1">{children}</div>
+            <div id="main-content" className="flex-1">
+              {children}
+            </div>
             <SiteFooter />
           </div>
         </ThemeProvider>
