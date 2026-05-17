@@ -64,6 +64,10 @@
 - [x] 최종 시각 디테일 패스 — 한 페이지씩 끝까지 다듬기. CLAUDE.md §3 🔥최우선 원칙 ("백엔드 없는 게 안 드러날 정도") 충족 자체 점검 (4 차트 tooltip contentStyle / cursor 공통 상수로 통일 + box-shadow 보강 / scatter 의 brand-accent dashed cursor / Skip-to-main-content sr-only focus link 추가)
 - [x] launch readiness 최종 — disclosure 문구 (About 한 단락 + 푸터 한 줄) 톤 최종 확정 + 모든 페이지 패러디 명시 일관성 검증 (About #disclosure heading 한국어 우선 + 영문 mono 부제 / footer 한 줄 모든 페이지 노출 / 옵션 A 위치 일관 유지)
 
+### Phase 6 — i18n 단일 언어 분기 (대표님 추가 요구사항, 2026-05-17)
+
+- [ ] i18n locale-based 단일 언어 분기 — 한국인=한국어 전용, 그 외=영어 전용. 자세한 사양·결정사항·권장 접근·영향 파일은 **`HANDOFF-i18n.md`** 참조. 첫 iter 가 그 문서를 Read 후 next-intl 도입 + 한 페이지 마이그레이션 검증부터 시작.
+
 ---
 
 ## DONE (참고용 로그)
