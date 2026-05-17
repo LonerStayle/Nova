@@ -426,6 +426,14 @@
     }
   },
   "home": {
+    "benchTeaser": {
+      "eyebrow": "Benchmarks",
+      "heading": "Leads on every suite we measured.",
+      "chartTitle": "Industry-standard benchmark scores",
+      "chartSubtitle": "5-shot / pass@1 / cot — higher is better",
+      "caption": "Five suites, five wins. The remaining suites are being measured by an internal team that promises to publish results once they finish negotiating which numbers to round.",
+      "cta": "Read the full benchmarks report"
+    },
     "archTeaser": {
       "eyebrow": "System Architecture",
       "heading": "Four layers, one inference path.",

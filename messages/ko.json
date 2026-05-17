@@ -426,6 +426,14 @@
     }
   },
   "home": {
+    "benchTeaser": {
+      "eyebrow": "벤치마크",
+      "heading": "측정한 모든 스위트에서 선두.",
+      "chartTitle": "업계 표준 벤치마크 점수",
+      "chartSubtitle": "5-shot / pass@1 / cot — 높을수록 좋음",
+      "caption": "다섯 스위트, 다섯 승리. 나머지 스위트는 사내 팀이 어떤 숫자를 반올림할지 협의가 끝나는 대로 결과를 공개할 예정입니다.",
+      "cta": "벤치마크 리포트 전체 보기"
+    },
     "archTeaser": {
       "eyebrow": "시스템 아키텍처",
       "heading": "4 레이어, 하나의 추론 경로.",
