@@ -15,6 +15,7 @@ export default function AboutPage() {
   return (
     <main className="container mx-auto px-6 py-24">
       <SectionHeading
+        as="h1"
         eyebrow="About"
         title={brand.company.name}
         description="Building frontier-grade AI from Seoul — multimodal reasoning, agentic workflows, and constitutional safety as one integrated stack."

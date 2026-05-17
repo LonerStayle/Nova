@@ -17,6 +17,7 @@ export default function BenchmarksPage() {
   return (
     <main className="container mx-auto px-6 py-24">
       <SectionHeading
+        as="h1"
         eyebrow="Performance Report"
         title="Benchmarks"
         description={`${brand.model.flagship} performance across industry-standard evaluation suites and frontier-grade composite metrics.`}

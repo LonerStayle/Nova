@@ -7,6 +7,11 @@ interface SectionHeadingProps {
   title: string;
   description?: string;
   align?: "left" | "center";
+  /**
+   * heading level — page-level SectionHeading 은 as="h1", 페이지 내부 섹션은 "h2".
+   * 한 페이지에 h1 은 정확히 1개 (a11y / SEO 권장).
+   */
+  as?: "h1" | "h2";
   className?: string;
 }
 
@@ -15,8 +20,10 @@ export function SectionHeading({
   title,
   description,
   align = "center",
+  as = "h2",
   className,
 }: SectionHeadingProps) {
+  const HeadingTag = as;
   return (
     <header
       className={cn(
@@ -30,9 +37,9 @@ export function SectionHeading({
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
+      <HeadingTag className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
         {title}
-      </h2>
+      </HeadingTag>
       {description ? (
         <p className="mt-6 text-base text-muted-foreground sm:text-lg">
           {description}

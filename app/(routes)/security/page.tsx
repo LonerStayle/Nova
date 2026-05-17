@@ -17,6 +17,7 @@ export default function SecurityPage() {
   return (
     <main className="container mx-auto px-6 py-24">
       <SectionHeading
+        as="h1"
         eyebrow="Safety &amp; Security"
         title="Safety as the substrate."
         description="Alignment, red-teaming, compliance, and provenance — four pillars of constitutional safety practice, built into every layer of the system."

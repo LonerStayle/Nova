@@ -13,6 +13,7 @@ export default function ArchitecturePage() {
   return (
     <main className="container mx-auto px-6 py-24">
       <SectionHeading
+        as="h1"
         eyebrow="System Architecture"
         title="A four-layer agentic system."
         description="Orchestration → Multi-Agent → AgentOS → Harness — each layer purpose-built for frontier-grade reasoning, observability, and safety."

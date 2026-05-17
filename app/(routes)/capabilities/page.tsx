@@ -14,6 +14,7 @@ export default function CapabilitiesPage() {
   return (
     <main className="container mx-auto px-6 py-24">
       <SectionHeading
+        as="h1"
         eyebrow="Model Capabilities"
         title="Capabilities"
         description={`What ${brand.model.flagship} can do — across modalities, context, tools, code, and agentic reasoning.`}

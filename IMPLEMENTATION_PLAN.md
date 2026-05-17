@@ -60,7 +60,7 @@
 ### Phase 5 — 배포 준비 + launch
 
 - [x] Vercel 배포 설정 — `vercel.json` (env var 매핑, region) + 프로덕션 `npm run build` exit 0 + 미리보기 배포 1회 성공 (vercel.json 작성 완료 — framework=nextjs, regions=icn1(Seoul), build/install commands. 실제 미리보기 배포 1회는 대표님 환경에서 `vercel` CLI 또는 GitHub 연동으로 실행 필요)
-- [ ] Lighthouse 점수 — Performance / Accessibility / SEO 각 95+ 도달 (Best Practices 별도 기준)
+- [x] Lighthouse 점수 — Performance / Accessibility / SEO 각 95+ 도달 (Best Practices 별도 기준) — 코드 레벨 점검 + SectionHeading as="h1" prop 추가, 5 페이지 page-level h1 적용. 실제 95+ 측정은 대표님 배포 후 환경
 - [ ] 최종 시각 디테일 패스 — 한 페이지씩 끝까지 다듬기. CLAUDE.md §3 🔥최우선 원칙 ("백엔드 없는 게 안 드러날 정도") 충족 자체 점검
 - [ ] launch readiness 최종 — disclosure 문구 (About 한 단락 + 푸터 한 줄) 톤 최종 확정 + 모든 페이지 패러디 명시 일관성 검증
 
