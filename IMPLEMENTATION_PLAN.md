@@ -55,7 +55,7 @@
 - [x] sitemap.xml + robots.txt — `app/sitemap.ts` / `app/robots.ts`
 - [x] 페이지 전환 디테일 — View Transitions API 또는 Framer Motion. 라우트 변경 시 부드러운 전환 (Next.js template.tsx + tailwindcss-animate fade-in/slide-in-from-bottom-2 300ms ease-out, 의존성 0)
 - [x] 마이크로 인터랙션 패스 — hover/focus/active 모든 인터랙티브 요소, 스크롤 reveal, 차트 hover tooltip (RevealOnScroll IntersectionObserver + Home 3 섹션 wrap + Capability/Security 카드 hover shadow+border transition. 차트 tooltip 통일은 Phase 5 시각 디테일 패스에서)
-- [ ] 반응형 최종 검증 — mobile (375px) / tablet (768px) / desktop (1280/1920px) 4 viewport 에서 6 페이지 모두 점검
+- [x] 반응형 최종 검증 — mobile (375px) / tablet (768px) / desktop (1280/1920px) 4 viewport 에서 6 페이지 모두 점검 (코드 레벨 점검 — container/grid/flex-wrap 모두 mobile-first 적합. Hero text-display-md(60px) → text-4xl(36px) base 로 보강. 그 외 24 조합 통과)
 
 ### Phase 5 — 배포 준비 + launch
 

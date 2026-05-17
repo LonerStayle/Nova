@@ -36,7 +36,7 @@ export function Hero() {
             Now in production · {brand.model.flagship}
           </Pill>
 
-          <h1 className="mt-8 text-display-md font-bold tracking-tight text-foreground sm:text-display-lg lg:text-display-xl">
+          <h1 className="mt-8 text-4xl font-bold tracking-tight text-foreground sm:text-display-md md:text-display-lg lg:text-display-xl">
             {brand.tagline.primary}
           </h1>
 
