@@ -426,6 +426,34 @@
     }
   },
   "home": {
+    "archTeaser": {
+      "eyebrow": "System Architecture",
+      "heading": "Four layers, one inference path.",
+      "body": "Every request flows through Orchestration → Multi-Agent → AgentOS → Harness — purpose-built layers for routing, specialization, scheduling, and safe inference.",
+      "cta": "Explore the architecture",
+      "layers": {
+        "orchestration": {
+          "level": "L4",
+          "name": "Orchestration",
+          "description": "Routes, decomposes, synthesizes."
+        },
+        "multiAgent": {
+          "level": "L3",
+          "name": "Multi-Agent",
+          "description": "Role-specialized agents in parallel."
+        },
+        "agentOs": {
+          "level": "L2",
+          "name": "AgentOS",
+          "description": "Scheduling, memory, IPC, observability."
+        },
+        "harness": {
+          "level": "L1",
+          "name": "Harness",
+          "description": "Inference, sandboxing, safety substrate."
+        }
+      }
+    },
     "modelIntro": {
       "eyebrow": "Meet Nexora-1",
       "heading": "A foundation model designed for what comes after chat.",

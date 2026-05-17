@@ -426,6 +426,34 @@
     }
   },
   "home": {
+    "archTeaser": {
+      "eyebrow": "시스템 아키텍처",
+      "heading": "4 레이어, 하나의 추론 경로.",
+      "body": "모든 요청은 Orchestration → Multi-Agent → AgentOS → Harness 를 통과합니다 — 라우팅·전문화·스케줄링·안전 추론을 위해 목적 설계된 4 레이어.",
+      "cta": "아키텍처 살펴보기",
+      "layers": {
+        "orchestration": {
+          "level": "L4",
+          "name": "Orchestration",
+          "description": "라우팅·분해·합성."
+        },
+        "multiAgent": {
+          "level": "L3",
+          "name": "Multi-Agent",
+          "description": "역할 특화 에이전트 병렬."
+        },
+        "agentOs": {
+          "level": "L2",
+          "name": "AgentOS",
+          "description": "스케줄링·메모리·IPC·관측성."
+        },
+        "harness": {
+          "level": "L1",
+          "name": "Harness",
+          "description": "추론·샌드박스·안전 substrate."
+        }
+      }
+    },
     "modelIntro": {
       "eyebrow": "Nexora-1 소개",
       "heading": "챗 이후의 시대를 위해 설계된 파운데이션 모델.",

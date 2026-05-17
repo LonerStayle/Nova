@@ -4,6 +4,7 @@ import { Hero } from "@/components/sections/hero";
 import { KeyMetrics } from "@/components/sections/key-metrics";
 import { BigNumbers } from "@/components/sections/big-numbers";
 import { ModelIntro } from "@/components/sections/model-intro";
+import { ArchitectureTeaser } from "@/components/sections/architecture-teaser";
 import { TrustedBy } from "@/components/sections/trusted-by";
 import { DemoWidget } from "@/components/demo/demo-widget";
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
@@ -30,6 +31,9 @@ export default async function HomePage({
       </RevealOnScroll>
       <RevealOnScroll>
         <TrustedBy />
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <ArchitectureTeaser />
       </RevealOnScroll>
       <RevealOnScroll>
         <DemoWidget />
