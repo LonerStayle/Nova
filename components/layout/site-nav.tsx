@@ -19,9 +19,6 @@ const navItems = [
   { href: "/about", label: "About" },
 ] as const;
 
-const brandGradient = `linear-gradient(135deg, hsl(${brand.palette.primary.hsl}) 0%, hsl(${brand.palette.accent.hsl}) 100%)`;
-const brandHorizontalGradient = `linear-gradient(90deg, hsl(${brand.palette.primary.hsl}) 0%, hsl(${brand.palette.accent.hsl}) 100%)`;
-
 function isItemActive(itemHref: string, pathname: string) {
   if (itemHref === "/") return pathname === "/";
   return pathname === itemHref || pathname.startsWith(`${itemHref}/`);
@@ -63,8 +60,7 @@ export function SiteNav() {
         >
           <span
             aria-hidden="true"
-            className="inline-block h-6 w-6 rounded-md shadow-sm"
-            style={{ backgroundImage: brandGradient }}
+            className="inline-block h-6 w-6 rounded-md bg-brand-gradient shadow-sm"
           />
           <span>{brand.company.name}</span>
         </Link>
@@ -92,8 +88,7 @@ export function SiteNav() {
                 {active && (
                   <span
                     aria-hidden="true"
-                    className="absolute inset-x-3 -bottom-[17px] h-[2px] rounded-full"
-                    style={{ backgroundImage: brandHorizontalGradient }}
+                    className="absolute inset-x-3 -bottom-[17px] h-[2px] rounded-full bg-brand-gradient-h"
                   />
                 )}
               </Link>

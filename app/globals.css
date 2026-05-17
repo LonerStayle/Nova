@@ -24,6 +24,11 @@
     --input: 240 5.9% 90%;
     --ring: 240 5.9% 10%;
     --radius: 0.5rem;
+
+    /* Brand tokens — lib/brand.ts palette 와 동기화 필수
+       light mode 기준값 */
+    --brand-primary: 244 71% 28%;
+    --brand-accent: 270 91% 65%;
   }
 
   .dark {
@@ -46,6 +51,10 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
+
+    /* Brand tokens (dark) — contrast 보강을 위해 한 단계 밝게 */
+    --brand-primary: 244 71% 55%;
+    --brand-accent: 270 91% 72%;
   }
 }
 

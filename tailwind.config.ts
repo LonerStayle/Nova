@@ -51,6 +51,19 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Brand colors — globals.css 의 --brand-* CSS variables 참조
+        // light/dark mode 에서 자동으로 contrast 보강된 값 적용
+        brand: {
+          primary: "hsl(var(--brand-primary))",
+          accent: "hsl(var(--brand-accent))",
+        },
+      },
+      backgroundImage: {
+        // Brand 그라데이션 — 단일 utility 로 사이트 전반 일관성 유지
+        "brand-gradient":
+          "linear-gradient(135deg, hsl(var(--brand-primary)) 0%, hsl(var(--brand-accent)) 100%)",
+        "brand-gradient-h":
+          "linear-gradient(90deg, hsl(var(--brand-primary)) 0%, hsl(var(--brand-accent)) 100%)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -60,6 +73,29 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+      },
+      fontSize: {
+        // Display scale — hero/heading 용. line-height 와 letter-spacing 일체화
+        "display-sm": [
+          "2.25rem",
+          { lineHeight: "1.1", letterSpacing: "-0.02em" },
+        ],
+        "display-md": [
+          "3.75rem",
+          { lineHeight: "1.05", letterSpacing: "-0.03em" },
+        ],
+        "display-lg": [
+          "5rem",
+          { lineHeight: "1.0", letterSpacing: "-0.035em" },
+        ],
+        "display-xl": [
+          "6rem",
+          { lineHeight: "0.95", letterSpacing: "-0.04em" },
+        ],
+      },
+      letterSpacing: {
+        // 풍자 사이트의 monospace caption 톤 — 이미 사이트 곳곳에서 [0.2em] 사용 중
+        widest2: "0.24em",
       },
     },
   },

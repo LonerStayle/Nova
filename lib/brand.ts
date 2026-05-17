@@ -46,7 +46,13 @@ export const brand = {
     releaseDate: "2026-Q2",
   },
 
-  // 색상 팔레트 — globals.css 의 shadcn HSL tokens 와 별개로 브랜드 hero/CTA 강조용
+  // 색상 팔레트 — light mode 기준값
+  //
+  // ⚠️ globals.css 의 --brand-primary / --brand-accent CSS variables 와 동기화 필수.
+  //    dark mode 에서는 globals.css 의 .dark 블록이 한 단계 밝은 값으로 override.
+  //    Tailwind utility: `bg-brand-primary` / `text-brand-accent` / `bg-brand-gradient` / `bg-brand-gradient-h`
+  //    런타임 색은 항상 CSS variables 가 ground truth — 아래 hex 는 ImageResponse 등
+  //    빌드타임 정적 자산에서만 직접 참조.
   palette: {
     // primary — deep indigo (브랜드 메인)
     primary: {
@@ -58,7 +64,7 @@ export const brand = {
       hsl: "270 91% 65%",
       hex: "#a855f7",
     },
-    // gradient — primary → accent 대각선
+    // gradient — primary → accent 대각선 (정적 자산 ImageResponse 용)
     gradient:
       "linear-gradient(135deg, hsl(244 71% 28%) 0%, hsl(270 91% 65%) 100%)",
   },

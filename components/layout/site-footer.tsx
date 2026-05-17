@@ -51,8 +51,6 @@ const socials = [
   },
 ] as const;
 
-const brandGradient = `linear-gradient(135deg, hsl(${brand.palette.primary.hsl}) 0%, hsl(${brand.palette.accent.hsl}) 100%)`;
-
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
@@ -65,8 +63,7 @@ export function SiteFooter() {
             <div className="flex items-center gap-2">
               <span
                 aria-hidden="true"
-                className="inline-block h-7 w-7 rounded-md shadow-sm"
-                style={{ backgroundImage: brandGradient }}
+                className="inline-block h-7 w-7 rounded-md bg-brand-gradient shadow-sm"
               />
               <span className="text-sm font-semibold tracking-tight">
                 {brand.company.name}
