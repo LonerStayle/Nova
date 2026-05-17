@@ -2,6 +2,7 @@ import { setRequestLocale } from "next-intl/server";
 
 import { Hero } from "@/components/sections/hero";
 import { KeyMetrics } from "@/components/sections/key-metrics";
+import { BigNumbers } from "@/components/sections/big-numbers";
 import { TrustedBy } from "@/components/sections/trusted-by";
 import { DemoWidget } from "@/components/demo/demo-widget";
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
@@ -19,6 +20,9 @@ export default async function HomePage({
       <Hero />
       <RevealOnScroll>
         <KeyMetrics />
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <BigNumbers />
       </RevealOnScroll>
       <RevealOnScroll>
         <TrustedBy />

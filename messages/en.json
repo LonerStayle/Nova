@@ -425,6 +425,32 @@
       "others": "Others"
     }
   },
+  "home": {
+    "bigNumbers": {
+      "eyebrow": "By the Numbers",
+      "heading": "Frontier scale, in five digits or fewer.",
+      "items": {
+        "params": {
+          "value": "10¹⁷",
+          "label": "Parameters"
+        },
+        "context": {
+          "value": "200K",
+          "label": "Context tokens"
+        },
+        "mmlu": {
+          "value": "92.4",
+          "unit": "%",
+          "label": "MMLU (5-shot)"
+        },
+        "gpus": {
+          "value": "5,000",
+          "label": "H100s deployed"
+        }
+      },
+      "caption": "Numbers verified by an internal review team that is also fictional."
+    }
+  },
   "about": {
     "eyebrow": "About",
     "heroDescription": "Building frontier-grade AI from Seoul — multimodal reasoning, agentic workflows, and constitutional safety as one integrated stack.",

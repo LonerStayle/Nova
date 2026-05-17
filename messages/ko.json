@@ -425,6 +425,32 @@
       "others": "기타"
     }
   },
+  "home": {
+    "bigNumbers": {
+      "eyebrow": "By the Numbers",
+      "heading": "프론티어 스케일, 다섯 자리 안에.",
+      "items": {
+        "params": {
+          "value": "10경",
+          "label": "파라미터"
+        },
+        "context": {
+          "value": "200K",
+          "label": "컨텍스트 토큰"
+        },
+        "mmlu": {
+          "value": "92.4",
+          "unit": "%",
+          "label": "MMLU (5-shot)"
+        },
+        "gpus": {
+          "value": "5,000",
+          "label": "H100 배포"
+        }
+      },
+      "caption": "이 수치들도 가공 검증 팀이 따로 검증했습니다."
+    }
+  },
   "about": {
     "eyebrow": "회사 소개",
     "heroDescription": "서울에서 만드는 프론티어급 AI — 멀티모달 추론·에이전트 워크플로·constitutional 안전성을 단일 스택으로 통합합니다.",

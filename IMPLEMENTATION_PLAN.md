@@ -110,7 +110,7 @@
 
 Phase 7 sub-task (Home page 안의 신규 컴포넌트, 각자 한·영 messages 분리):
 
-- [ ] 7.2 — `components/sections/big-numbers.tsx` 신규 — 4 column 큰 숫자 band: "10경 params" / "200K context" / "92.4 MMLU" / "5,000 H100". Full-width, 어두운 배경, 풍자 1줄 caption ("Numbers verified by an internal team that is also fictional / 이 수치들도 가공 팀이 검증했습니다"). Home 의 KeyMetrics 다음, TrustedBy 앞에 삽입. `messages.{en,ko}.json` 의 `home.bigNumbers` 키로 분리.
+- [x] 7.2 — `components/sections/big-numbers.tsx` 신규 — 4 column 큰 숫자 band (10¹⁷/10경 params · 200K context · 92.4% MMLU · 5,000 H100). full-width muted/20 배경 + brand-accent radial backdrop, eyebrow + heading + 큰 숫자 dl + dry humor caption. Home KeyMetrics 다음, TrustedBy 앞에 삽입.
 - [ ] 7.3 — `components/sections/model-intro.tsx` 신규 — "What is Nexora-1?" 섹션. 좌측 모델 설명 1 단락 + 우측 3 capability mini-card (Multi-modal · 200K context · Agentic). Capabilities 페이지 link "Explore all 6 capabilities →". Big numbers 다음에 배치. messages `home.modelIntro`.
 - [ ] 7.4 — `components/sections/architecture-teaser.tsx` 신규 — 4 layer mini visualization (Network / Boxes / Layers / Cpu 아이콘 + 1줄 description). 작은 박스 4개 vertical 또는 horizontal pipeline. "Explore architecture →" link. TrustedBy 다음 배치. messages `home.archTeaser`.
 - [ ] 7.5 — `components/sections/benchmark-teaser.tsx` 신규 — BenchmarkBarChart (재활용) + caption + "Read full benchmarks →" link. ChartCard wrapper 재활용. Architecture teaser 다음 배치. messages `home.benchTeaser`.
