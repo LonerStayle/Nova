@@ -146,7 +146,7 @@ export function SiteFooter() {
             </span>
           </p>
           <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground/60">
-            Build · v1.0.0-frontier · {brand.model.flagship}
+            Build · v1.0.0-frontier · {brand.model.flagship} · (fictional)
           </p>
         </div>
       </div>

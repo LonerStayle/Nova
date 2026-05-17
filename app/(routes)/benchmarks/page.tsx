@@ -35,7 +35,7 @@ export default function BenchmarksPage() {
         <ChartCard
           title="Composite Frontier Score — quarterly evolution"
           subtitle="2024 Q4 → 2026 Q2"
-          caption="Composite score = geometric mean of MMLU · HumanEval · GSM8K · MATH · AGIEval (weighted equally). Frontier avg = top-3 publicly available models excluding Nexora."
+          caption="Composite score = geometric mean of MMLU · HumanEval · GSM8K · MATH · AGIEval (weighted equally). Frontier avg = top-3 publicly available models excluding Nexora. None of these numbers were back-fitted to make this line go up, we promise."
         >
           <TimelineChart />
         </ChartCard>
@@ -51,7 +51,7 @@ export default function BenchmarksPage() {
         <ChartCard
           title="Cost-performance Pareto frontier"
           subtitle="Composite Frontier Score vs USD per 1M tokens"
-          caption="Nexora series sits on the Pareto frontier across the entire cost-performance plane — from Nexora-K (cost-optimized) through Nexora-1 Pro (peak frontier)."
+          caption="Nexora series sits on the Pareto frontier across the entire cost-performance plane — from Nexora-K (cost-optimized) through Nexora-1 Pro (peak frontier). Hard to lose a benchmark you invented."
         >
           <ParetoScatter />
         </ChartCard>

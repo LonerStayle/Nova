@@ -60,6 +60,9 @@ export default function AboutPage() {
       <section id="disclosure" className="mx-auto mt-24 max-w-3xl scroll-mt-24">
         <p className="font-mono text-xs uppercase tracking-widest2 text-muted-foreground">
           Parody Disclosure
+          <span className="ml-1.5 text-muted-foreground/40">
+            (the part where we come clean)
+          </span>
         </p>
         <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
           이 사이트는 패러디입니다.
