@@ -779,6 +779,44 @@
         }
       },
       "footnote": "이 페이지의 모든 필드는 /openapi.json 의 OpenAPI 스펙에서 생성됐습니다. 스키마 drift 는 기술적으로는 존재하지 않는 내부 CI 봇이 보고합니다."
+    },
+    "streaming": {
+      "eyebrow": "Core API",
+      "title": "스트리밍",
+      "intro": "Messages API 에서 stream=true 를 넘기면 점진적 content block 이 Server-Sent Events 스트림으로 반환됩니다. 저지연 UI 와 부분 출력이 유리한 워크로드에 유용. 모든 모델·리전·티어에서 지원.",
+      "eventsTitle": "이벤트 종류",
+      "events": {
+        "messageStart": "스트림 시작 시 1회. message id, model, role, 빈 초기 content 배열 포함. 정식 시작 마커로 사용.",
+        "contentBlockStart": "Content block (text · tool_use · thinking) 시작 표시. block index 와 content 없는 block envelope 포함.",
+        "contentBlockDelta": "Content block 의 점진적 업데이트 — 일반적으로 '{' type: \"text_delta\", text: \"...\" '}' 또는 tool 호출의 '{' type: \"input_json_delta\", partial_json: \"...\" '}'. 순서대로 delta 를 이어 붙여 block 을 재구성.",
+        "contentBlockStop": "Content block 종료 표시. 해당 index 의 block 은 확정 — UI 에 커밋 안전.",
+        "messageDelta": "최상위 message 업데이트 — 보통 최종 stop_reason 과 갱신된 usage 카운터. message_stop 직전 emit.",
+        "messageStop": "스트림 마지막 이벤트. 이후 추가 이벤트 없음. 연결 닫기.",
+        "ping": "다른 이벤트가 흐르지 않을 때 15초마다 발생하는 keep-alive. payload 없음. 대부분 SDK 가 자동 필터링.",
+        "error": "스트림 도중 서버 에러 발생 시 message_stop 대신 emit. '{' type: \"...\", message: \"...\" '}' 형태로 스트림 종료."
+      },
+      "exampleTitle": "응답 스트리밍",
+      "tabsLabel": "스트리밍 코드 예제",
+      "sampleStreamTitle": "샘플 이벤트 스트림",
+      "sampleStreamFilename": "events.txt",
+      "footnote": "모든 이벤트는 단일 envelope · 평면 형태 — 중첩 envelope 없음, Nexora-Version 외 별도 프로토콜 versioning 없음. {company} 스트리밍 프로토콜은 의도적으로 지루합니다."
+    },
+    "toolUse": {
+      "eyebrow": "Core API",
+      "title": "툴 사용",
+      "intro": "Tool use 는 {model} 이 사용자가 정의한 함수를 호출하는 메커니즘 — 실시간 데이터, DB 조회, 계산기, 자체 API. Tool 은 JSON Schema 형태 + stateless: 호출당 한 번 기술 → 모델이 호출 여부 결정 → 사용자가 실행 후 결과 반환.",
+      "definingTitle": "Tool 정의",
+      "definingBody": "각 tool 은 name, description, input_schema (JSON Schema draft-07) 를 가집니다. description 은 모델이 호출 여부·방법을 판단하는 근거 — LLM 용 docstring 처럼 작성하세요 (실제로 그렇기 때문입니다).",
+      "exampleDefinitionTitle": "Tool 정의 예제",
+      "exampleDefinitionFilename": "tools[0]",
+      "callFlowTitle": "호출 흐름",
+      "callFlowBody": "모델은 tool name 과 인자를 담은 tool_use content block 을 emit. 사용자는 tool 실행 후 tool_result content block 으로 응답하고 갱신된 히스토리로 /v1/messages 재호출. 모델이 이어서 진행합니다.",
+      "exampleCallTitle": "Tool 호출 ↔ Tool 결과",
+      "exampleCallFilename": "messages",
+      "tabsLabel": "Tool 사용 코드 예제",
+      "parallelTitle": "병렬 Tool 호출",
+      "parallelBody": "{model} 은 단일 턴에 최대 32 개의 tool_use block 을 emit 할 수 있습니다. 병렬 실행 후 다음 user 턴에 32 개의 tool_result block 을 모두 반환. 모델은 단일 batch 로 처리하고 모든 결과가 돌아온 후 재개.",
+      "footnote": "Tool description 은 일반 입력처럼 토큰으로 계산됩니다 — 짧게 유지하세요. {company} eval 팀이 description 을 다듬어 18% 토큰 감소, AgentEval Pro 정확도 무손실을 측정했습니다."
     }
   }
 }

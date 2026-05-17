@@ -779,6 +779,44 @@
         }
       },
       "footnote": "Every field on this page is documented from the OpenAPI spec at /openapi.json. Schema drift is reported by an internal CI bot that does not, in any technical sense, exist."
+    },
+    "streaming": {
+      "eyebrow": "Core API",
+      "title": "Streaming",
+      "intro": "Pass stream=true on the Messages API to receive a Server-Sent Events stream of incremental content blocks. Useful for low-latency UIs and any workload that benefits from partial output. Streaming is supported on every model, every region, every tier.",
+      "eventsTitle": "Event types",
+      "events": {
+        "messageStart": "Emitted once at the start of the stream. Contains the message id, model, role, and an initial empty content array. Use this as the canonical start marker.",
+        "contentBlockStart": "Marks the start of a content block (text, tool_use, or thinking). Includes the block index and the block envelope without content.",
+        "contentBlockDelta": "Incremental update to a content block — typically '{' type: \"text_delta\", text: \"...\" '}' or '{' type: \"input_json_delta\", partial_json: \"...\" '}' for tool calls. Concatenate deltas in order to reconstruct the block.",
+        "contentBlockStop": "Marks the end of a content block. The block at the given index is now finalized — safe to commit to your UI.",
+        "messageDelta": "Top-level message update — typically a final stop_reason and updated usage counters. Emitted just before message_stop.",
+        "messageStop": "Final event of the stream. After this, no more events will be sent. Close the connection.",
+        "ping": "Keep-alive event sent every 15s when no other events are flowing. Carries no payload. Most SDKs filter these out automatically.",
+        "error": "Emitted instead of message_stop if a server-side error occurred mid-stream. Carries '{' type: \"...\", message: \"...\" '}' and terminates the stream."
+      },
+      "exampleTitle": "Streaming a response",
+      "tabsLabel": "Streaming code examples",
+      "sampleStreamTitle": "Sample event stream",
+      "sampleStreamFilename": "events.txt",
+      "footnote": "All event types use a flat shape — no nested envelopes, no protocol versioning beyond Nexora-Version. The {company} streaming protocol is intentionally boring."
+    },
+    "toolUse": {
+      "eyebrow": "Core API",
+      "title": "Tool use",
+      "intro": "Tool use lets {model} call functions you define — pulling live data, querying databases, running calculators, or invoking your APIs. Tools are JSON Schema-shaped and stateless: you describe them once per call, the model decides whether to invoke them, you execute and return the result.",
+      "definingTitle": "Defining a tool",
+      "definingBody": "Each tool has a name, a description, and an input_schema in JSON Schema draft-07. The description is what the model uses to decide whether and how to call your tool — write it like a docstring for an LLM, because it is one.",
+      "exampleDefinitionTitle": "Tool definition",
+      "exampleDefinitionFilename": "tools[0]",
+      "callFlowTitle": "Call flow",
+      "callFlowBody": "The model emits a tool_use content block with the tool name and arguments. You execute the tool and reply with a tool_result content block, then call /v1/messages again with the updated history. The model continues from there.",
+      "exampleCallTitle": "Tool call ↔ tool result",
+      "exampleCallFilename": "messages",
+      "tabsLabel": "Tool use code examples",
+      "parallelTitle": "Parallel tool calls",
+      "parallelBody": "{model} can emit up to 32 tool_use blocks in a single turn. Execute them in parallel, then return all 32 tool_result blocks in the next user turn. The model treats them as a single batch and resumes after all have returned.",
+      "footnote": "Tool descriptions are tokenized like regular input — keep them tight. The {company} eval team measured a 18% token reduction by trimming descriptions, with zero accuracy regression on AgentEval Pro."
     }
   }
 }

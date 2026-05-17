@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { DocsSidebar } from "@/components/docs/docs-sidebar";
 import { QuickstartSection } from "@/components/docs/quickstart-section";
 import { ApiReferenceSection } from "@/components/docs/api-reference-section";
+import { StreamingSection } from "@/components/docs/streaming-section";
+import { ToolUseSection } from "@/components/docs/tool-use-section";
 
 export async function generateMetadata({
   params,
@@ -87,26 +89,22 @@ export default async function DocsPage({
             <ApiReferenceSection />
           </section>
 
-          {/* Streaming placeholder — populated in 8.5 */}
+          {/* Streaming — 8.5 */}
           <section
             id="streaming"
             aria-label={tSidebar("sections.streaming")}
             className="scroll-mt-24"
           >
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              {tSidebar("sections.streaming")}
-            </h2>
+            <StreamingSection />
           </section>
 
-          {/* Tool use placeholder — populated in 8.5 */}
+          {/* Tool use — 8.5 */}
           <section
             id="tool-use"
             aria-label={tSidebar("sections.toolUse")}
             className="scroll-mt-24"
           >
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              {tSidebar("sections.toolUse")}
-            </h2>
+            <ToolUseSection />
           </section>
 
           {/* Models placeholder — populated in 8.6 */}
