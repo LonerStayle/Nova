@@ -296,6 +296,79 @@
       }
     }
   },
+  "security": {
+    "metaDescription": "{company} 의 alignment · red-teaming · compliance · provenance — 프론티어 AI 를 위한 constitutional 안전 실천.",
+    "eyebrow": "안전 · 보안",
+    "title": "안전성이 곧 substrate.",
+    "description": "Alignment · Red-teaming · Compliance · Provenance — 시스템의 모든 레이어에 박힌 constitutional 안전 실천의 네 기둥.",
+    "sections": {
+      "alignment": {
+        "category": "Alignment",
+        "tagline": "Constitutional AI + RLHF + value alignment",
+        "description": "명시적 constitutional 원칙 기반 다목표 alignment — 사람 평가자와 자동화된 critic 에이전트가 12 라운드 훈련 스케줄로 감독합니다.",
+        "metrics": {
+          "refusal": "거부 정확도",
+          "compliance": "Constitutional 준수도",
+          "rounds": "훈련 라운드",
+          "critics": "Critic 에이전트"
+        }
+      },
+      "redTeaming": {
+        "category": "Red-teaming",
+        "tagline": "지속적 적대적 평가",
+        "description": "사내 red-team 이 2주 주기로 운영됩니다. {model} 공개 전 외부 red-team 파트너가 6 차례 독립 평가를 수행했습니다.",
+        "metrics": {
+          "cadence": "사내 주기",
+          "external": "외부 평가",
+          "jailbreak": "Jailbreak 저항",
+          "vectors": "커버 공격 벡터"
+        }
+      },
+      "compliance": {
+        "category": "Compliance",
+        "tagline": "프라이버시·데이터 처리·규제 프레임워크",
+        "description": "AI 안전·데이터 보호·감사 투명성에 관한 주요 규제 프레임워크에 align 되도록 설계 — 지속적인 자발 공개로 뒷받침됩니다.",
+        "metrics": {
+          "residency": "데이터 거주지",
+          "audit": "감사 로그 보존",
+          "redaction": "PII 마스킹",
+          "voluntary": "자발 공개"
+        }
+      },
+      "provenance": {
+        "category": "Provenance",
+        "tagline": "Model card·훈련 감사·출력 추적성",
+        "description": "모든 모델 릴리스는 공개 Model Card, 데이터셋 lineage hash chain, (opt-in) 암호학적 출력 watermarking 을 함께 제공합니다.",
+        "metrics": {
+          "modelCard": "Model Card",
+          "lineage": "데이터셋 lineage",
+          "watermark": "출력 watermark",
+          "audit": "훈련셋 감사"
+        }
+      }
+    },
+    "safetyChart": {
+      "title": "안전성 평가 — 카테고리별 거부율",
+      "subtitle": "적대적 prompt × 6 위험 카테고리 — 높을수록 좋음",
+      "caption": "Safety Suite v3.2 내부 평가 — 6 카테고리에 걸친 3,000+ 적대적 prompt. Industry avg = Nexora 제외 상위 5 프론티어 모델 평균.",
+      "legend": {
+        "nexora": "{model}",
+        "industry": "업계 평균"
+      },
+      "categories": {
+        "cbrn": "CBRN · 무기",
+        "illegal": "불법 행위",
+        "deception": "기만 시도",
+        "harmful": "유해 콘텐츠",
+        "privacy": "프라이버시 침해",
+        "misinformation": "허위 정보"
+      }
+    },
+    "modelCard": {
+      "eyebrow": "Model Card · 공개 자료",
+      "body": "Full Model Card · 훈련 감사 요약 · 자발 공개 아카이브 — 요청 시 제공."
+    }
+  },
   "about": {
     "eyebrow": "회사 소개",
     "heroDescription": "서울에서 만드는 프론티어급 AI — 멀티모달 추론·에이전트 워크플로·constitutional 안전성을 단일 스택으로 통합합니다.",

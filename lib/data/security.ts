@@ -5,6 +5,10 @@
  *    CLAUDE.md §5 #7 (실존 인증·VC·학회 로고 도용 금지) 준수 —
  *    "SOC 2 / ISO 27001 / GDPR" 같은 실존 인증명 직접 언급 X.
  *    일반 표현 ("regulatory frameworks", "voluntary disclosures", "Model Card") 사용.
+ *
+ * i18n 구조: category/tagline/description, metrics.label 은
+ * `messages/{en,ko}.json` 의 `security.sections.<id>` 로 이동. 이 파일은
+ * non-translatable identifier(아이콘/metric key 순서/수치값) 만 보유.
  */
 
 import {
@@ -15,80 +19,83 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-export interface SecurityMetric {
-  label: string;
-  value: string;
-}
-
-export interface SecuritySection {
-  category: string;
-  tagline: string;
-  description: string;
-  icon: LucideIcon;
-  metrics: readonly SecurityMetric[];
-}
-
-export const securitySections: readonly SecuritySection[] = [
-  {
-    category: "Alignment",
-    tagline: "Constitutional AI + RLHF + value alignment",
-    description:
-      "Multi-objective alignment with explicit constitutional principles, supervised by both human raters and automated critic agents through a 12-round training schedule.",
-    icon: Target,
-    metrics: [
-      { label: "Refusal accuracy", value: "96.4%" },
-      { label: "Constitutional compliance", value: "98.1%" },
-      { label: "Training rounds", value: "12+" },
-      { label: "Critic agents", value: "8 specialized" },
-    ],
-  },
-  {
-    category: "Red-teaming",
-    tagline: "Continuous adversarial evaluation",
-    description:
-      "Internal red-team operates on a 2-week cadence. External red-team partners conducted 6 independent assessments before the public release of Nexora-1.",
-    icon: Shield,
-    metrics: [
-      { label: "Internal cadence", value: "every 2 weeks" },
-      { label: "External assessments", value: "6 completed" },
-      { label: "Jailbreak resistance", value: "91.2%" },
-      { label: "Attack vectors covered", value: "3,000+" },
-    ],
-  },
-  {
-    category: "Compliance",
-    tagline: "Privacy, data handling & regulatory frameworks",
-    description:
-      "Designed to align with major regulatory frameworks for AI safety, data protection, and audit transparency — supported by ongoing voluntary disclosures.",
-    icon: FileCheck,
-    metrics: [
-      { label: "Data residency", value: "ap-northeast-2 (Seoul)" },
-      { label: "Audit log retention", value: "365 days" },
-      { label: "PII redaction", value: "automated" },
-      { label: "Voluntary disclosures", value: "quarterly" },
-    ],
-  },
-  {
-    category: "Provenance",
-    tagline: "Model cards, training audits & output traceability",
-    description:
-      "Every model release ships with a public Model Card, dataset lineage hash chain, and (opt-in) cryptographic output watermarking for downstream attribution.",
-    icon: Fingerprint,
-    metrics: [
-      { label: "Model Card", value: "v1.0 published" },
-      { label: "Dataset lineage", value: "SHA-256 chain" },
-      { label: "Output watermark", value: "opt-in" },
-      { label: "Training set audit", value: "annual" },
-    ],
-  },
+export const securitySectionIds = [
+  "alignment",
+  "redTeaming",
+  "compliance",
+  "provenance",
 ] as const;
+
+export type SecuritySectionId = (typeof securitySectionIds)[number];
+
+export const securitySectionIcons: Record<SecuritySectionId, LucideIcon> = {
+  alignment: Target,
+  redTeaming: Shield,
+  compliance: FileCheck,
+  provenance: Fingerprint,
+};
+
+export const securityMetricKeys: Record<
+  SecuritySectionId,
+  readonly string[]
+> = {
+  alignment: ["refusal", "compliance", "rounds", "critics"],
+  redTeaming: ["cadence", "external", "jailbreak", "vectors"],
+  compliance: ["residency", "audit", "redaction", "voluntary"],
+  provenance: ["modelCard", "lineage", "watermark", "audit"],
+};
+
+// 가공 수치 값 — non-translatable (단 residency 의 "ap-northeast-2 (Seoul)" 는 위치명. ko 에선 "ap-northeast-2 (서울)" 로 표시할지 검토)
+export const securityMetricValues: Record<
+  SecuritySectionId,
+  Record<string, string>
+> = {
+  alignment: {
+    refusal: "96.4%",
+    compliance: "98.1%",
+    rounds: "12+",
+    critics: "8 specialized",
+  },
+  redTeaming: {
+    cadence: "every 2 weeks",
+    external: "6 completed",
+    jailbreak: "91.2%",
+    vectors: "3,000+",
+  },
+  compliance: {
+    residency: "ap-northeast-2 (Seoul)",
+    audit: "365 days",
+    redaction: "automated",
+    voluntary: "quarterly",
+  },
+  provenance: {
+    modelCard: "v1.0 published",
+    lineage: "SHA-256 chain",
+    watermark: "opt-in",
+    audit: "annual",
+  },
+};
 
 // Safety evaluation — horizontal bar chart 데이터 (refusal rate by category)
-export const safetyData = [
-  { category: "CBRN & weapons", "Nexora-1": 99.2, "Industry avg": 95.4 },
-  { category: "Illegal acts", "Nexora-1": 97.8, "Industry avg": 92.1 },
-  { category: "Deception attempts", "Nexora-1": 94.5, "Industry avg": 88.3 },
-  { category: "Harmful content", "Nexora-1": 95.1, "Industry avg": 90.8 },
-  { category: "Privacy violations", "Nexora-1": 96.7, "Industry avg": 89.2 },
-  { category: "Misinformation", "Nexora-1": 93.4, "Industry avg": 85.6 },
+export const safetyDataIds = [
+  "cbrn",
+  "illegal",
+  "deception",
+  "harmful",
+  "privacy",
+  "misinformation",
 ] as const;
+
+export type SafetyDataId = (typeof safetyDataIds)[number];
+
+export const safetyDataValues: Record<
+  SafetyDataId,
+  { nexora: number; industry: number }
+> = {
+  cbrn: { nexora: 99.2, industry: 95.4 },
+  illegal: { nexora: 97.8, industry: 92.1 },
+  deception: { nexora: 94.5, industry: 88.3 },
+  harmful: { nexora: 95.1, industry: 90.8 },
+  privacy: { nexora: 96.7, industry: 89.2 },
+  misinformation: { nexora: 93.4, industry: 85.6 },
+};

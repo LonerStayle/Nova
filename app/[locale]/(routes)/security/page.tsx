@@ -1,18 +1,36 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 
 import { brand } from "@/lib/brand";
 import { Card } from "@/components/ui/card";
 import { Pill } from "@/components/ui/pill";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ChartCard } from "@/components/charts/chart-card";
-import { SafetyEvaluationChart } from "@/components/charts/safety-evaluation-chart";
-import { securitySections } from "@/lib/data/security";
+import {
+  SafetyEvaluationChart,
+  type SafetyChartDatum,
+} from "@/components/charts/safety-evaluation-chart";
+import {
+  securitySectionIds,
+  securitySectionIcons,
+  securityMetricKeys,
+  securityMetricValues,
+  safetyDataIds,
+  safetyDataValues,
+} from "@/lib/data/security";
 
-export const metadata: Metadata = {
-  title: "Security",
-  description: `${brand.company.name} alignment · red-teaming · compliance · provenance — constitutional safety practice for frontier AI.`,
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "security" });
+  return {
+    title: t("title"),
+    description: t("metaDescription", { company: brand.company.name }),
+  };
+}
 
 export default async function SecurityPage({
   params,
@@ -21,22 +39,34 @@ export default async function SecurityPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("security");
+  const tSections = await getTranslations("security.sections");
+  const tSafetyChart = await getTranslations("security.safetyChart");
+  const tModelCard = await getTranslations("security.modelCard");
+
+  const safetyChartData: readonly SafetyChartDatum[] = safetyDataIds.map(
+    (id) => ({
+      category: tSafetyChart(`categories.${id}`),
+      nexora: safetyDataValues[id].nexora,
+      industry: safetyDataValues[id].industry,
+    }),
+  );
 
   return (
     <main className="container mx-auto px-6 py-24">
       <SectionHeading
         as="h1"
-        eyebrow="Safety &amp; Security"
-        title="Safety as the substrate."
-        description="Alignment, red-teaming, compliance, and provenance — four pillars of constitutional safety practice, built into every layer of the system."
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        description={t("description")}
       />
 
       <div className="mt-16 grid gap-6 lg:grid-cols-2">
-        {securitySections.map((section) => {
-          const Icon = section.icon;
+        {securitySectionIds.map((id) => {
+          const Icon = securitySectionIcons[id];
           return (
             <Card
-              key={section.category}
+              key={id}
               className="p-6 transition-all duration-300 hover:border-foreground/15 hover:shadow-md"
             >
               <div className="flex items-start gap-4">
@@ -47,25 +77,29 @@ export default async function SecurityPage({
                   <Icon className="h-5 w-5" />
                 </div>
                 <div className="flex-1 space-y-2">
-                  <Pill variant="mono">{section.category}</Pill>
+                  <Pill variant="mono">{tSections(`${id}.category`)}</Pill>
                   <h3 className="text-xl font-semibold tracking-tight">
-                    {section.tagline}
+                    {tSections(`${id}.tagline`)}
                   </h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">
-                    {section.description}
+                    {tSections(`${id}.description`, {
+                      model: brand.model.flagship,
+                    })}
                   </p>
                 </div>
               </div>
 
               <dl className="mt-6 grid grid-cols-1 gap-x-6 gap-y-3 border-t border-border/40 pt-6 sm:grid-cols-2">
-                {section.metrics.map((m) => (
+                {securityMetricKeys[id].map((metricKey) => (
                   <div
-                    key={m.label}
+                    key={metricKey}
                     className="flex items-center justify-between gap-4 text-xs"
                   >
-                    <dt className="truncate text-muted-foreground">{m.label}</dt>
+                    <dt className="truncate text-muted-foreground">
+                      {tSections(`${id}.metrics.${metricKey}`)}
+                    </dt>
                     <dd className="shrink-0 font-mono font-medium text-foreground/90">
-                      {m.value}
+                      {securityMetricValues[id][metricKey]}
                     </dd>
                   </div>
                 ))}
@@ -77,21 +111,28 @@ export default async function SecurityPage({
 
       <div className="mt-16">
         <ChartCard
-          title="Safety evaluation — refusal rate by category"
-          subtitle="Adversarial prompts × 6 risk categories — higher is better"
-          caption="Refusal rates measured on the internal Safety Suite v3.2 — 3,000+ adversarial prompts across the 6 categories. Industry avg = mean of top-5 frontier models excluding Nexora."
+          title={tSafetyChart("title")}
+          subtitle={tSafetyChart("subtitle")}
+          caption={tSafetyChart("caption")}
         >
-          <SafetyEvaluationChart />
+          <SafetyEvaluationChart
+            data={safetyChartData}
+            legend={{
+              nexora: tSafetyChart("legend.nexora", {
+                model: brand.model.flagship,
+              }),
+              industry: tSafetyChart("legend.industry"),
+            }}
+          />
         </ChartCard>
       </div>
 
       <div className="mx-auto mt-16 max-w-3xl text-center">
         <p className="font-mono text-xs uppercase tracking-widest2 text-muted-foreground">
-          Model Card &amp; Disclosures
+          {tModelCard("eyebrow")}
         </p>
         <p className="mt-3 text-sm text-muted-foreground">
-          Full Model Card · Training audit summary · Voluntary disclosure
-          archive — available on request.
+          {tModelCard("body")}
         </p>
       </div>
     </main>

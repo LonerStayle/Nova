@@ -296,6 +296,79 @@
       }
     }
   },
+  "security": {
+    "metaDescription": "{company} alignment · red-teaming · compliance · provenance — constitutional safety practice for frontier AI.",
+    "eyebrow": "Safety & Security",
+    "title": "Safety as the substrate.",
+    "description": "Alignment, red-teaming, compliance, and provenance — four pillars of constitutional safety practice, built into every layer of the system.",
+    "sections": {
+      "alignment": {
+        "category": "Alignment",
+        "tagline": "Constitutional AI + RLHF + value alignment",
+        "description": "Multi-objective alignment with explicit constitutional principles, supervised by both human raters and automated critic agents through a 12-round training schedule.",
+        "metrics": {
+          "refusal": "Refusal accuracy",
+          "compliance": "Constitutional compliance",
+          "rounds": "Training rounds",
+          "critics": "Critic agents"
+        }
+      },
+      "redTeaming": {
+        "category": "Red-teaming",
+        "tagline": "Continuous adversarial evaluation",
+        "description": "Internal red-team operates on a 2-week cadence. External red-team partners conducted 6 independent assessments before the public release of {model}.",
+        "metrics": {
+          "cadence": "Internal cadence",
+          "external": "External assessments",
+          "jailbreak": "Jailbreak resistance",
+          "vectors": "Attack vectors covered"
+        }
+      },
+      "compliance": {
+        "category": "Compliance",
+        "tagline": "Privacy, data handling & regulatory frameworks",
+        "description": "Designed to align with major regulatory frameworks for AI safety, data protection, and audit transparency — supported by ongoing voluntary disclosures.",
+        "metrics": {
+          "residency": "Data residency",
+          "audit": "Audit log retention",
+          "redaction": "PII redaction",
+          "voluntary": "Voluntary disclosures"
+        }
+      },
+      "provenance": {
+        "category": "Provenance",
+        "tagline": "Model cards, training audits & output traceability",
+        "description": "Every model release ships with a public Model Card, dataset lineage hash chain, and (opt-in) cryptographic output watermarking for downstream attribution.",
+        "metrics": {
+          "modelCard": "Model Card",
+          "lineage": "Dataset lineage",
+          "watermark": "Output watermark",
+          "audit": "Training set audit"
+        }
+      }
+    },
+    "safetyChart": {
+      "title": "Safety evaluation — refusal rate by category",
+      "subtitle": "Adversarial prompts × 6 risk categories — higher is better",
+      "caption": "Refusal rates measured on the internal Safety Suite v3.2 — 3,000+ adversarial prompts across the 6 categories. Industry avg = mean of top-5 frontier models excluding Nexora.",
+      "legend": {
+        "nexora": "{model}",
+        "industry": "Industry avg"
+      },
+      "categories": {
+        "cbrn": "CBRN & weapons",
+        "illegal": "Illegal acts",
+        "deception": "Deception attempts",
+        "harmful": "Harmful content",
+        "privacy": "Privacy violations",
+        "misinformation": "Misinformation"
+      }
+    },
+    "modelCard": {
+      "eyebrow": "Model Card & Disclosures",
+      "body": "Full Model Card · Training audit summary · Voluntary disclosure archive — available on request."
+    }
+  },
   "about": {
     "eyebrow": "About",
     "heroDescription": "Building frontier-grade AI from Seoul — multimodal reasoning, agentic workflows, and constitutional safety as one integrated stack.",

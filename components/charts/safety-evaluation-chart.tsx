@@ -11,17 +11,33 @@ import {
   YAxis,
 } from "recharts";
 
-import { safetyData } from "@/lib/data/security";
 import {
   chartTooltipContentStyle,
   chartTooltipCursorFill,
 } from "@/lib/charts/style";
 
-export function SafetyEvaluationChart() {
+export interface SafetyChartDatum {
+  category: string;
+  nexora: number;
+  industry: number;
+}
+
+interface SafetyEvaluationChartProps {
+  data: readonly SafetyChartDatum[];
+  legend: {
+    nexora: string;
+    industry: string;
+  };
+}
+
+export function SafetyEvaluationChart({
+  data,
+  legend,
+}: SafetyEvaluationChartProps) {
   return (
     <ResponsiveContainer width="100%" height={380}>
       <BarChart
-        data={[...safetyData]}
+        data={[...data]}
         layout="vertical"
         margin={{ top: 8, right: 24, left: 0, bottom: 0 }}
       >
@@ -58,12 +74,14 @@ export function SafetyEvaluationChart() {
           iconType="square"
         />
         <Bar
-          dataKey="Industry avg"
+          dataKey="industry"
+          name={legend.industry}
           fill="hsl(var(--muted-foreground) / 0.45)"
           radius={[0, 3, 3, 0]}
         />
         <Bar
-          dataKey="Nexora-1"
+          dataKey="nexora"
+          name={legend.nexora}
           fill="hsl(var(--brand-accent))"
           radius={[0, 3, 3, 0]}
         />
