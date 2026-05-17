@@ -7,6 +7,7 @@ import { brand } from "@/lib/brand";
 import { Button } from "@/components/ui/button";
 import { DocsSidebar } from "@/components/docs/docs-sidebar";
 import { QuickstartSection } from "@/components/docs/quickstart-section";
+import { ApiReferenceSection } from "@/components/docs/api-reference-section";
 
 export async function generateMetadata({
   params,
@@ -77,18 +78,13 @@ export default async function DocsPage({
             <QuickstartSection />
           </section>
 
-          {/* API Reference placeholder — populated in 8.4 */}
+          {/* API Reference — 8.4 */}
           <section
             id="api-reference"
             aria-label={tSidebar("sections.apiReference")}
             className="scroll-mt-24"
           >
-            <p className="font-mono text-xs uppercase tracking-widest2 text-muted-foreground">
-              {tSidebar("groups.core")}
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              {tSidebar("sections.apiReference")}
-            </h2>
+            <ApiReferenceSection />
           </section>
 
           {/* Streaming placeholder — populated in 8.5 */}
