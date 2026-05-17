@@ -8,6 +8,7 @@ import { ArchitectureTeaser } from "@/components/sections/architecture-teaser";
 import { BenchmarkTeaser } from "@/components/sections/benchmark-teaser";
 import { UseCases } from "@/components/sections/use-cases";
 import { Press } from "@/components/sections/press";
+import { Roadmap } from "@/components/sections/roadmap";
 import { TrustedBy } from "@/components/sections/trusted-by";
 import { DemoWidget } from "@/components/demo/demo-widget";
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
@@ -46,6 +47,9 @@ export default async function HomePage({
       </RevealOnScroll>
       <RevealOnScroll>
         <Press />
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <Roadmap />
       </RevealOnScroll>
       <RevealOnScroll>
         <DemoWidget />

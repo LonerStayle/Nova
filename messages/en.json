@@ -426,6 +426,54 @@
     }
   },
   "home": {
+    "roadmap": {
+      "eyebrow": "Roadmap",
+      "heading": "Six quarters of momentum, on schedule.",
+      "body": "Quarterly cadence since founding — each release ships with a benchmark refresh, a Model Card update, and one more thing we didn't tell anyone we were working on.",
+      "statusLabels": {
+        "shipped": "Shipped",
+        "current": "Now",
+        "planned": "Planned"
+      },
+      "milestones": {
+        "q3_2025": {
+          "quarter": "2025 Q3",
+          "status": "shipped",
+          "title": "Foundation training complete",
+          "description": "Base model converges. Internal eval suite v1.0 stood up."
+        },
+        "q4_2025": {
+          "quarter": "2025 Q4",
+          "status": "shipped",
+          "title": "Multi-Agent layer enabled",
+          "description": "Researcher · Coder · Critic · Planner · Tool-User agents online."
+        },
+        "q1_2026": {
+          "quarter": "2026 Q1",
+          "status": "shipped",
+          "title": "AgentOS goes GA",
+          "description": "Scheduler, three-tier memory, strongly-typed IPC. Observability via OpenTelemetry."
+        },
+        "q2_2026": {
+          "quarter": "2026 Q2",
+          "status": "current",
+          "title": "Nexora-1 public launch",
+          "description": "Flagship + Pro + K. Composite Frontier Score 92.4. You are here."
+        },
+        "q3_2026": {
+          "quarter": "2026 Q3",
+          "status": "planned",
+          "title": "Nexora-1 Ultra rollout",
+          "description": "Long-horizon agentic tier. AgentEval Pro target: 86.4%."
+        },
+        "q4_2026": {
+          "quarter": "2026 Q4",
+          "status": "planned",
+          "title": "Open evaluation program",
+          "description": "External research partners get held-out access to Safety Suite v3.3."
+        }
+      }
+    },
     "press": {
       "eyebrow": "From the (fictional) Press",
       "heading": "Coverage from outlets that do not exist.",

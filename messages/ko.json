@@ -426,6 +426,54 @@
     }
   },
   "home": {
+    "roadmap": {
+      "eyebrow": "로드맵",
+      "heading": "여섯 분기의 모멘텀, 일정대로.",
+      "body": "창립 이래 분기 주기 — 매 릴리스가 벤치마크 갱신 · Model Card 업데이트 · 그리고 작업 중이라고 아무에게도 말하지 않은 한 가지를 함께 ship.",
+      "statusLabels": {
+        "shipped": "출시됨",
+        "current": "지금",
+        "planned": "예정"
+      },
+      "milestones": {
+        "q3_2025": {
+          "quarter": "2025 Q3",
+          "status": "shipped",
+          "title": "파운데이션 훈련 완료",
+          "description": "베이스 모델 수렴. 내부 평가 스위트 v1.0 구축."
+        },
+        "q4_2025": {
+          "quarter": "2025 Q4",
+          "status": "shipped",
+          "title": "Multi-Agent 레이어 활성화",
+          "description": "Researcher · Coder · Critic · Planner · Tool-User 에이전트 온라인."
+        },
+        "q1_2026": {
+          "quarter": "2026 Q1",
+          "status": "shipped",
+          "title": "AgentOS GA",
+          "description": "스케줄러·3 티어 메모리·강타입 IPC. OpenTelemetry 관측성."
+        },
+        "q2_2026": {
+          "quarter": "2026 Q2",
+          "status": "current",
+          "title": "Nexora-1 공개 출시",
+          "description": "Flagship + Pro + K. Composite Frontier Score 92.4. 여러분은 지금 여기."
+        },
+        "q3_2026": {
+          "quarter": "2026 Q3",
+          "status": "planned",
+          "title": "Nexora-1 Ultra 출시",
+          "description": "장기 에이전트 티어. AgentEval Pro 목표 86.4%."
+        },
+        "q4_2026": {
+          "quarter": "2026 Q4",
+          "status": "planned",
+          "title": "공개 평가 프로그램",
+          "description": "외부 리서치 파트너에게 Safety Suite v3.3 held-out 접근 제공."
+        }
+      }
+    },
     "press": {
       "eyebrow": "(가공) 매체 보도",
       "heading": "존재하지 않는 매체들의 호평.",
