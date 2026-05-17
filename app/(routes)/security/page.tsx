@@ -26,7 +26,10 @@ export default function SecurityPage() {
         {securitySections.map((section) => {
           const Icon = section.icon;
           return (
-            <Card key={section.category} className="p-6">
+            <Card
+              key={section.category}
+              className="p-6 transition-all duration-300 hover:border-foreground/15 hover:shadow-md"
+            >
               <div className="flex items-start gap-4">
                 <div
                   aria-hidden="true"

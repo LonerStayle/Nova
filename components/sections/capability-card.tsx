@@ -23,7 +23,12 @@ export function CapabilityCard({
   className,
 }: CapabilityCardProps) {
   return (
-    <Card className={cn("flex flex-col p-6", className)}>
+    <Card
+      className={cn(
+        "flex flex-col p-6 transition-all duration-300 hover:border-foreground/15 hover:shadow-md",
+        className,
+      )}
+    >
       <div className="flex items-start gap-4">
         <div
           aria-hidden="true"
