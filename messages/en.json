@@ -426,6 +426,26 @@
     }
   },
   "home": {
+    "modelIntro": {
+      "eyebrow": "Meet Nexora-1",
+      "heading": "A foundation model designed for what comes after chat.",
+      "body": "Nexora-1 unifies multi-modal reasoning, ultra-long context, and agentic workflows into a single token stream — engineered from Seoul, optimized for Korean and English, and trained at a scale most spreadsheets refuse to display.",
+      "cta": "Explore all 6 capabilities",
+      "cards": {
+        "multimodal": {
+          "name": "Multi-modal",
+          "description": "Text · image · audio · video as one input stream — no external encoders."
+        },
+        "context": {
+          "name": "200K context",
+          "description": "Native long-context attention — 99.4% recall across the full window."
+        },
+        "agentic": {
+          "name": "Agentic",
+          "description": "Multi-step planning, self-correction, parallel tool use — natively wired into the stack."
+        }
+      }
+    },
     "bigNumbers": {
       "eyebrow": "By the Numbers",
       "heading": "Frontier scale, in five digits or fewer.",
