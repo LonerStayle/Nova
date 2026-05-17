@@ -115,6 +115,74 @@
       }
     }
   },
+  "capabilities": {
+    "metaDescription": "{model} 의 능력 — 멀티모달 추론·롱컨텍스트·도구 사용·코드 생성·에이전트 워크플로.",
+    "eyebrow": "모델 능력",
+    "title": "능력",
+    "description": "{model} 가 할 수 있는 것 — 모달리티·컨텍스트·도구·코드·에이전트 추론 전반.",
+    "cards": {
+      "multimodal": {
+        "category": "비전 · 오디오 · 비디오",
+        "name": "멀티모달 추론",
+        "description": "텍스트·이미지·오디오·비디오를 단일 토큰 스트림으로 입력받아 외부 인코더 없이 모달리티를 넘나들며 통합 추론합니다.",
+        "specs": {
+          "modalities": "입력 모달리티",
+          "imageRes": "이미지 해상도",
+          "videoLen": "비디오 길이",
+          "audioCtx": "오디오 컨텍스트",
+          "chartDoc": "ChartQA / DocVQA"
+        }
+      },
+      "context": {
+        "category": "컨텍스트 · 메모리",
+        "name": "롱컨텍스트 이해",
+        "description": "네이티브 롱컨텍스트 어텐션 기반 200K 입력 — 윈도우 전 구간에서 recall 과 추론 품질이 균일하게 유지됩니다.",
+        "specs": {
+          "window": "컨텍스트 윈도우",
+          "output": "출력 제한",
+          "needle": "Needle-in-haystack @200K",
+          "reasoning100k": "Reasoning @ 100K",
+          "streaming": "스트리밍"
+        }
+      },
+      "tools": {
+        "category": "함수 호출",
+        "name": "도구 사용 · 구조화 출력",
+        "description": "병렬 실행을 지원하는 일급 도구 호출 + 엄격한 JSON/XML/YAML 모드 + 잘못된 출력에 대한 자동 오류 복구.",
+        "specs": {
+          "functionCalling": "함수 호출",
+          "outputSchemas": "출력 스키마",
+          "parallelCalls": "병렬 도구 호출",
+          "selectionAcc": "도구 선택 정확도",
+          "errorRecovery": "오류 복구율"
+        }
+      },
+      "code": {
+        "category": "엔지니어링",
+        "name": "코드 생성 · 저장소 이해",
+        "description": "80+ 언어 프로덕션급 코딩, 저장소 레벨 컨텍스트 인식, 사람이 작성한 PR 과 SWE-Bench Verified 동등 수준.",
+        "specs": {
+          "languages": "지원 언어",
+          "humanEval": "HumanEval pass@1",
+          "sweBench": "SWE-Bench Verified",
+          "multiPL": "MultiPL-E 평균",
+          "repoContext": "저장소 컨텍스트"
+        }
+      },
+      "agentic": {
+        "category": "다단계 추론",
+        "name": "에이전트 워크플로",
+        "description": "네이티브 다단계 플래닝·자가 교정·장기 작업 완수 — 자체 AgentOS 스케줄러 + Harness 레이어 기반.",
+        "specs": {
+          "planning": "다단계 플래닝",
+          "selfCorrection": "자가 교정",
+          "planRevision": "플랜 수정 횟수",
+          "longHorizon": "장기 작업 완수율",
+          "agentEval": "AgentEval Pro"
+        }
+      }
+    }
+  },
   "about": {
     "eyebrow": "회사 소개",
     "heroDescription": "서울에서 만드는 프론티어급 AI — 멀티모달 추론·에이전트 워크플로·constitutional 안전성을 단일 스택으로 통합합니다.",
