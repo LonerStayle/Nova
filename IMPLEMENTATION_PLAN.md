@@ -35,7 +35,7 @@
 - [x] Benchmarks 페이지 — Recharts 기반 가공 차트 다종 (MMLU/HumanEval/GSM8K 류 가공 vertical, 시계열 진화 차트, 레이더 차트, "Pareto frontier" 산점도) + 각 차트 캡션
 - [x] Capabilities 페이지 — "Multi-modal reasoning / Long-context / Tool use / Code / Agentic workflows" 카드 그리드 + 각 능력별 가짜 spec sheet
 - [x] Architecture 페이지 — "Multi-Agent · AgentOS · Harness · Orchestration" 가공 다이어그램 (SVG 또는 React 컴포넌트) + 각 레이어 설명. buzzword 적극 활용
-- [ ] Security 페이지 — Alignment / Red-teaming / Compliance / Provenance 섹션 카드 + 가짜 "Safety evaluation" 차트
+- [x] Security 페이지 — Alignment / Red-teaming / Compliance / Provenance 섹션 카드 + 가짜 "Safety evaluation" 차트
 - [ ] About 페이지 — 가공 팀 멤버 4~6명 카드 (이름·역할·가공 prior experience, AI 생성 인물 이미지 정적 자산) + **명확한 패러디 disclosure 한 단락** (CLAUDE.md §3·§5 준수)
 
 ### Phase 3 — 인터랙티브 데모 위젯
