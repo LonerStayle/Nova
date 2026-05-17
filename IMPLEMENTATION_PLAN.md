@@ -41,7 +41,7 @@
 ### Phase 3 — 인터랙티브 데모 위젯
 
 - [x] 데모 위젯 UI — 입력창 + 응답 영역 + 로딩 skeleton + 에러 상태. 모달 또는 dedicated section. 마이크로 인터랙션 (focus ring, typing animation)
-- [ ] 데모 dataset 200개 큐레이션 — `public/data/qa.json` 에 `{id, question, answer, keywords[]}` 형태. CLAUDE.md §5 금지 항목(실존 모방 / 결제·구독 / 명예훼손) 회피
+- [x] 데모 dataset 200개 큐레이션 — `public/data/qa.json` 에 `{id, question, answer, keywords[]}` 형태. CLAUDE.md §5 금지 항목(실존 모방 / 결제·구독 / 명예훼손) 회피 (iter 21+22 분할 작성 — 9 카테고리 200 entries / 200 unique IDs)
 - [ ] BM25 키워드 매칭 클라이언트 로직 — `lib/retrieval/bm25.ts`. dataset 의 `keywords[]` 와 사용자 입력 토큰 매칭, 점수 산출
 - [ ] 빌드타임 임베딩 사전계산 스크립트 — `scripts/precompute-embeddings.mjs`. dataset 각 question 에 대해 Voyage `voyage-4` 호출 후 `public/data/embeddings.json` 산출 (1024-dim float32)
 - [ ] Voyage API 키 프록시 Route Handler — `app/api/embed/route.ts` (POST). 쿼리 임베딩 1회 호출 후 반환. 키는 env, body 검증, rate-limit 가벼운 적용
