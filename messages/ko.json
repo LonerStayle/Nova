@@ -426,6 +426,28 @@
     }
   },
   "home": {
+    "finalCta": {
+      "eyebrow": "시작하기",
+      "heading": "들어오는 길은 세 가지. 하나 고르세요.",
+      "body": "셋 다 골라도 됩니다. 프로덕션 키는 프로덕션 티어에서 자동 승인됩니다.",
+      "cards": {
+        "demo": {
+          "name": "데모 실행",
+          "description": "큐레이션된 dataset 위에서 하이브리드 retrieval — 셋업 불필요.",
+          "cta": "쿼리 실행"
+        },
+        "docs": {
+          "name": "문서 보기",
+          "description": "퀵스타트 · API reference · 아키텍처 deep-dive. 한국어와 영어.",
+          "cta": "docs.nexora.ai 열기"
+        },
+        "careers": {
+          "name": "합류하기",
+          "description": "리서치 · 엔지니어링 · 안전성 · 프로덕트 · 운영 — 글로벌 채용, 허브는 서울.",
+          "cta": "오픈 role 보기"
+        }
+      }
+    },
     "roadmap": {
       "eyebrow": "로드맵",
       "heading": "여섯 분기의 모멘텀, 일정대로.",

@@ -426,6 +426,28 @@
     }
   },
   "home": {
+    "finalCta": {
+      "eyebrow": "Get Started",
+      "heading": "Three ways in. Pick one.",
+      "body": "Or pick all three. Production keys are auto-approved at the production tier.",
+      "cards": {
+        "demo": {
+          "name": "Try the demo",
+          "description": "Hybrid retrieval over the curated dataset — no setup required.",
+          "cta": "Run a query"
+        },
+        "docs": {
+          "name": "Read the docs",
+          "description": "Quickstart · API reference · architecture deep-dives. Korean and English.",
+          "cta": "Open docs.nexora.ai"
+        },
+        "careers": {
+          "name": "Join us",
+          "description": "Research · engineering · safety · product · ops — hiring globally, hub in Seoul.",
+          "cta": "See open roles"
+        }
+      }
+    },
     "roadmap": {
       "eyebrow": "Roadmap",
       "heading": "Six quarters of momentum, on schedule.",

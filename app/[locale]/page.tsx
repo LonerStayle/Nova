@@ -11,6 +11,7 @@ import { Press } from "@/components/sections/press";
 import { Roadmap } from "@/components/sections/roadmap";
 import { TrustedBy } from "@/components/sections/trusted-by";
 import { DemoWidget } from "@/components/demo/demo-widget";
+import { FinalCta } from "@/components/sections/final-cta";
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
 
 export default async function HomePage({
@@ -53,6 +54,9 @@ export default async function HomePage({
       </RevealOnScroll>
       <RevealOnScroll>
         <DemoWidget />
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <FinalCta />
       </RevealOnScroll>
     </>
   );
