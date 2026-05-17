@@ -27,3 +27,15 @@ __pycache__/
 node_modules/
 .npm/
 .pnpm-store/
+
+# Next.js
+.next/
+out/
+next-env.d.ts
+
+# Vercel
+.vercel
+
+# ralph-loop / Claude Code session state
+.claude/*.local.*
+.claude/.ralph-loop.local.md
