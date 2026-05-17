@@ -6,7 +6,18 @@ export const alt = `${brand.company.name} — ${brand.tagline.primary}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
+export default function OpenGraphImage({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const isKo = params.locale === "ko";
+  const tagline = isKo ? brand.tagline.primaryKr : brand.tagline.primary;
+  const secondary = isKo
+    ? brand.tagline.secondaryKr
+    : brand.tagline.secondary;
+  const location = isKo ? brand.company.locationKr : brand.company.location;
+
   const primary = brand.palette.primary.hex;
   const accent = brand.palette.accent.hex;
 
@@ -90,18 +101,18 @@ export default function OpenGraphImage() {
               textTransform: "uppercase",
             }}
           >
-            {brand.company.location}
+            {location}
           </div>
           <div
             style={{
               display: "flex",
-              fontSize: "92px",
+              fontSize: isKo ? "84px" : "92px",
               fontWeight: 700,
               letterSpacing: "-0.03em",
               lineHeight: 1,
             }}
           >
-            {brand.tagline.primary}
+            {tagline}
           </div>
           <div
             style={{
@@ -111,7 +122,7 @@ export default function OpenGraphImage() {
               maxWidth: "960px",
             }}
           >
-            {brand.tagline.secondary}
+            {secondary}
           </div>
         </div>
       </div>

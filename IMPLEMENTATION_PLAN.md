@@ -84,7 +84,7 @@
 - [x] 6.9a — retrieval 인프라 locale 분리 — `qa.json` → `qa.en.json` 이름 변경 + `qa.ko.json` placeholder (영문 fallback) + `bm25.ts` 가 locale prop / locale 별 corpus 메모이즈 + `hybrid.ts` 가 locale prop / `embeddings.{ko,en}.json` URL 분기 + demo-widget 이 `useLocale()` 호출해서 전달. ko locale 도 build 통과 (현재는 데모 위젯 응답이 ko/en 모두 영문 — 6.9b 에서 ko dataset 번역)
 - [x] 6.9b — `public/data/qa.ko.json` 200 entries 한국어 번역 — 9 카테고리 모두 (m/b/c/a/s/p/t/u/e/f) 한국어 작성 완료. ID 200 unique 유지, 고유명사(Nexora·Nexora-1·AgentOS·MMLU 등) 보존, 수치 그대로, keywords 도 한·영 mix 로 번역. 풍자 톤(Multi-Agent 가 길 건넌 농담 등) 유지.
 - [x] 6.10 — `scripts/precompute-embeddings.mjs` 의 locale 별 처리 + Voyage 한국어 dataset 임베딩 사전계산. `--locale en|ko|all` CLI 인자 (기본=all 둘 다 처리), `qa.{locale}.json` 읽고 `embeddings.{locale}.json` 출력. en+ko 합쳐도 ~6,000 tokens, Voyage 200M 무료 한도 안. 실제 임베딩 사전계산은 대표님이 `VOYAGE_API_KEY` 가 있는 환경에서 `npm run precompute:embeddings` 1회 실행 — 부재 시 hybrid retrieval 이 graceful BM25-only fallback (이미 6.9a 구현).
-- [ ] 6.11 — `app/sitemap.ts` 의 locale 별 URL 양산 + 페이지별 `opengraph-image.tsx` locale 분기 + brand.ts 의 한·영 필드 정리
+- [x] 6.11 — `app/sitemap.ts` 의 locale 별 URL 양산 (이미 6.5 commit 에서 완료, languages alternates 포함) + 페이지별 `opengraph-image.tsx` locale 분기 (root + 5 페이지 모두 params.locale 받아서 eyebrow/title/description 한·영 분기) + `lib/brand.ts` 정리 (Hero/Footer/Mission 등이 messages 사용하므로 미사용 한국어 fields — company.nameKr·legalNameKr·tagline.secondaryKr·model.description·descriptionKr·model.series·model.releaseDate·disclosure 전체·typography·company.founded 미사용은 모두 제거, OG 가 직접 참조하는 fallback fields 만 유지)
 - [ ] 6.12 — 풍자 톤 한·영 양방향 점검 (HANDOFF-i18n.md §6) + 4 viewport × 2 locale 검증 + lint/typecheck/build/Lighthouse 모두 exit 0 → `<promise>PROJECT_DONE</promise>`
 
 ---
