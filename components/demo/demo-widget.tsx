@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Loader2, Send, Sparkles, X } from "lucide-react";
+import { Loader2, RotateCw, Send, Sparkles, X } from "lucide-react";
 
 import { brand } from "@/lib/brand";
 import { Button } from "@/components/ui/button";
@@ -16,8 +16,12 @@ const sampleQueries = [
   "How does constitutional safety alignment work?",
 ] as const;
 
-type DemoStatus = "idle" | "loading" | "success" | "error";
+const MAX_INPUT = 2000;
+const INPUT_WARN_THRESHOLD = 1800;
+const TYPEWRITER_SPEED_MS = 18;
+const TOAST_DURATION_MS = 5000;
 
+type DemoStatus = "idle" | "loading" | "success" | "error";
 type RetrievalMode = "hybrid" | "bm25-only";
 
 interface DemoState {
@@ -39,6 +43,7 @@ const INITIAL_STATE: DemoState = {
 export function DemoWidget() {
   const [state, setState] = React.useState<DemoState>(INITIAL_STATE);
   const [input, setInput] = React.useState("");
+  const [toast, setToast] = React.useState<string | null>(null);
 
   const submit = React.useCallback(async (rawQuery: string) => {
     const query = rawQuery.trim();
@@ -53,13 +58,16 @@ export function DemoWidget() {
     try {
       const result = await hybridRetrieve(query);
       if (!result) {
+        const message =
+          "관련된 응답을 찾을 수 없습니다. 다른 표현으로 시도해 주세요.";
         setState({
           status: "error",
           query,
           answer: null,
-          error: "관련된 응답을 찾을 수 없습니다. 다른 표현으로 시도해 주세요.",
+          error: message,
           mode: null,
         });
+        setToast(message);
         return;
       }
       setState({
@@ -70,13 +78,15 @@ export function DemoWidget() {
         mode: result.mode,
       });
     } catch (err) {
+      const message = err instanceof Error ? err.message : "Unknown error";
       setState({
         status: "error",
         query,
         answer: null,
-        error: err instanceof Error ? err.message : "Unknown error",
+        error: message,
         mode: null,
       });
+      setToast(message);
     }
   }, []);
 
@@ -93,7 +103,12 @@ export function DemoWidget() {
   const onReset = () => {
     setState(INITIAL_STATE);
     setInput("");
+    setToast(null);
   };
+
+  const inputCount = input.length;
+  const inputWarn = inputCount > INPUT_WARN_THRESHOLD;
+  const inputOver = inputCount > MAX_INPUT;
 
   return (
     <section id="demo" className="container mx-auto px-6 py-20">
@@ -122,9 +137,10 @@ export function DemoWidget() {
             <div className="relative">
               <textarea
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
+                onChange={(e) => setInput(e.target.value.slice(0, MAX_INPUT))}
                 placeholder={`Ask anything about ${brand.model.flagship}...`}
                 rows={3}
+                maxLength={MAX_INPUT}
                 className={cn(
                   "block w-full resize-none rounded-lg border border-input bg-background px-4 py-3 pr-14 text-sm",
                   "placeholder:text-muted-foreground/60",
@@ -139,15 +155,34 @@ export function DemoWidget() {
                 type="submit"
                 size="icon"
                 className="absolute bottom-3 right-3"
-                disabled={state.status === "loading" || !input.trim()}
+                disabled={
+                  state.status === "loading" || !input.trim() || inputOver
+                }
                 aria-label="Submit query"
               >
                 {state.status === "loading" ? (
-                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                  <Loader2
+                    className="h-4 w-4 animate-spin"
+                    aria-hidden="true"
+                  />
                 ) : (
                   <Send className="h-4 w-4" aria-hidden="true" />
                 )}
               </Button>
+            </div>
+            {/* Char counter */}
+            <div className="mt-1.5 flex items-center justify-between text-[11px] text-muted-foreground/70">
+              <span>Max {MAX_INPUT.toLocaleString()} characters</span>
+              <span
+                className={cn(
+                  "font-mono tabular-nums",
+                  inputWarn && !inputOver && "text-amber-600 dark:text-amber-400",
+                  inputOver && "text-rose-600 dark:text-rose-400",
+                )}
+                aria-live="polite"
+              >
+                {inputCount.toLocaleString()}/{MAX_INPUT.toLocaleString()}
+              </span>
             </div>
           </form>
 
@@ -194,11 +229,14 @@ export function DemoWidget() {
                 </Button>
               </div>
 
-              <div className="mt-3 rounded-lg border bg-muted/30 p-5">
+              <div className="mt-3 min-h-[6rem] rounded-lg border bg-muted/30 p-5">
                 {state.status === "loading" ? <ResponseSkeleton /> : null}
                 {state.status === "success" && state.answer ? (
-                  <p className="animate-in fade-in slide-in-from-bottom-1 text-sm leading-relaxed text-foreground/90 duration-300">
-                    {state.answer}
+                  <p className="text-sm leading-relaxed text-foreground/90">
+                    <TypewriterText
+                      text={state.answer}
+                      speed={TYPEWRITER_SPEED_MS}
+                    />
                   </p>
                 ) : null}
                 {state.status === "error" ? (
@@ -209,16 +247,26 @@ export function DemoWidget() {
               </div>
 
               {state.status === "success" ? (
-                <p className="mt-3 text-center font-mono text-[10px] uppercase tracking-widest text-muted-foreground/60">
-                  {state.mode === "hybrid"
-                    ? `Hybrid retrieval · 60% keyword · 40% embedding · ${brand.model.flagship}`
-                    : `Keyword retrieval (fallback) · ${brand.model.flagship}`}
-                </p>
+                <>
+                  <p className="mt-3 text-center font-mono text-[10px] uppercase tracking-widest text-muted-foreground/60">
+                    {state.mode === "hybrid"
+                      ? `Hybrid retrieval · 60% keyword · 40% embedding · ${brand.model.flagship}`
+                      : `Keyword retrieval (fallback) · ${brand.model.flagship}`}
+                  </p>
+                  <div className="mt-5 flex justify-center">
+                    <Button variant="outline" size="sm" onClick={onReset}>
+                      <RotateCw className="h-3.5 w-3.5" aria-hidden="true" />
+                      <span className="ml-1.5">다시 묻기</span>
+                    </Button>
+                  </div>
+                </>
               ) : null}
             </div>
           ) : null}
         </CardContent>
       </Card>
+
+      <ErrorToast message={toast} onClose={() => setToast(null)} />
     </section>
   );
 }
@@ -230,6 +278,81 @@ function ResponseSkeleton() {
       <div className="h-3 w-full animate-pulse rounded bg-muted-foreground/15" />
       <div className="h-3 w-5/6 animate-pulse rounded bg-muted-foreground/15" />
       <div className="h-3 w-2/3 animate-pulse rounded bg-muted-foreground/15" />
+    </div>
+  );
+}
+
+/**
+ * 글자 단위 typewriter — text 가 바뀔 때마다 처음부터 다시 출력.
+ */
+function TypewriterText({ text, speed }: { text: string; speed: number }) {
+  const [displayed, setDisplayed] = React.useState("");
+
+  React.useEffect(() => {
+    setDisplayed("");
+    let i = 0;
+    const id = window.setInterval(() => {
+      i += 1;
+      setDisplayed(text.slice(0, i));
+      if (i >= text.length) {
+        window.clearInterval(id);
+      }
+    }, speed);
+    return () => {
+      window.clearInterval(id);
+    };
+  }, [text, speed]);
+
+  return (
+    <>
+      {displayed}
+      {displayed.length < text.length ? (
+        <span
+          aria-hidden="true"
+          className="ml-0.5 inline-block h-3.5 w-[2px] -translate-y-[1px] animate-pulse bg-brand-accent align-middle"
+        />
+      ) : null}
+    </>
+  );
+}
+
+/**
+ * 자체 구현 toast — 자동 5초 후 사라짐, manual close 가능.
+ * 의존성 0, 풍자 사이트의 simple notification.
+ */
+function ErrorToast({
+  message,
+  onClose,
+}: {
+  message: string | null;
+  onClose: () => void;
+}) {
+  React.useEffect(() => {
+    if (!message) return;
+    const id = window.setTimeout(onClose, TOAST_DURATION_MS);
+    return () => window.clearTimeout(id);
+  }, [message, onClose]);
+
+  if (!message) return null;
+
+  return (
+    <div
+      role="alert"
+      aria-live="polite"
+      className="animate-in fade-in slide-in-from-bottom-2 fixed bottom-6 right-6 z-50 flex max-w-sm items-start gap-3 rounded-lg border border-rose-500/40 bg-background p-4 shadow-lg duration-200"
+    >
+      <X className="mt-0.5 h-4 w-4 shrink-0 text-rose-600 dark:text-rose-400" />
+      <p className="flex-1 text-xs leading-relaxed text-foreground">
+        {message}
+      </p>
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Dismiss"
+        className="-m-1 rounded p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+      >
+        <X className="h-3.5 w-3.5" aria-hidden="true" />
+      </button>
     </div>
   );
 }
