@@ -69,7 +69,7 @@
     "capabilityTags": {
       "multimodal": "멀티모달",
       "agentic": "에이전트 워크플로",
-      "context": "200K 컨텍스트",
+      "context": "3M 컨텍스트",
       "safety": "Constitutional Safety",
       "scale": "10경 params"
     }
@@ -137,12 +137,12 @@
       "context": {
         "category": "컨텍스트 · 메모리",
         "name": "롱컨텍스트 이해",
-        "description": "네이티브 롱컨텍스트 어텐션 기반 200K 입력 — 윈도우 전 구간에서 recall 과 추론 품질이 균일하게 유지됩니다.",
+        "description": "네이티브 롱컨텍스트 어텐션 기반 3M 입력 — 윈도우 전 구간에서 recall 과 추론 품질이 균일하게 유지됩니다.",
         "specs": {
           "window": "컨텍스트 윈도우",
           "output": "출력 제한",
-          "needle": "Needle-in-haystack @200K",
-          "reasoning100k": "Reasoning @ 100K",
+          "needle": "Needle-in-haystack @3M",
+          "reasoning100k": "Reasoning @ 1M",
           "streaming": "스트리밍"
         }
       },
@@ -535,7 +535,7 @@
         },
         "legal": {
           "name": "법무 리뷰",
-          "description": "200K 컨텍스트로 계약 분석·조항 비교·리스크 플래깅. 사람 검토와 함께 사용."
+          "description": "3M 컨텍스트로 계약 분석·조항 비교·리스크 플래깅. 사람 검토와 함께 사용."
         },
         "marketing": {
           "name": "마케팅 카피",
@@ -602,7 +602,7 @@
           "description": "텍스트 · 이미지 · 오디오 · 비디오를 단일 입력 스트림으로 — 외부 인코더 불필요."
         },
         "context": {
-          "name": "200K 컨텍스트",
+          "name": "3M 컨텍스트",
           "description": "네이티브 롱컨텍스트 어텐션 — 전체 윈도우에서 recall 99.4%."
         },
         "agentic": {
@@ -621,7 +621,7 @@
           "label": "파라미터"
         },
         "context": {
-          "value": "200K",
+          "value": "3M",
           "unit": "",
           "label": "컨텍스트 토큰"
         },
@@ -631,7 +631,7 @@
           "label": "MMLU (5-shot)"
         },
         "gpus": {
-          "value": "5,000",
+          "value": "100,000",
           "unit": "",
           "label": "H100 배포"
         }

@@ -97,7 +97,7 @@ export const capabilitySpecValues: Record<
     chartDoc: "91.3% / 88.7%",
   },
   context: {
-    window: "200,000 tokens",
+    window: "3,000,000 tokens",
     output: "32,000 tokens",
     needle: "99.4%",
     reasoning100k: "87.8%",
@@ -115,7 +115,7 @@ export const capabilitySpecValues: Record<
     humanEval: "87.3%",
     sweBench: "64.1%",
     multiPL: "79.4%",
-    repoContext: "up to 200K tok",
+    repoContext: "up to 3M tok",
   },
   agentic: {
     planning: "native",
@@ -127,7 +127,7 @@ export const capabilitySpecValues: Record<
   scale: {
     params: "10¹⁷ (~100 quadrillion)",
     corpus: "50 PB curated text",
-    gpus: "5,000 × H100, 12 sites",
+    gpus: "100,000 × H100, 12 sites",
     compute: "2.4 zettaflop",
     duration: "18 months continuous",
   },

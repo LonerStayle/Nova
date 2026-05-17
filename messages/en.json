@@ -69,7 +69,7 @@
     "capabilityTags": {
       "multimodal": "Multimodal",
       "agentic": "Agentic workflows",
-      "context": "200K context",
+      "context": "3M context",
       "safety": "Constitutional Safety",
       "scale": "10¹⁷ params"
     }
@@ -137,12 +137,12 @@
       "context": {
         "category": "Context · Memory",
         "name": "Long-context understanding",
-        "description": "200K input context with native long-context attention — recall and reasoning quality stays consistent across the entire window.",
+        "description": "3M input context with native long-context attention — recall and reasoning quality stays consistent across the entire window.",
         "specs": {
           "window": "Context window",
           "output": "Output limit",
-          "needle": "Needle-in-haystack @200K",
-          "reasoning100k": "Reasoning @ 100K",
+          "needle": "Needle-in-haystack @3M",
+          "reasoning100k": "Reasoning @ 1M",
           "streaming": "Streaming"
         }
       },
@@ -535,7 +535,7 @@
         },
         "legal": {
           "name": "Legal review",
-          "description": "200K context for contract analysis, clause comparison, and risk flagging. Pair with a human."
+          "description": "3M context for contract analysis, clause comparison, and risk flagging. Pair with a human."
         },
         "marketing": {
           "name": "Marketing copy",
@@ -602,7 +602,7 @@
           "description": "Text · image · audio · video as one input stream — no external encoders."
         },
         "context": {
-          "name": "200K context",
+          "name": "3M context",
           "description": "Native long-context attention — 99.4% recall across the full window."
         },
         "agentic": {
@@ -621,7 +621,7 @@
           "label": "Parameters"
         },
         "context": {
-          "value": "200K",
+          "value": "3M",
           "unit": "",
           "label": "Context tokens"
         },
@@ -631,7 +631,7 @@
           "label": "MMLU (5-shot)"
         },
         "gpus": {
-          "value": "5,000",
+          "value": "100,000",
           "unit": "",
           "label": "H100s deployed"
         }
