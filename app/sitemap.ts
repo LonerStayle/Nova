@@ -13,6 +13,8 @@ const ROUTES: ReadonlyArray<{
   { path: "/capabilities", changeFrequency: "monthly", priority: 0.8 },
   { path: "/architecture", changeFrequency: "monthly", priority: 0.8 },
   { path: "/security", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/docs", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/careers", changeFrequency: "weekly", priority: 0.8 },
   { path: "/about", changeFrequency: "monthly", priority: 0.7 },
 ];
 
