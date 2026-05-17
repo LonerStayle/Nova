@@ -13,6 +13,7 @@ import { ToolUseSection } from "@/components/docs/tool-use-section";
 import { ModelsSection } from "@/components/docs/models-section";
 import { RateLimitsSection } from "@/components/docs/rate-limits-section";
 import { AuthenticationSection } from "@/components/docs/authentication-section";
+import { ErrorsSection } from "@/components/docs/errors-section";
 
 export async function generateMetadata({
   params,
@@ -137,15 +138,13 @@ export default async function DocsPage({
             <AuthenticationSection />
           </section>
 
-          {/* Errors placeholder — populated in 8.7 */}
+          {/* Errors — 8.7 */}
           <section
             id="errors"
             aria-label={tSidebar("sections.errors")}
             className="scroll-mt-24"
           >
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              {tSidebar("sections.errors")}
-            </h2>
+            <ErrorsSection />
           </section>
 
           {/* Footer note */}

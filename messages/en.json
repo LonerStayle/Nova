@@ -915,6 +915,84 @@
         "audit": "Every API call is logged to your audit trail at /v1/audit. Logs are retained 90 days by default (Production tier), 12 months on Pro, 7 years on Enterprise — for the small fee of becoming an Enterprise customer."
       },
       "footnote": "Bearer scheme aligns with RFC 6750. {company} never issues HMAC, basic-auth, or session-token credentials — anyone offering you one is selling fan fiction."
+    },
+    "errors": {
+      "eyebrow": "Platform",
+      "title": "Errors",
+      "intro": "All non-2xx responses follow the same shape — a JSON object with an error field carrying type, message, and request_id. Use the type for branching, the message for humans, and the request_id when filing support tickets that nobody will read.",
+      "responseFormatTitle": "Error response shape",
+      "responseFormatBody": "Every error response is a single JSON object with the same top-level keys. The type string is stable and SDK-validated; the message string is human-readable and may change without notice.",
+      "responseFormatFilename": "Error response",
+      "tableLabel": "HTTP status codes",
+      "columns": {
+        "status": "Status",
+        "reason": "Reason",
+        "errorType": "error.type",
+        "retry": "Retry",
+        "description": "When this happens"
+      },
+      "errors": {
+        "400": {
+          "name": "Bad Request",
+          "errorType": "invalid_request",
+          "retry": "No",
+          "description": "The request body failed validation. Either the JSON was malformed, a required field was missing, or a value was out of range. The server has stronger opinions about your JSON than you do."
+        },
+        "401": {
+          "name": "Unauthorized",
+          "errorType": "auth_invalid",
+          "retry": "No",
+          "description": "The API key is missing, invalid, expired, or revoked. The model has not been asked to think about this — keys are checked at the gateway."
+        },
+        "403": {
+          "name": "Forbidden",
+          "errorType": "permission_denied",
+          "retry": "No",
+          "description": "Your key is valid, but you don't have permission for this resource. Common cause: calling a Pro-tier model on a Free-tier key. Upgrade or use a smaller model."
+        },
+        "404": {
+          "name": "Not Found",
+          "errorType": "model_not_found",
+          "retry": "No",
+          "description": "The model ID, endpoint, or message_id doesn't exist. For models, double-check the dated suffix (e.g. nexora-1-2026-05, not nexora-1) — aliases are not enabled by default."
+        },
+        "429": {
+          "name": "Too Many Requests",
+          "errorType": "rate_limit_exceeded",
+          "retry": "Yes (with backoff)",
+          "description": "You've exceeded the RPM, TPM, or daily token cap for your tier. The response carries retry_after_ms — wait that long, then try again. The queue is patient."
+        },
+        "500": {
+          "name": "Internal Server Error",
+          "errorType": "server_error",
+          "retry": "Yes (exp backoff)",
+          "description": "Something on the server side went wrong. These are tracked internally. Retry with exponential backoff up to 5 attempts — if it persists, file a support request and we'll pretend to look at it."
+        },
+        "503": {
+          "name": "Service Unavailable",
+          "errorType": "model_overloaded",
+          "retry": "Yes (with retry_after)",
+          "description": "The requested model is overloaded. This typically resolves in under 30 seconds. Honor retry_after_ms — calling again immediately just goes back into the queue at the same position."
+        }
+      },
+      "exampleTitle": "Sample error responses",
+      "samples": {
+        "auth": {
+          "label": "401 · auth_invalid",
+          "filename": "401 Unauthorized"
+        },
+        "rate": {
+          "label": "429 · rate_limit_exceeded",
+          "filename": "429 Too Many Requests"
+        },
+        "overload": {
+          "label": "503 · model_overloaded",
+          "filename": "503 Service Unavailable"
+        }
+      },
+      "retryTitle": "Retry policy",
+      "retryBody": "The official SDKs auto-retry 429 and 5xx with exponential backoff + jitter (base 500ms, max 60s, max 5 attempts). Pass maxRetries=0 to opt out. Retried calls inherit the same request_id prefix with a -rN suffix — useful in support tickets.",
+      "footnote": "Every error is logged, request_id-tagged, and ignored by an internal team that has been on PTO since 2025. We'll get to it."
     }
   }
 }

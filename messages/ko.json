@@ -915,6 +915,84 @@
         "audit": "모든 API 호출은 /v1/audit 의 audit trail 에 기록. 보관 기간: Production 기본 90일, Pro 12개월, Enterprise 7년 — Enterprise 고객이 되시는 작은 대가만 치르면 됩니다."
       },
       "footnote": "Bearer 스킴은 RFC 6750 준수. {company} 는 HMAC · basic-auth · session-token 자격증명을 발급하지 않습니다 — 다른 걸 제안 받으시면 팬픽션입니다."
+    },
+    "errors": {
+      "eyebrow": "Platform",
+      "title": "에러 코드",
+      "intro": "모든 non-2xx 응답은 동일한 형태 — type, message, request_id 가 담긴 error 필드를 가진 JSON 객체. 분기는 type 으로, 사람용 메시지는 message, 아무도 안 읽을 support 티켓은 request_id 로 첨부하세요.",
+      "responseFormatTitle": "에러 응답 형태",
+      "responseFormatBody": "모든 에러 응답은 동일한 top-level 키를 가진 단일 JSON 객체. type 문자열은 SDK 검증 + 안정적, message 문자열은 사람용이며 예고 없이 변경 가능.",
+      "responseFormatFilename": "Error 응답",
+      "tableLabel": "HTTP 상태 코드",
+      "columns": {
+        "status": "Status",
+        "reason": "Reason",
+        "errorType": "error.type",
+        "retry": "Retry",
+        "description": "발생 조건"
+      },
+      "errors": {
+        "400": {
+          "name": "Bad Request",
+          "errorType": "invalid_request",
+          "retry": "불가",
+          "description": "Request body 가 검증을 통과하지 못함. JSON 이 망가졌거나, 필수 필드 누락, 값이 범위 밖. 서버가 사용자보다 JSON 에 대한 더 강한 의견을 가집니다."
+        },
+        "401": {
+          "name": "Unauthorized",
+          "errorType": "auth_invalid",
+          "retry": "불가",
+          "description": "API 키 누락 · 무효 · 만료 · 폐기 중 하나. 모델은 이 사실을 생각하지 않았습니다 — 키는 게이트웨이에서 검사됩니다."
+        },
+        "403": {
+          "name": "Forbidden",
+          "errorType": "permission_denied",
+          "retry": "불가",
+          "description": "키는 유효하지만 해당 리소스 권한 없음. 흔한 원인: Free 티어 키로 Pro 티어 모델 호출. 업그레이드 또는 작은 모델 사용."
+        },
+        "404": {
+          "name": "Not Found",
+          "errorType": "model_not_found",
+          "retry": "불가",
+          "description": "모델 ID · 엔드포인트 · message_id 가 존재하지 않음. 모델은 dated suffix 확인 (예: nexora-1-2026-05, nexora-1 아님) — alias 는 기본 비활성."
+        },
+        "429": {
+          "name": "Too Many Requests",
+          "errorType": "rate_limit_exceeded",
+          "retry": "가능 (backoff)",
+          "description": "현재 티어의 RPM · TPM · 일일 토큰 한도 초과. 응답에 retry_after_ms 포함 — 그만큼 기다린 후 재시도. 큐는 인내심이 있습니다."
+        },
+        "500": {
+          "name": "Internal Server Error",
+          "errorType": "server_error",
+          "retry": "가능 (exp backoff)",
+          "description": "서버 측 문제. 내부 추적됩니다. 지수 backoff 로 최대 5회 재시도 — 지속 시 support 티켓 접수하시면 보는 척하겠습니다."
+        },
+        "503": {
+          "name": "Service Unavailable",
+          "errorType": "model_overloaded",
+          "retry": "가능 (retry_after 준수)",
+          "description": "요청 모델 과부하. 보통 30초 이내 회복. retry_after_ms 준수 — 즉시 재호출은 같은 큐 위치로 돌아갑니다."
+        }
+      },
+      "exampleTitle": "에러 응답 샘플",
+      "samples": {
+        "auth": {
+          "label": "401 · auth_invalid",
+          "filename": "401 Unauthorized"
+        },
+        "rate": {
+          "label": "429 · rate_limit_exceeded",
+          "filename": "429 Too Many Requests"
+        },
+        "overload": {
+          "label": "503 · model_overloaded",
+          "filename": "503 Service Unavailable"
+        }
+      },
+      "retryTitle": "재시도 정책",
+      "retryBody": "공식 SDK 는 429 와 5xx 를 지수 backoff + jitter 로 자동 재시도 (base 500ms · max 60s · max 5회). maxRetries=0 으로 opt-out. 재시도 호출은 같은 request_id prefix 에 -rN suffix — support 티켓에 유용.",
+      "footnote": "모든 에러는 로깅 · request_id 태깅 · 2025년부터 PTO 인 내부 팀에 의해 무시됩니다. 곧 보겠습니다."
     }
   }
 }
