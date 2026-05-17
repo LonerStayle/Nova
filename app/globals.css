@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 255 255 255;
+  --foreground: 17 17 17;
+  --muted: 244 244 245;
+  --accent: 24 24 27;
+  --border: 228 228 231;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: 10 10 10;
+    --foreground: 240 240 240;
+    --muted: 24 24 27;
+    --accent: 244 244 245;
+    --border: 39 39 42;
+  }
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  font-feature-settings: "rlig" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
