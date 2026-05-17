@@ -38,7 +38,7 @@ onboarded_at: 2026-05-17T06:16:54Z
 
 **프로덕션급 멀티페이지 풍자 랜딩 사이트** (단일 스크롤 X — 진짜 출시 사이트 형태):
 
-- **페이지 6개** (상단 네비게이션 이동): Home / Benchmarks / Capabilities / Architecture / Security / About
+- **페이지 8개** (상단 네비게이션 이동): Home / Benchmarks / Capabilities / Architecture / Security / About / Docs / Careers
 - **콘텐츠 톤**: 가공 벤치마크 차트, 예상 효과(use case), AGI 급 포지셔닝, buzzword 적극 활용 (Multi-Agent, AgentOS, Harness, Orchestration, Security 등). "전세계 최상위" 외형.
 - **인터랙티브 데모 위젯**: 하이브리드 retrieval (키워드 유사도 60% + 임베딩 의미검색 40%). 응답풀은 큐레이션된 사전 작성 dataset (초기 200개 launch, 풀 2,000개는 launch 후 추가).
 - **패러디 명시 (disclosure)**: About 페이지에 명확한 한 단락 + 모든 페이지 푸터에 한 줄. 옵션 A (찾으려는 사람만 발견하는 위치) — 풍자 완성도와 법적 안전의 균형점.
@@ -83,7 +83,7 @@ onboarded_at: 2026-05-17T06:16:54Z
 
 | 축 | cap |
 |----|-----|
-| 페이지 수 | **6개** (Home / Benchmarks / Capabilities / Architecture / Security / About). 추가 증식 금지 |
+| 페이지 수 | **8개** (Home / Benchmarks / Capabilities / Architecture / Security / About / Docs / Careers). 추가 증식 금지 |
 | 데모 dataset | **초기 200개 launch 임계치**, 풀 2,000개는 launch *후* 추가. 2,000개 완성 전에 사이트가 안 떠는 사태 방지 |
 | 개발 기간 | ralph iteration **150회 이내** *또는* **2주** — 둘 중 먼저 도달 |
 | 운영 비용 | **월 ₩10,000 이하** (Voyage 200M 무료 + Vercel free tier 안에서 종료. 사실상 ₩0 예상) |

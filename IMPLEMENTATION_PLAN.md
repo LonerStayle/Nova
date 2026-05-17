@@ -120,6 +120,30 @@ Phase 7 sub-task (Home page 안의 신규 컴포넌트, 각자 한·영 messages
 - [x] 7.9 — `components/sections/final-cta.tsx` 신규 — 3-CTA section: Try demo (Sparkles, #demo anchor) · Read docs (BookOpen, docs.nexora.ai 외부) · Join us (Briefcase, careers.nexora.ai 외부). 각 카드: brand-gradient 아이콘 + name + description + "Run a query / Open docs / See open roles" 화살표 CTA. border-t bg-muted/10 띠. group-hover 시 화살표 0.5 translate-x. messages `home.finalCta` 한·영.
 - [x] 7.10 — 최종 검증. Home 12 섹션 구성 완료: Hero → KeyMetrics → BigNumbers → ModelIntro → TrustedBy → ArchitectureTeaser → BenchmarkTeaser → UseCases → Press → Roadmap → DemoWidget → FinalCta (8 신규 섹션 모두 RevealOnScroll wrap). typecheck/lint/build 모두 exit 0. messages 388 키 en/ko 완전 parity (Phase 6: 262 → Phase 7: 388, +126). 12 SSG 라우트 (6 페이지 × 2 locale) prerender. 풍자 톤 Phase 7 분산: BigNumbers caption "fictional review team / 가공 검증 팀", ModelIntro body "spreadsheets refuse to display / 스프레드시트가 표시하기를 거부", BenchmarkTeaser "negotiating which numbers to round / 어떤 숫자를 반올림할지", UseCases body "default refusal policy / 기본 거부 정책", Press disclaimer "do not exist / 존재하지 않습니다" + 4 가공 매체 인용, Roadmap body "didn't tell anyone we were working on / 작업 중이라고 아무에게도 말하지 않은", FinalCta body "auto-approved at the production tier / 프로덕션 티어에서 자동 승인".
 
+### Phase 8 — Docs & Careers 페이지 신규 (대표님 추가 요구사항, 2026-05-18)
+
+> 대표님 발화: "합류하기랑 문서보기도 되게 그럴듯하게... 문서 정말 복잡하고 그럴듯하게... 빡세게... 강남으로 어딘가 실제 있을법한곳으로".
+> 자세한 사양·결정사항·구조 권장·context7 조사 결과는 **`HANDOFF-docs-careers.md`** 참조.
+> 페이지 cap 6 → 8 로 확장 (CLAUDE.md §7 갱신 완료).
+>
+> **7 결정 일괄 채택** (랄프 자율, 대표님 redirect 가능):
+> - sidebar: 단일 long page + section anchors
+> - 강남 주소: `서울특별시 강남구 테헤란로 521, Nexora Tower 35F` (가공 빌딩 + 실제 도로명)
+> - API 도메인: `api.nexora.ai`, SDK: `@nexora/sdk`, 헤드카운트 60, Ultra $10/1M
+
+- [x] 8.1 — `CLAUDE.md` §7 페이지 cap 8 갱신 + Plan Phase 8 sub-task 적재 + HANDOFF §5 7 결정 일괄 채택 확정
+- [ ] 8.2 — `/docs` 라우트 셋업 (`app/[locale]/(routes)/docs/page.tsx`) + nav 에 "Docs" 추가 + 기본 hero + sidebar layout
+- [ ] 8.3 — Docs Quickstart 섹션 — cURL/TypeScript/Python 탭 컴포넌트 + 첫 호출 예제
+- [ ] 8.4 — Docs API Reference 섹션 — POST /v1/messages 전체 스키마 (Anthropic Messages API mirror, Request body + Response + Error codes 표)
+- [ ] 8.5 — Docs Streaming + Tool use 섹션 — SSE event 종류 + 32 병렬 tool call 예제
+- [ ] 8.6 — Docs Models + Rate limits + Authentication 표 (4 모델 비교 표, 4 티어 RPM 표, Bearer token 패턴)
+- [ ] 8.7 — Docs Errors + 풍자 코드 분산 + Korean/English bilingual examples (5 error code + dry humor)
+- [ ] 8.8 — `/careers` 라우트 셋업 + Hero + Why Nexora + Open roles 6~10 카드
+- [ ] 8.9 — Careers Office (강남 주소 + 지도 placeholder) + Benefits + Hiring process timeline + Final CTA
+- [ ] 8.10 — site-nav 의 6 → 8 라우트 확장 (mobile menu 도) + footer 의 nav mirror 갱신 + FinalCTA 의 "Read docs"/"Join us" link 가 새 라우트 가리키도록
+- [ ] 8.11 — sitemap.ts locale 별 URL 양산 (`/en/docs` `/ko/docs` `/en/careers` `/ko/careers`) + 각 페이지 `opengraph-image.tsx` (locale 별 분기) + generateMetadata
+- [ ] 8.12 — 풍자 톤 한·영 양방향 점검 + messages 키 parity + lint/typecheck/build 모두 exit 0 → `<promise>PROJECT_DONE</promise>`
+
 ---
 
 ## DONE (참고용 로그)
