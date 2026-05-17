@@ -18,7 +18,7 @@
 - [x] 추가 의존성 install — `recharts`, `lucide-react`, `next-themes` (다크모드), `voyageai`(SDK), `@vercel/analytics`
 - [x] 가공 회사 identity 확정 — `lib/brand.ts` 에 회사명·tagline·primary color palette·typography 토큰 + `app/layout.tsx` 의 Metadata(title/description/og) 반영. (실존 회사명 절대 사용 금지 — CLAUDE.md §5 준수) → **Nexora Labs / Nexora-1 / "Frontier AI, engineered in Seoul." / indigo→violet 그라데이션 / Inter+JetBrains Mono**
 - [x] 디렉토리 구조 확립 — `app/(routes)/{benchmarks,capabilities,architecture,security,about}/page.tsx` placeholder + `components/{layout,sections,charts,demo}/` + `public/data/` + `scripts/`
-- [ ] 환경변수 — `.env.example` 에 `VOYAGE_API_KEY` 만. `.env*` 는 .gitignore 처리 확인
+- [x] 환경변수 — `.env.example` 에 `VOYAGE_API_KEY` 만. `.env*` 는 .gitignore 처리 확인
 
 ### Phase 1 — 글로벌 레이아웃 / 디자인 시스템
 
