@@ -133,7 +133,7 @@ Phase 7 sub-task (Home page 안의 신규 컴포넌트, 각자 한·영 messages
 
 - [x] 8.1 — `CLAUDE.md` §7 페이지 cap 8 갱신 + Plan Phase 8 sub-task 적재 + HANDOFF §5 7 결정 일괄 채택 확정
 - [x] 8.2 — `/docs` 라우트 셋업 (`app/[locale]/(routes)/docs/page.tsx`) + nav 에 "Docs" 추가 + 기본 hero + sidebar layout — 신규: `components/docs/docs-sidebar.tsx` (sticky 좌측 nav, IntersectionObserver active 표시, 3 그룹: Getting started / Core API / Platform), `app/[locale]/(routes)/docs/page.tsx` (Hero centered + 2 CTA + version footnote + sidebar + 8 placeholder anchor section). messages/{en,ko}.json 에 `nav.{docs,careers}` 추가 + `docs.{metaDescription,hero,sidebar.{label,groups,sections}}` 추가. site-nav 에 docs nav item 추가 (careers 는 8.8 라우트 생성 후 8.10 에서 wire). build 21 SSG (이전 19 + /en/docs + /ko/docs).
-- [ ] 8.3 — Docs Quickstart 섹션 — cURL/TypeScript/Python 탭 컴포넌트 + 첫 호출 예제
+- [x] 8.3 — Docs Quickstart 섹션 — cURL/TypeScript/Python 탭 컴포넌트 + 첫 호출 예제 — 신규: `components/docs/code-tabs.tsx` (radio-button 탭 + tabpanel a11y), `components/docs/quickstart-section.tsx` (4 step: API key / Install / First call / Response — Step 1 console CTA + footnote callout, Step 2 install CodeTabs, Step 3 first-call CodeTabs, Step 4 200 JSON CodeBlock, outro accent callout). `docs.quickstart.{eyebrow,title,intro,tabsLabel,step1~4,outro}` messages 한·영 추가. 풍자 톤: footnote "4분 안에 키 폐기 — 가공 SRE 검증", outro "200 받으셨다면 — frontier model 호출 안 됐습니다 / hybrid retrieval 입니다".
 - [ ] 8.4 — Docs API Reference 섹션 — POST /v1/messages 전체 스키마 (Anthropic Messages API mirror, Request body + Response + Error codes 표)
 - [ ] 8.5 — Docs Streaming + Tool use 섹션 — SSE event 종류 + 32 병렬 tool call 예제
 - [ ] 8.6 — Docs Models + Rate limits + Authentication 표 (4 모델 비교 표, 4 티어 RPM 표, Bearer token 패턴)

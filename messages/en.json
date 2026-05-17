@@ -688,6 +688,36 @@
         "authentication": "Authentication",
         "errors": "Errors"
       }
+    },
+    "quickstart": {
+      "eyebrow": "Getting started",
+      "title": "Quickstart",
+      "intro": "Five minutes from zero to your first {model} response. Get an API key, install the SDK, make a call.",
+      "tabsLabel": "Quickstart code examples",
+      "step1": {
+        "label": "Step 1",
+        "heading": "Get an API key",
+        "body": "Sign in to the {company} console and create a new API key. Production keys are auto-approved at the production tier — sandbox keys are issued instantly.",
+        "consoleCta": "Open console.nexora.ai",
+        "footnote": "Never commit keys to source control. The {company} backend revokes keys that show up on public GitHub within four minutes — verified by a fictional internal SRE team."
+      },
+      "step2": {
+        "label": "Step 2",
+        "heading": "Install the SDK",
+        "body": "Official SDKs for TypeScript and Python. For other languages, use the raw HTTP API directly — every endpoint is JSON over HTTPS."
+      },
+      "step3": {
+        "label": "Step 3",
+        "heading": "Make your first call",
+        "body": "POST a single user message to /v1/messages. Specify the model, set max_tokens, and stream optional. Pick your language."
+      },
+      "step4": {
+        "label": "Step 4",
+        "heading": "Parse the response",
+        "body": "The response body is a JSON object with id, model, content (array of content blocks), stop_reason, and usage. The content array can contain text, tool_use, or image blocks — for a plain text reply, expect a single text block.",
+        "responseFilename": "200 OK"
+      },
+      "outro": "If you got 200, congratulations — you have just queried a model that may or may not exist. The response is real text from our fictional dataset, computed by a hybrid retrieval pipeline that does not include a frontier model. We will be the first to admit this when asked."
     }
   }
 }

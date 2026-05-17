@@ -6,6 +6,7 @@ import { BookOpen, FileCode2 } from "lucide-react";
 import { brand } from "@/lib/brand";
 import { Button } from "@/components/ui/button";
 import { DocsSidebar } from "@/components/docs/docs-sidebar";
+import { QuickstartSection } from "@/components/docs/quickstart-section";
 
 export async function generateMetadata({
   params,
@@ -27,7 +28,6 @@ export default async function DocsPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("docs");
   const tHero = await getTranslations("docs.hero");
   const tSidebar = await getTranslations("docs.sidebar");
 
@@ -68,18 +68,13 @@ export default async function DocsPage({
         <DocsSidebar />
 
         <div className="min-w-0 flex-1 space-y-24">
-          {/* Quickstart placeholder — populated in 8.3 */}
+          {/* Quickstart — 8.3 */}
           <section
             id="quickstart"
             aria-label={tSidebar("sections.quickstart")}
             className="scroll-mt-24"
           >
-            <p className="font-mono text-xs uppercase tracking-widest2 text-muted-foreground">
-              {tSidebar("groups.gettingStarted")}
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              {tSidebar("sections.quickstart")}
-            </h2>
+            <QuickstartSection />
           </section>
 
           {/* API Reference placeholder — populated in 8.4 */}
