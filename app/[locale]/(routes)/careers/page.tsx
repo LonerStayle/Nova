@@ -5,6 +5,10 @@ import { brand } from "@/lib/brand";
 import { CareersHero } from "@/components/careers/hero";
 import { WhyNexora } from "@/components/careers/why-nexora";
 import { OpenRoles } from "@/components/careers/open-roles";
+import { Office } from "@/components/careers/office";
+import { Benefits } from "@/components/careers/benefits";
+import { HiringProcess } from "@/components/careers/hiring-process";
+import { CareersFinalCta } from "@/components/careers/final-cta";
 
 export async function generateMetadata({
   params,
@@ -36,6 +40,14 @@ export default async function CareersPage({
       </div>
 
       <OpenRoles />
+
+      <Office />
+
+      <Benefits />
+
+      <HiringProcess />
+
+      <CareersFinalCta />
     </main>
   );
 }

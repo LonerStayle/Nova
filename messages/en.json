@@ -1088,6 +1088,124 @@
           "summary": "We're hiring 18 over two quarters. Find them, brief them honestly, and protect their time. Senior-IC track if you want it."
         }
       }
+    },
+    "office": {
+      "eyebrow": "Office",
+      "heading": "Gangnam, 35th floor.",
+      "body": "{company}'s HQ sits in Nexora Tower, a fictional building on a real road — far enough from the convention center that lunch options exist, close enough to Gangnam station that the commute is one transfer. The 35th floor has the office; the 34th has the GPU pre-staging room nobody can show you.",
+      "addressLabel": "Address",
+      "addressLine1": "Nexora Tower 35F",
+      "addressLine2": "521 Teheran-ro, Gangnam-gu",
+      "addressLine3": "Seoul, Republic of Korea",
+      "addressZip": "Postal code 06164",
+      "mapLabel": "On the map",
+      "mapPlaceholderBuilding": "Nexora Tower",
+      "mapPlaceholderStreet": "Teheran-ro 521",
+      "mapPlaceholderStation": "Samseong Station · Line 2 (8 min walk)",
+      "statsLabel": "Office vital signs",
+      "stats": {
+        "floor": {
+          "value": "35F",
+          "label": "Headquarters floor",
+          "footnote": "The 34th is the GPU pre-staging room. Tours not offered."
+        },
+        "desks": {
+          "value": "72",
+          "label": "Hot desks",
+          "footnote": "60 staffed, 12 reserved for visiting researchers."
+        },
+        "coffee": {
+          "value": "3",
+          "label": "Coffee machines",
+          "footnote": "One Italian, one Korean, one experimental."
+        }
+      },
+      "photoCaption": "Actual photo. Probably.",
+      "footnote": "The building name is fictional; the road and postal code are not. Mail addressed to Nexora Tower may, in fact, arrive — which is more than we promised."
+    },
+    "benefits": {
+      "eyebrow": "Benefits",
+      "heading": "What we offer.",
+      "body": "Designed for a small team that ships — compensation and time-off that respect the unit economics, equipment and learning that respect your craft.",
+      "items": {
+        "equity": {
+          "name": "Meaningful equity",
+          "description": "Stock options at every level, four-year vest with a one-year cliff. The dilution is real; so is the upside."
+        },
+        "equipment": {
+          "name": "Apple equipment, your choice",
+          "description": "MacBook Pro M4 Max plus the monitor of your choice — Studio Display, LG 5K UltraFine, or one of those ultrawide things if you must."
+        },
+        "learning": {
+          "name": "$5,000 / year learning budget",
+          "description": "Conferences, books, courses, GPU credits for personal experiments. No approval required under $1,000."
+        },
+        "wellness": {
+          "name": "Health + wellness, fully covered",
+          "description": "Korean national health insurance plus private supplement. Mental health visits covered, dental and vision included, gym membership reimbursed."
+        },
+        "childcare": {
+          "name": "Childcare support",
+          "description": "Monthly stipend for under-5s, plus a 12-week parental leave at full pay. Used by people across the org, not stigmatized."
+        },
+        "pto": {
+          "name": "Generous PTO + parental leave",
+          "description": "25 days off + Korean public holidays + a one-week winter shutdown. Mostly unlimited beyond that, but we notice — we have a dashboard for it."
+        }
+      },
+      "footnote": "All benefits apply equally to full-time and 30+ hour contract employees after a 30-day probation."
+    },
+    "hiringProcess": {
+      "eyebrow": "Hiring process",
+      "heading": "Five steps. Three to four weeks, end to end.",
+      "body": "Same five steps regardless of role. Compensation is shared in step 1. We give feedback at every step, whether or not you advance.",
+      "stepLabel": "Step",
+      "steps": {
+        "application": {
+          "name": "Application",
+          "duration": "~1 day",
+          "description": "Send your resume or LinkedIn URL — no cover letter required. A real human reads every submission within one business day. Compensation range is shared in the response."
+        },
+        "recruiterCall": {
+          "name": "Recruiter call",
+          "duration": "30 min",
+          "description": "Two-way fit. We explain the role, team, comp, and trade-offs honestly. You share what you're looking for. No technical questions — that's the next step."
+        },
+        "technical": {
+          "name": "Technical conversation",
+          "duration": "60–90 min",
+          "description": "One or two engineers from the hiring team. Role-specific deep dive — code review, system design, research discussion, or product critique. No live coding gotchas; bring questions about real problems."
+        },
+        "onsite": {
+          "name": "On-site",
+          "duration": "Half day",
+          "description": "Four hours of conversation, one hour of awkward small talk, free lunch. Meet your team and your team's team. We make a decision within 48 hours of the on-site ending."
+        },
+        "offer": {
+          "name": "Offer",
+          "duration": "~1 day",
+          "description": "Verbal first, written within 24 hours. Negotiation expected — we publish bands internally, so we're working from the same numbers you are. Start date is flexible by up to 90 days."
+        }
+      },
+      "footnote": "If you don't get an offer, we tell you why — concretely enough that you could try again in twelve months and know what changed."
+    },
+    "finalCta": {
+      "eyebrow": "Ready",
+      "heading": "Two paths in.",
+      "body": "Send your resume or refer someone you'd want to work with. Both inboxes are monitored daily by a real person.",
+      "cards": {
+        "apply": {
+          "name": "Apply to a role",
+          "description": "Pick a role above and send your resume directly to hiring. Or send a general application — we route it to the closest team.",
+          "cta": "Email hiring@nexora.ai"
+        },
+        "refer": {
+          "name": "Refer someone",
+          "description": "Successful referrals get a $5,000 bonus, paid on the hire's 90-day mark. Referral track record is internally famous.",
+          "cta": "Email refer@nexora.ai"
+        }
+      },
+      "footnote": "We respond to every email within two business days. Korean and English both fine."
     }
   }
 }

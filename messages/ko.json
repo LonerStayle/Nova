@@ -1088,6 +1088,124 @@
           "summary": "2분기 18명 채용. 발굴 · 정직한 브리핑 · 시간 보호. 원하시면 senior-IC 트랙."
         }
       }
+    },
+    "office": {
+      "eyebrow": "오피스",
+      "heading": "강남, 35층.",
+      "body": "{company} 본사는 실제 도로명 위 가공 건물인 Nexora Tower 에 있습니다 — 점심 옵션이 존재할 만큼 컨벤션 센터와 떨어져 있고, 환승 한 번이면 끝날 만큼 강남역에 가깝습니다. 35층이 사무실, 34층은 보여드릴 수 없는 GPU pre-staging 실.",
+      "addressLabel": "주소",
+      "addressLine1": "Nexora Tower 35층",
+      "addressLine2": "서울특별시 강남구 테헤란로 521",
+      "addressLine3": "대한민국",
+      "addressZip": "우편번호 06164",
+      "mapLabel": "지도에서",
+      "mapPlaceholderBuilding": "Nexora Tower",
+      "mapPlaceholderStreet": "테헤란로 521",
+      "mapPlaceholderStation": "삼성역 · 2호선 (도보 8분)",
+      "statsLabel": "오피스 vital signs",
+      "stats": {
+        "floor": {
+          "value": "35F",
+          "label": "본사 층수",
+          "footnote": "34층은 GPU pre-staging 실. 투어 안 합니다."
+        },
+        "desks": {
+          "value": "72",
+          "label": "Hot desk",
+          "footnote": "60석은 상주 · 12석은 방문 연구자용."
+        },
+        "coffee": {
+          "value": "3",
+          "label": "커피 머신",
+          "footnote": "이탈리아 · 한국 · 실험용 각 1대."
+        }
+      },
+      "photoCaption": "실제 사진. 아마도.",
+      "footnote": "빌딩명은 가공이지만 도로명과 우편번호는 실제입니다. Nexora Tower 로 보낸 우편이 실제로 도착할 수도 있는데 — 약속한 것보다는 더한 일이긴 합니다."
+    },
+    "benefits": {
+      "eyebrow": "혜택",
+      "heading": "제공하는 것.",
+      "body": "출시하는 작은 팀에 맞춤 설계 — unit economics 를 존중하는 보상과 휴가, craft 를 존중하는 장비와 학습.",
+      "items": {
+        "equity": {
+          "name": "유의미한 지분",
+          "description": "모든 레벨에 스톡옵션 — 4년 vest · 1년 cliff. dilution 도 실제고, upside 도 실제입니다."
+        },
+        "equipment": {
+          "name": "Apple 장비, 선택권",
+          "description": "MacBook Pro M4 Max + 원하는 모니터 — Studio Display · LG 5K UltraFine · 굳이 원하시면 그 울트라와이드."
+        },
+        "learning": {
+          "name": "연간 $5,000 학습 예산",
+          "description": "컨퍼런스 · 책 · 코스 · 개인 실험용 GPU 크레딧. $1,000 이하는 승인 불필요."
+        },
+        "wellness": {
+          "name": "건강 · 웰니스 전액 지원",
+          "description": "국민건강보험 + 민간 보충 보험. 정신건강 진료 포함 · 치과 · 안과 포함 · 헬스장 비용 환급."
+        },
+        "childcare": {
+          "name": "육아 지원",
+          "description": "만 5세 미만 자녀 월별 보조금 + 12주 유급 출산휴가. 조직 전반에서 사용되며 낙인 없음."
+        },
+        "pto": {
+          "name": "넉넉한 휴가 + 출산휴가",
+          "description": "연 25일 + 한국 공휴일 + 연말 1주 일괄 휴무. 그 외에는 대체로 무제한 — 단 다 알고 있습니다 (대시보드가 있습니다)."
+        }
+      },
+      "footnote": "모든 혜택은 정규직과 주 30시간 이상 계약직 동등 적용 (수습 30일 이후)."
+    },
+    "hiringProcess": {
+      "eyebrow": "채용 프로세스",
+      "heading": "5 단계. 3~4주, end-to-end.",
+      "body": "포지션 무관 동일한 5단계. 보상 범위는 1단계에서 공유. 진행 여부와 무관하게 모든 단계에서 피드백 제공.",
+      "stepLabel": "Step",
+      "steps": {
+        "application": {
+          "name": "지원",
+          "duration": "~1일",
+          "description": "Resume 또는 LinkedIn URL 만 — cover letter 불필요. 실제 사람이 영업일 1일 내 검토. 응답에 보상 범위 동봉."
+        },
+        "recruiterCall": {
+          "name": "Recruiter 콜",
+          "duration": "30분",
+          "description": "양방향 fit. 포지션·팀·보상·트레이드오프를 정직하게 설명. 찾고 계신 것을 듣습니다. 기술 질문 없음 — 다음 단계에서."
+        },
+        "technical": {
+          "name": "Technical 대화",
+          "duration": "60–90분",
+          "description": "채용팀 엔지니어 1–2명. 포지션별 deep dive — 코드 리뷰 · 시스템 설계 · 리서치 논의 · 프로덕트 critique. 함정 라이브 코딩 없음 — 실제 문제에 대한 질문 환영."
+        },
+        "onsite": {
+          "name": "On-site",
+          "duration": "반나절",
+          "description": "4시간의 대화 · 1시간의 어색한 small talk · 점심 무료. 팀과 팀의 팀을 만남. on-site 종료 후 48시간 안에 결정."
+        },
+        "offer": {
+          "name": "오퍼",
+          "duration": "~1일",
+          "description": "구두 우선 · 서면 24시간 내. 협상 환영 — 내부적으로 밴드를 공개해서 같은 숫자에서 시작합니다. 시작 날짜는 최대 90일까지 유연."
+        }
+      },
+      "footnote": "오퍼를 못 받으셨다면 그 이유를 구체적으로 알려드립니다 — 12개월 후 다시 시도해서 무엇이 달라졌는지 알 수 있을 정도로."
+    },
+    "finalCta": {
+      "eyebrow": "준비됨",
+      "heading": "두 가지 경로.",
+      "body": "이력서를 보내시거나 함께 일하고 싶은 분을 추천하세요. 두 인박스 모두 실제 사람이 매일 모니터링합니다.",
+      "cards": {
+        "apply": {
+          "name": "지원하기",
+          "description": "위 포지션 중 하나를 골라 채용팀에 이력서를 직접 보내거나, 일반 지원도 가능 — 가장 가까운 팀으로 라우팅됩니다.",
+          "cta": "hiring@nexora.ai 보내기"
+        },
+        "refer": {
+          "name": "추천하기",
+          "description": "성공한 추천에는 채용 후 90일 시점에 $5,000 보너스. 추천 트랙 레코드는 사내적으로 유명합니다.",
+          "cta": "refer@nexora.ai 보내기"
+        }
+      },
+      "footnote": "모든 이메일에 영업일 2일 안에 답합니다. 한국어 · 영어 모두 환영."
     }
   }
 }
