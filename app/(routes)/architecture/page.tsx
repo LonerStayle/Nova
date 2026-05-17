@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import { brand } from "@/lib/brand";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { ArchitectureDiagram } from "@/components/sections/architecture-diagram";
 
 export const metadata: Metadata = {
   title: "Architecture",
@@ -10,19 +12,25 @@ export const metadata: Metadata = {
 export default function ArchitecturePage() {
   return (
     <main className="container mx-auto px-6 py-24">
-      <header className="mx-auto max-w-3xl text-center">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          System Architecture
+      <SectionHeading
+        eyebrow="System Architecture"
+        title="A four-layer agentic system."
+        description="Orchestration → Multi-Agent → AgentOS → Harness — each layer purpose-built for frontier-grade reasoning, observability, and safety."
+      />
+
+      <div className="mt-16">
+        <ArchitectureDiagram />
+      </div>
+
+      <div className="mx-auto mt-20 max-w-3xl text-center">
+        <p className="font-mono text-xs uppercase tracking-widest2 text-muted-foreground">
+          Patents &amp; Whitepapers
         </p>
-        <h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
-          Architecture
-        </h1>
-        <p className="mt-6 text-base text-muted-foreground">
-          Placeholder — 다음 iter 에서 Multi-Agent · AgentOS · Harness ·
-          Orchestration 4-레이어 가공 다이어그램과 각 레이어 설명으로
-          교체됩니다.
+        <p className="mt-3 text-sm text-muted-foreground">
+          18 patents filed across KR · US · PCT jurisdictions — whitepaper
+          series available on request.
         </p>
-      </header>
+      </div>
     </main>
   );
 }
