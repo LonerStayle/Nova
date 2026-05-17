@@ -18,7 +18,7 @@
     "groups": {
       "product": "Product",
       "safety": "Safety",
-      "research": "Research"
+      "company": "Company"
     },
     "items": {
       "papersComingSoon": "Papers (coming soon)",
@@ -440,13 +440,13 @@
         },
         "docs": {
           "name": "Read the docs",
-          "description": "Quickstart · API reference · architecture deep-dives. Korean and English.",
-          "cta": "Open docs.nexora.ai"
+          "description": "Quickstart · API reference · streaming · tool use. Korean and English, every page.",
+          "cta": "Open /docs"
         },
         "careers": {
           "name": "Join us",
-          "description": "Research · engineering · safety · product · ops — hiring globally, hub in Seoul.",
-          "cta": "See open roles"
+          "description": "Research · engineering · safety · product · ops — 60 in Seoul, hiring 18 over two quarters.",
+          "cta": "Open /careers"
         }
       }
     },

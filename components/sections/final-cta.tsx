@@ -1,30 +1,18 @@
 import { useTranslations } from "next-intl";
 import { ArrowRight, BookOpen, Briefcase, Sparkles } from "lucide-react";
 
-import { brand } from "@/lib/brand";
-import { Card } from "@/components/ui/card";
+import { Link } from "@/i18n/routing";
 
 interface CardItem {
   key: "demo" | "docs" | "careers";
   icon: typeof Sparkles;
   href: string;
-  external: boolean;
 }
 
 const cards: readonly CardItem[] = [
-  { key: "demo", icon: Sparkles, href: "#demo", external: false },
-  {
-    key: "docs",
-    icon: BookOpen,
-    href: `https://docs.${brand.company.domain}`,
-    external: true,
-  },
-  {
-    key: "careers",
-    icon: Briefcase,
-    href: `https://${brand.social.careers}`,
-    external: true,
-  },
+  { key: "demo", icon: Sparkles, href: "/#demo" },
+  { key: "docs", icon: BookOpen, href: "/docs" },
+  { key: "careers", icon: Briefcase, href: "/careers" },
 ];
 
 export function FinalCta() {
@@ -47,12 +35,10 @@ export function FinalCta() {
         </div>
 
         <ul className="mx-auto mt-14 grid max-w-5xl gap-5 sm:grid-cols-3">
-          {cards.map(({ key, icon: Icon, href, external }) => (
+          {cards.map(({ key, icon: Icon, href }) => (
             <li key={key}>
-              <a
+              <Link
                 href={href}
-                target={external ? "_blank" : undefined}
-                rel={external ? "noopener noreferrer nofollow" : undefined}
                 className="group flex h-full flex-col rounded-lg border border-border/60 bg-background/70 p-6 transition-all duration-300 hover:border-foreground/15 hover:shadow-md"
               >
                 <div
@@ -74,7 +60,7 @@ export function FinalCta() {
                     aria-hidden="true"
                   />
                 </span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

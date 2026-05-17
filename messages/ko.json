@@ -18,7 +18,7 @@
     "groups": {
       "product": "제품",
       "safety": "안전성",
-      "research": "리서치"
+      "company": "회사"
     },
     "items": {
       "papersComingSoon": "논문 (준비 중)",
@@ -440,13 +440,13 @@
         },
         "docs": {
           "name": "문서 보기",
-          "description": "퀵스타트 · API reference · 아키텍처 deep-dive. 한국어와 영어.",
-          "cta": "docs.nexora.ai 열기"
+          "description": "퀵스타트 · API 레퍼런스 · 스트리밍 · 툴 사용. 모든 페이지 한국어와 영어.",
+          "cta": "/docs 열기"
         },
         "careers": {
           "name": "합류하기",
-          "description": "리서치 · 엔지니어링 · 안전성 · 프로덕트 · 운영 — 글로벌 채용, 허브는 서울.",
-          "cta": "오픈 role 보기"
+          "description": "리서치 · 엔지니어링 · 안전성 · 프로덕트 · 운영 — 서울 60명, 2분기 18명 추가 채용.",
+          "cta": "/careers 열기"
         }
       }
     },

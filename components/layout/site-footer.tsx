@@ -11,20 +11,22 @@ const footerGroups = [
       { href: "/benchmarks", labelKey: "benchmarks" as const, group: "nav" as const },
       { href: "/capabilities", labelKey: "capabilities" as const, group: "nav" as const },
       { href: "/architecture", labelKey: "architecture" as const, group: "nav" as const },
+      { href: "/docs", labelKey: "docs" as const, group: "nav" as const },
     ],
   },
   {
     headingKey: "safety",
     items: [
       { href: "/security", labelKey: "security" as const, group: "nav" as const },
-      { href: "/about", labelKey: "about" as const, group: "nav" as const },
+      { href: "/", labelKey: "papersComingSoon" as const, group: "footerItems" as const },
+      { href: "/", labelKey: "blogComingSoon" as const, group: "footerItems" as const },
     ],
   },
   {
-    headingKey: "research",
+    headingKey: "company",
     items: [
-      { href: "/", labelKey: "papersComingSoon" as const, group: "footerItems" as const },
-      { href: "/", labelKey: "blogComingSoon" as const, group: "footerItems" as const },
+      { href: "/about", labelKey: "about" as const, group: "nav" as const },
+      { href: "/careers", labelKey: "careers" as const, group: "nav" as const },
     ],
   },
 ] as const;
