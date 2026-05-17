@@ -426,6 +426,37 @@
     }
   },
   "home": {
+    "useCases": {
+      "eyebrow": "활용 사례",
+      "heading": "차라리 자동화하고 싶은 그 업무를 위해.",
+      "body": "고객 지원부터 의학 문헌 리뷰까지 — 단일 모델, 6 가지 대표 워크로드, 그리고 그 사이 모든 것에 대한 기본 거부 정책.",
+      "cards": {
+        "support": {
+          "name": "고객 지원",
+          "description": "고볼륨 티켓·구조화 출력·한국어 first 품질 — Nexora-K 가 가장 저렴."
+        },
+        "legal": {
+          "name": "법무 리뷰",
+          "description": "200K 컨텍스트로 계약 분석·조항 비교·리스크 플래깅. 사람 검토와 함께 사용."
+        },
+        "marketing": {
+          "name": "마케팅 카피",
+          "description": "멀티모달 brief 입력, 캠페인 인식 카피 출력. 톤과 브랜드 voice 명시 지정."
+        },
+        "code": {
+          "name": "코드 리뷰",
+          "description": "Coder Agent 통해 저장소 인식. SWE-Bench Verified 64.1% — 시니어 엔지니어 수준."
+        },
+        "data": {
+          "name": "데이터 분석",
+          "description": "샌드박스 Python — pandas / numpy / matplotlib. 구조화 artifact 로 반환."
+        },
+        "voice": {
+          "name": "Voice 에이전트",
+          "description": "네이티브 오디오, sub-second 지연. STT + TTS 는 L4 Orchestration 레이어."
+        }
+      }
+    },
     "benchTeaser": {
       "eyebrow": "벤치마크",
       "heading": "측정한 모든 스위트에서 선두.",

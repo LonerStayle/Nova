@@ -426,6 +426,37 @@
     }
   },
   "home": {
+    "useCases": {
+      "eyebrow": "Use Cases",
+      "heading": "Built for the work you'd rather automate.",
+      "body": "From customer support to clinical literature review — a single model, six representative workloads, and a default refusal policy for everything in between.",
+      "cards": {
+        "support": {
+          "name": "Customer support",
+          "description": "High-volume tickets, structured output, Korean-first quality — runs cheapest on Nexora-K."
+        },
+        "legal": {
+          "name": "Legal review",
+          "description": "200K context for contract analysis, clause comparison, and risk flagging. Pair with a human."
+        },
+        "marketing": {
+          "name": "Marketing copy",
+          "description": "Multi-modal brief in, campaign-aware copy out. Tone and brand voice specified explicitly."
+        },
+        "code": {
+          "name": "Code review",
+          "description": "Repository-aware via the Coder Agent. SWE-Bench Verified 64.1% — senior-engineer territory."
+        },
+        "data": {
+          "name": "Data analysis",
+          "description": "Python in a sandbox with pandas / numpy / matplotlib. Structured artifacts back out."
+        },
+        "voice": {
+          "name": "Voice agents",
+          "description": "Native audio, sub-second latency. STT + TTS through the L4 Orchestration layer."
+        }
+      }
+    },
     "benchTeaser": {
       "eyebrow": "Benchmarks",
       "heading": "Leads on every suite we measured.",
