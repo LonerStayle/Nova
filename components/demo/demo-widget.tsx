@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { Loader2, RotateCw, Send, Sparkles, X } from "lucide-react";
 
 import { brand } from "@/lib/brand";
@@ -10,11 +11,7 @@ import { Pill } from "@/components/ui/pill";
 import { cn } from "@/lib/utils";
 import { hybridRetrieve } from "@/lib/retrieval/hybrid";
 
-const sampleQueries = [
-  `What is ${brand.model.flagship}'s MMLU score?`,
-  "Explain how AgentOS schedules multi-step tasks.",
-  "How does constitutional safety alignment work?",
-] as const;
+const SAMPLE_QUERY_KEYS = ["mmlu", "agentos", "constitutional"] as const;
 
 const MAX_INPUT = 2000;
 const INPUT_WARN_THRESHOLD = 1800;
@@ -41,25 +38,54 @@ const INITIAL_STATE: DemoState = {
 };
 
 export function DemoWidget() {
+  const t = useTranslations("demo");
+  const tSample = useTranslations("demo.sampleQueries");
   const [state, setState] = React.useState<DemoState>(INITIAL_STATE);
   const [input, setInput] = React.useState("");
   const [toast, setToast] = React.useState<string | null>(null);
 
-  const submit = React.useCallback(async (rawQuery: string) => {
-    const query = rawQuery.trim();
-    if (!query) return;
-    setState({
-      status: "loading",
-      query,
-      answer: null,
-      error: null,
-      mode: null,
-    });
-    try {
-      const result = await hybridRetrieve(query);
-      if (!result) {
-        const message =
-          "관련된 응답을 찾을 수 없습니다. 다른 표현으로 시도해 주세요.";
+  const sampleQueries = React.useMemo(
+    () =>
+      SAMPLE_QUERY_KEYS.map((key) =>
+        tSample(key, { model: brand.model.flagship }),
+      ),
+    [tSample],
+  );
+
+  const submit = React.useCallback(
+    async (rawQuery: string) => {
+      const query = rawQuery.trim();
+      if (!query) return;
+      setState({
+        status: "loading",
+        query,
+        answer: null,
+        error: null,
+        mode: null,
+      });
+      try {
+        const result = await hybridRetrieve(query);
+        if (!result) {
+          const message = t("noResult");
+          setState({
+            status: "error",
+            query,
+            answer: null,
+            error: message,
+            mode: null,
+          });
+          setToast(message);
+          return;
+        }
+        setState({
+          status: "success",
+          query,
+          answer: result.entry.answer,
+          error: null,
+          mode: result.mode,
+        });
+      } catch (err) {
+        const message = err instanceof Error ? err.message : "Unknown error";
         setState({
           status: "error",
           query,
@@ -68,27 +94,10 @@ export function DemoWidget() {
           mode: null,
         });
         setToast(message);
-        return;
       }
-      setState({
-        status: "success",
-        query,
-        answer: result.entry.answer,
-        error: null,
-        mode: result.mode,
-      });
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "Unknown error";
-      setState({
-        status: "error",
-        query,
-        answer: null,
-        error: message,
-        mode: null,
-      });
-      setToast(message);
-    }
-  }, []);
+    },
+    [t],
+  );
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -121,14 +130,13 @@ export function DemoWidget() {
                 className="h-3 w-3 text-brand-accent"
                 aria-hidden="true"
               />
-              Interactive Demo · Hybrid Retrieval
+              {t("eyebrow")}
             </Pill>
             <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-              Try {brand.model.flagship} yourself.
+              {t("heading", { model: brand.model.flagship })}
             </h2>
             <p className="mt-3 max-w-xl text-sm text-muted-foreground">
-              Hybrid retrieval — keyword similarity (60%) + dense embedding
-              semantic search (40%) over a curated dataset.
+              {t("description")}
             </p>
           </div>
 
@@ -138,7 +146,7 @@ export function DemoWidget() {
               <textarea
                 value={input}
                 onChange={(e) => setInput(e.target.value.slice(0, MAX_INPUT))}
-                placeholder={`Ask anything about ${brand.model.flagship}...`}
+                placeholder={t("placeholder", { model: brand.model.flagship })}
                 rows={3}
                 maxLength={MAX_INPUT}
                 className={cn(
@@ -149,7 +157,7 @@ export function DemoWidget() {
                   "disabled:opacity-60",
                 )}
                 disabled={state.status === "loading"}
-                aria-label="Demo query input"
+                aria-label={t("ariaInput")}
               />
               <Button
                 type="submit"
@@ -158,7 +166,7 @@ export function DemoWidget() {
                 disabled={
                   state.status === "loading" || !input.trim() || inputOver
                 }
-                aria-label="Submit query"
+                aria-label={t("ariaSubmit")}
               >
                 {state.status === "loading" ? (
                   <Loader2
@@ -172,7 +180,7 @@ export function DemoWidget() {
             </div>
             {/* Char counter */}
             <div className="mt-1.5 flex items-center justify-between text-[11px] text-muted-foreground/70">
-              <span>Max {MAX_INPUT.toLocaleString()} characters</span>
+              <span>{t("charCounter", { max: MAX_INPUT })}</span>
               <span
                 className={cn(
                   "font-mono tabular-nums",
@@ -190,7 +198,7 @@ export function DemoWidget() {
           {state.status === "idle" ? (
             <div className="mx-auto mt-6 max-w-2xl">
               <p className="text-center text-xs text-muted-foreground/70">
-                or try one of these:
+                {t("samplePrefix")}
               </p>
               <ul className="mt-3 flex flex-wrap justify-center gap-2">
                 {sampleQueries.map((sample) => (
@@ -213,7 +221,7 @@ export function DemoWidget() {
             <div className="mx-auto mt-8 max-w-2xl">
               <div className="flex items-center justify-between gap-3">
                 <p className="truncate text-xs text-muted-foreground">
-                  Query:{" "}
+                  {t("queryLabel")}{" "}
                   <span className="font-mono text-foreground/80">
                     &ldquo;{state.query}&rdquo;
                   </span>
@@ -222,15 +230,17 @@ export function DemoWidget() {
                   variant="ghost"
                   size="sm"
                   onClick={onReset}
-                  aria-label="Reset demo"
+                  aria-label={t("ariaReset")}
                 >
                   <X className="h-3.5 w-3.5" aria-hidden="true" />
-                  <span className="ml-1 text-xs">Reset</span>
+                  <span className="ml-1 text-xs">{t("reset")}</span>
                 </Button>
               </div>
 
               <div className="mt-3 min-h-[6rem] rounded-lg border bg-muted/30 p-5">
-                {state.status === "loading" ? <ResponseSkeleton /> : null}
+                {state.status === "loading" ? (
+                  <ResponseSkeleton ariaLabel={t("loadingAria")} />
+                ) : null}
                 {state.status === "success" && state.answer ? (
                   <p className="text-sm leading-relaxed text-foreground/90">
                     <TypewriterText
@@ -241,7 +251,7 @@ export function DemoWidget() {
                 ) : null}
                 {state.status === "error" ? (
                   <p className="text-sm leading-relaxed text-rose-600 dark:text-rose-400">
-                    Error — {state.error}
+                    {t("errorPrefix")} {state.error}
                   </p>
                 ) : null}
               </div>
@@ -250,13 +260,13 @@ export function DemoWidget() {
                 <>
                   <p className="mt-3 text-center font-mono text-[10px] uppercase tracking-widest text-muted-foreground/60">
                     {state.mode === "hybrid"
-                      ? `Hybrid retrieval · 60% keyword · 40% embedding · ${brand.model.flagship}`
-                      : `Keyword retrieval (fallback) · ${brand.model.flagship}`}
+                      ? t("modeHybrid", { model: brand.model.flagship })
+                      : t("modeBm25", { model: brand.model.flagship })}
                   </p>
                   <div className="mt-5 flex justify-center">
                     <Button variant="outline" size="sm" onClick={onReset}>
                       <RotateCw className="h-3.5 w-3.5" aria-hidden="true" />
-                      <span className="ml-1.5">다시 묻기</span>
+                      <span className="ml-1.5">{t("askAgain")}</span>
                     </Button>
                   </div>
                 </>
@@ -266,14 +276,18 @@ export function DemoWidget() {
         </CardContent>
       </Card>
 
-      <ErrorToast message={toast} onClose={() => setToast(null)} />
+      <ErrorToast
+        message={toast}
+        onClose={() => setToast(null)}
+        dismissLabel={t("toastDismiss")}
+      />
     </section>
   );
 }
 
-function ResponseSkeleton() {
+function ResponseSkeleton({ ariaLabel }: { ariaLabel: string }) {
   return (
-    <div className="space-y-2.5" aria-label="Loading response" role="status">
+    <div className="space-y-2.5" aria-label={ariaLabel} role="status">
       <div className="h-3 w-3/4 animate-pulse rounded bg-muted-foreground/15" />
       <div className="h-3 w-full animate-pulse rounded bg-muted-foreground/15" />
       <div className="h-3 w-5/6 animate-pulse rounded bg-muted-foreground/15" />
@@ -323,9 +337,11 @@ function TypewriterText({ text, speed }: { text: string; speed: number }) {
 function ErrorToast({
   message,
   onClose,
+  dismissLabel,
 }: {
   message: string | null;
   onClose: () => void;
+  dismissLabel: string;
 }) {
   React.useEffect(() => {
     if (!message) return;
@@ -348,7 +364,7 @@ function ErrorToast({
       <button
         type="button"
         onClick={onClose}
-        aria-label="Dismiss"
+        aria-label={dismissLabel}
         className="-m-1 rounded p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
       >
         <X className="h-3.5 w-3.5" aria-hidden="true" />

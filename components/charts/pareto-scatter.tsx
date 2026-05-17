@@ -20,7 +20,18 @@ import {
 const nexoraSeries = paretoData.filter((point) => point.isNexora);
 const otherSeries = paretoData.filter((point) => !point.isNexora);
 
-export function ParetoScatter() {
+interface ParetoScatterProps {
+  labels: {
+    xLabel: string;
+    yLabel: string;
+    tooltipCost: string;
+    tooltipPerf: string;
+    nexoraSeries: string;
+    others: string;
+  };
+}
+
+export function ParetoScatter({ labels }: ParetoScatterProps) {
   return (
     <ResponsiveContainer width="100%" height={360}>
       <ScatterChart margin={{ top: 16, right: 16, bottom: 28, left: 16 }}>
@@ -40,7 +51,7 @@ export function ParetoScatter() {
           tickFormatter={(v) => `$${v}`}
         >
           <Label
-            value="Cost ($ / 1M tokens)"
+            value={labels.xLabel}
             position="insideBottom"
             offset={-12}
             style={{
@@ -62,7 +73,7 @@ export function ParetoScatter() {
           width={36}
         >
           <Label
-            value="Composite Score"
+            value={labels.yLabel}
             angle={-90}
             position="insideLeft"
             offset={4}
@@ -77,8 +88,9 @@ export function ParetoScatter() {
           contentStyle={chartTooltipContentStyle}
           cursor={chartTooltipCursorScatter}
           formatter={(value: number | string, key: string) => {
-            if (key === "cost") return [`$${value}`, "Cost / 1M tokens"];
-            if (key === "performance") return [`${value}`, "Composite Score"];
+            if (key === "cost") return [`$${value}`, labels.tooltipCost];
+            if (key === "performance")
+              return [`${value}`, labels.tooltipPerf];
             return [value, key];
           }}
           labelFormatter={(_, payload) => {
@@ -89,13 +101,13 @@ export function ParetoScatter() {
           }}
         />
         <Scatter
-          name="Others"
+          name={labels.others}
           data={[...otherSeries]}
           fill="hsl(var(--muted-foreground))"
           fillOpacity={0.45}
         />
         <Scatter
-          name="Nexora series"
+          name={labels.nexoraSeries}
           data={[...nexoraSeries]}
           fill="hsl(var(--brand-accent))"
         />

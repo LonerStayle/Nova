@@ -369,6 +369,49 @@
       "body": "Full Model Card · Training audit summary · Voluntary disclosure archive — available on request."
     }
   },
+  "demo": {
+    "eyebrow": "Interactive Demo · Hybrid Retrieval",
+    "heading": "Try {model} yourself.",
+    "description": "Hybrid retrieval — keyword similarity (60%) + dense embedding semantic search (40%) over a curated dataset.",
+    "placeholder": "Ask anything about {model}...",
+    "ariaInput": "Demo query input",
+    "ariaSubmit": "Submit query",
+    "charCounter": "Max {max} characters",
+    "samplePrefix": "or try one of these:",
+    "sampleQueries": {
+      "mmlu": "What is {model}'s MMLU score?",
+      "agentos": "Explain how AgentOS schedules multi-step tasks.",
+      "constitutional": "How does constitutional safety alignment work?"
+    },
+    "queryLabel": "Query:",
+    "reset": "Reset",
+    "ariaReset": "Reset demo",
+    "loadingAria": "Loading response",
+    "errorPrefix": "Error —",
+    "noResult": "No matching response found. Please try a different phrasing.",
+    "modeHybrid": "Hybrid retrieval · 60% keyword · 40% embedding · {model}",
+    "modeBm25": "Keyword retrieval (fallback) · {model}",
+    "askAgain": "Ask again",
+    "toastDismiss": "Dismiss"
+  },
+  "benchmarkCharts": {
+    "timeline": {
+      "nexora": "Nexora",
+      "frontierAvg": "Frontier avg"
+    },
+    "radar": {
+      "nexora": "{model}",
+      "frontierAvg": "Avg frontier"
+    },
+    "pareto": {
+      "xLabel": "Cost ($ / 1M tokens)",
+      "yLabel": "Composite Score",
+      "tooltipCost": "Cost / 1M tokens",
+      "tooltipPerf": "Composite Score",
+      "nexoraSeries": "Nexora series",
+      "others": "Others"
+    }
+  },
   "about": {
     "eyebrow": "About",
     "heroDescription": "Building frontier-grade AI from Seoul — multimodal reasoning, agentic workflows, and constitutional safety as one integrated stack.",

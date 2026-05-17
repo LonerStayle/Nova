@@ -31,6 +31,7 @@ export default async function BenchmarksPage({
   setRequestLocale(locale);
   const t = await getTranslations("benchmarks");
   const tCharts = await getTranslations("benchmarks.charts");
+  const tChartLabels = await getTranslations("benchmarkCharts");
 
   return (
     <main className="container mx-auto px-6 py-24">
@@ -55,7 +56,12 @@ export default async function BenchmarksPage({
           subtitle={tCharts("composite.subtitle")}
           caption={tCharts("composite.caption")}
         >
-          <TimelineChart />
+          <TimelineChart
+            legend={{
+              nexora: tChartLabels("timeline.nexora"),
+              frontierAvg: tChartLabels("timeline.frontierAvg"),
+            }}
+          />
         </ChartCard>
 
         <ChartCard
@@ -63,7 +69,14 @@ export default async function BenchmarksPage({
           subtitle={tCharts("radar.subtitle", { model: brand.model.flagship })}
           caption={tCharts("radar.caption")}
         >
-          <CapabilityRadar />
+          <CapabilityRadar
+            legend={{
+              nexora: tChartLabels("radar.nexora", {
+                model: brand.model.flagship,
+              }),
+              frontierAvg: tChartLabels("radar.frontierAvg"),
+            }}
+          />
         </ChartCard>
 
         <ChartCard
@@ -71,7 +84,16 @@ export default async function BenchmarksPage({
           subtitle={tCharts("pareto.subtitle")}
           caption={tCharts("pareto.caption")}
         >
-          <ParetoScatter />
+          <ParetoScatter
+            labels={{
+              xLabel: tChartLabels("pareto.xLabel"),
+              yLabel: tChartLabels("pareto.yLabel"),
+              tooltipCost: tChartLabels("pareto.tooltipCost"),
+              tooltipPerf: tChartLabels("pareto.tooltipPerf"),
+              nexoraSeries: tChartLabels("pareto.nexoraSeries"),
+              others: tChartLabels("pareto.others"),
+            }}
+          />
         </ChartCard>
       </div>
     </main>

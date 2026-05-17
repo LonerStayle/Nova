@@ -14,7 +14,14 @@ import {
 import { timelineData } from "@/lib/data/benchmarks";
 import { chartTooltipContentStyle } from "@/lib/charts/style";
 
-export function TimelineChart() {
+interface TimelineChartProps {
+  legend: {
+    nexora: string;
+    frontierAvg: string;
+  };
+}
+
+export function TimelineChart({ legend }: TimelineChartProps) {
   return (
     <ResponsiveContainer width="100%" height={320}>
       <AreaChart
@@ -75,6 +82,7 @@ export function TimelineChart() {
         <Area
           type="monotone"
           dataKey="Frontier avg"
+          name={legend.frontierAvg}
           stroke="hsl(var(--muted-foreground))"
           strokeWidth={1.5}
           fill="url(#grad-frontier)"
@@ -83,6 +91,7 @@ export function TimelineChart() {
         <Area
           type="monotone"
           dataKey="Nexora"
+          name={legend.nexora}
           stroke="hsl(var(--brand-accent))"
           strokeWidth={2}
           fill="url(#grad-nexora)"

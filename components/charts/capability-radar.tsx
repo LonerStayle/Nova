@@ -12,7 +12,14 @@ import {
 
 import { radarData } from "@/lib/data/benchmarks";
 
-export function CapabilityRadar() {
+interface CapabilityRadarProps {
+  legend: {
+    nexora: string;
+    frontierAvg: string;
+  };
+}
+
+export function CapabilityRadar({ legend }: CapabilityRadarProps) {
   return (
     <ResponsiveContainer width="100%" height={360}>
       <RadarChart
@@ -32,7 +39,7 @@ export function CapabilityRadar() {
           axisLine={false}
         />
         <Radar
-          name="Avg frontier"
+          name={legend.frontierAvg}
           dataKey="Avg frontier"
           stroke="hsl(var(--muted-foreground))"
           strokeWidth={1.5}
@@ -41,7 +48,7 @@ export function CapabilityRadar() {
           strokeDasharray="4 3"
         />
         <Radar
-          name="Nexora-1"
+          name={legend.nexora}
           dataKey="Nexora-1"
           stroke="hsl(var(--brand-accent))"
           strokeWidth={2}
