@@ -76,8 +76,11 @@
 - [x] 6.4 — `app/[locale]/layout.tsx` 의 NextIntlClientProvider + dynamic `lang` + `setRequestLocale` + generateMetadata locale 분기
 - [x] 6.5 — Site nav + footer 메시지 추출 (6 라우트 라벨 / 푸터 그룹 / 소셜 / disclosure 한·영 분리) + i18n Link 사용 + About disclosure 한·영 분리
 - [x] 6.6 — LocaleToggle 컴포넌트 (헤더 우측 KR/EN, cookie 저장 + replace)
-- [ ] 6.7 — Hero / KeyMetrics / TrustedBy / 6 페이지 SectionHeading + body 메시지 추출 (한·영)
-- [ ] 6.8 — DemoWidget UI + sampleQueries + 에러 메시지 + 차트 caption 한·영 분리
+- [x] 6.7a — KeyMetrics 본문 + Benchmarks 페이지 (SectionHeading + 4 chart card 의 title/subtitle/caption) 메시지 추출 — homepageMetrics 에 id 추가 + caption 분리 / benchmarks.charts 4 chart caption 한·영 모두 dry humor 보존 (`Hard to lose a benchmark you invented` / `자기가 만든 벤치마크에서 지긴 어렵죠` / "back-fitted" 풍자)
+- [ ] 6.7b — Capabilities 페이지 (SectionHeading + 5 capability card 의 category/name/description + specs label) 메시지 추출
+- [ ] 6.7c — Architecture 페이지 (SectionHeading + 4 layer 의 name/tagline/description + components + Patents & Whitepapers 텍스트) 메시지 추출
+- [ ] 6.7d — Security 페이지 (SectionHeading + 4 section 의 category/tagline/description + metrics label + Model Card 텍스트) 메시지 추출
+- [ ] 6.8 — DemoWidget UI + sampleQueries + 에러 메시지 + 차트 axis/legend 한·영 분리
 - [ ] 6.9 — `public/data/qa.ko.json` 200 entries 한국어 번역 작성 (ralph 자동) + `qa.en.json` 으로 이름 변경 + retrieval(bm25/hybrid) 의 locale prop + `embeddings.{ko,en}.json` 분리 로딩
 - [ ] 6.10 — `scripts/precompute-embeddings.mjs` 의 locale 별 처리 + Voyage 한국어 dataset 임베딩 사전계산
 - [ ] 6.11 — `app/sitemap.ts` 의 locale 별 URL 양산 + 페이지별 `opengraph-image.tsx` locale 분기 + brand.ts 의 한·영 필드 정리

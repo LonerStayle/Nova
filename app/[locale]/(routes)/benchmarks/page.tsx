@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 
 import { brand } from "@/lib/brand";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -9,10 +9,18 @@ import { TimelineChart } from "@/components/charts/timeline-chart";
 import { CapabilityRadar } from "@/components/charts/capability-radar";
 import { ParetoScatter } from "@/components/charts/pareto-scatter";
 
-export const metadata: Metadata = {
-  title: "Benchmarks",
-  description: `${brand.model.flagship} performance on industry-standard evaluation suites — MMLU, HumanEval, GSM8K, MATH, AGIEval, and composite frontier metrics.`,
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "benchmarks" });
+  return {
+    title: t("title"),
+    description: t("metaDescription", { model: brand.model.flagship }),
+  };
+}
 
 export default async function BenchmarksPage({
   params,
@@ -21,45 +29,47 @@ export default async function BenchmarksPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("benchmarks");
+  const tCharts = await getTranslations("benchmarks.charts");
 
   return (
     <main className="container mx-auto px-6 py-24">
       <SectionHeading
         as="h1"
-        eyebrow="Performance Report"
-        title="Benchmarks"
-        description={`${brand.model.flagship} performance across industry-standard evaluation suites and frontier-grade composite metrics.`}
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        description={t("description", { model: brand.model.flagship })}
       />
 
       <div className="mt-16 grid gap-6 lg:grid-cols-2">
         <ChartCard
-          title="Industry-standard benchmark scores"
-          subtitle="5-shot / pass@1 / cot — higher is better"
-          caption="Scores from the public version of each evaluation suite, evaluated under matched prompt formats. Frontier models compared as of 2026 Q2."
+          title={tCharts("industryStandard.title")}
+          subtitle={tCharts("industryStandard.subtitle")}
+          caption={tCharts("industryStandard.caption")}
         >
           <BenchmarkBarChart />
         </ChartCard>
 
         <ChartCard
-          title="Composite Frontier Score — quarterly evolution"
-          subtitle="2024 Q4 → 2026 Q2"
-          caption="Composite score = geometric mean of MMLU · HumanEval · GSM8K · MATH · AGIEval (weighted equally). Frontier avg = top-3 publicly available models excluding Nexora. None of these numbers were back-fitted to make this line go up, we promise."
+          title={tCharts("composite.title")}
+          subtitle={tCharts("composite.subtitle")}
+          caption={tCharts("composite.caption")}
         >
           <TimelineChart />
         </ChartCard>
 
         <ChartCard
-          title="Capability profile"
-          subtitle="Nexora-1 vs avg frontier model"
-          caption="Each axis is a normalized score (0–100) over ≥3 representative benchmarks in the category. Safety axis uses internal red-team pass rate."
+          title={tCharts("radar.title")}
+          subtitle={tCharts("radar.subtitle", { model: brand.model.flagship })}
+          caption={tCharts("radar.caption")}
         >
           <CapabilityRadar />
         </ChartCard>
 
         <ChartCard
-          title="Cost-performance Pareto frontier"
-          subtitle="Composite Frontier Score vs USD per 1M tokens"
-          caption="Nexora series sits on the Pareto frontier across the entire cost-performance plane — from Nexora-K (cost-optimized) through Nexora-1 Pro (peak frontier). Hard to lose a benchmark you invented."
+          title={tCharts("pareto.title")}
+          subtitle={tCharts("pareto.subtitle")}
+          caption={tCharts("pareto.caption")}
         >
           <ParetoScatter />
         </ChartCard>

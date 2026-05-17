@@ -78,6 +78,43 @@
     "footnotePrefix": "이 회사들은 모두 가짜입니다. 사실 이 사이트 전체가 가짜예요.",
     "footnoteLink": "자세한 사정은"
   },
+  "keyMetrics": {
+    "eyebrow": "성능 스냅샷",
+    "heading": "표준 평가 전반에 걸친 프론티어 결과.",
+    "captions": {
+      "mmlu": "이전 세대 프론티어 모델 대비",
+      "humanEval": "Python 코딩 벤치마크",
+      "math": "경시대회 수준 수학"
+    }
+  },
+  "benchmarks": {
+    "metaDescription": "{model} 의 업계 표준 평가 — MMLU, HumanEval, GSM8K, MATH, AGIEval 및 종합 프론티어 지표.",
+    "eyebrow": "성능 리포트",
+    "title": "벤치마크",
+    "description": "업계 표준 평가 스위트 및 프론티어급 종합 지표 전반에 걸친 {model} 성능.",
+    "charts": {
+      "industryStandard": {
+        "title": "업계 표준 벤치마크 점수",
+        "subtitle": "5-shot / pass@1 / cot — 높을수록 좋음",
+        "caption": "각 평가 스위트의 공개 버전을 동일한 prompt 포맷으로 측정. 2026 Q2 기준 프론티어 모델 비교."
+      },
+      "composite": {
+        "title": "Composite Frontier Score — 분기별 진화",
+        "subtitle": "2024 Q4 → 2026 Q2",
+        "caption": "Composite score = MMLU · HumanEval · GSM8K · MATH · AGIEval 의 기하 평균 (동일 가중치). Frontier avg = Nexora 제외 공개 모델 상위 3 평균. 이 라인이 위로 올라가도록 수치를 역산하지 않았습니다, 정말로요."
+      },
+      "radar": {
+        "title": "능력 프로파일",
+        "subtitle": "{model} vs 평균 프론티어 모델",
+        "caption": "각 축은 카테고리당 3개 이상 대표 벤치마크 점수를 0–100 으로 정규화. Safety 축은 내부 red-team pass rate."
+      },
+      "pareto": {
+        "title": "비용·성능 Pareto frontier",
+        "subtitle": "Composite Frontier Score vs USD per 1M tokens",
+        "caption": "Nexora 시리즈는 비용·성능 평면 전체의 Pareto frontier 위에 — Nexora-K (비용 최적화) 부터 Nexora-1 Pro (피크 프론티어) 까지. 자기가 만든 벤치마크에서 지긴 어렵죠."
+      }
+    }
+  },
   "about": {
     "eyebrow": "회사 소개",
     "heroDescription": "서울에서 만드는 프론티어급 AI — 멀티모달 추론·에이전트 워크플로·constitutional 안전성을 단일 스택으로 통합합니다.",

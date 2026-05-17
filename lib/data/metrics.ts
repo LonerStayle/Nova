@@ -9,37 +9,37 @@
 export type DeltaTrend = "up" | "down" | "neutral";
 
 export interface Metric {
+  id: "mmlu" | "humanEval" | "math";
   label: string;
   value: string;
   unit?: string;
   delta?: string;
   deltaTrend?: DeltaTrend;
-  caption?: string;
 }
 
 export const homepageMetrics: readonly Metric[] = [
   {
+    id: "mmlu",
     label: "MMLU (5-shot)",
     value: "92.4",
     unit: "%",
     delta: "+4.1",
     deltaTrend: "up",
-    caption: "vs. previous frontier generation",
   },
   {
+    id: "humanEval",
     label: "HumanEval (pass@1)",
     value: "87.3",
     unit: "%",
     delta: "+5.8",
     deltaTrend: "up",
-    caption: "Python coding benchmark",
   },
   {
+    id: "math",
     label: "MATH (500 problems)",
     value: "65.2",
     unit: "%",
     delta: "+2.9",
     deltaTrend: "up",
-    caption: "Competition-level mathematics",
   },
 ] as const;
