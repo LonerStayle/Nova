@@ -17,6 +17,7 @@ const navItems = [
   { href: "/capabilities", labelKey: "capabilities" },
   { href: "/architecture", labelKey: "architecture" },
   { href: "/security", labelKey: "security" },
+  { href: "/docs", labelKey: "docs" },
   { href: "/about", labelKey: "about" },
 ] as const;
 

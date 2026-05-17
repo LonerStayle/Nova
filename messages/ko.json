@@ -5,6 +5,8 @@
     "capabilities": "능력",
     "architecture": "아키텍처",
     "security": "보안",
+    "docs": "개발 문서",
+    "careers": "합류하기",
     "about": "회사 소개",
     "skipToMain": "본문으로 건너뛰기",
     "openMenu": "메뉴 열기",
@@ -656,6 +658,36 @@
       "paragraph1": "실존하는 어떤 기업·인물·제품·논문·평가 결과와도 무관합니다. 모든 팀 멤버는 가공 인물이며, 모든 파트너는 placeholder 이거나 가공이고, 모든 성능 수치는 조작된 것이며, 모든 \"특허\" · \"인증\" 표기는 풍자입니다.",
       "paragraph2": "이 사이트를 진짜 AI 연구소라고 생각하셨다면 — 농담을 발견하신 겁니다. 작품에 참여해 주셔서 감사합니다.",
       "altLanguageNote": "All content on this site is a parody work satirizing the launch tone and benchmark chart conventions of the AI industry. No real company, person, product, paper, or evaluation result is referenced."
+    }
+  },
+  "docs": {
+    "metaDescription": "{model} 개발 문서 — 퀵스타트, API 레퍼런스, 스트리밍, 툴 사용, 모델, 사용량 제한, 인증, 에러 코드.",
+    "hero": {
+      "eyebrow": "개발 문서",
+      "title": "{model} 으로 만드세요.",
+      "description": "퀵스타트, API 레퍼런스, 스트리밍, 툴 사용 — 프로덕션 통합에 필요한 모든 것. 아래 내용은 모두 동작한다는 전제로 작성되어 있습니다.",
+      "ctaQuickstart": "퀵스타트",
+      "ctaApi": "API 레퍼런스",
+      "version": "API v1 · 2026.05 업데이트",
+      "footnote": "{company} OpenAPI 스펙에서 자동 생성 — 가공의 CI 봇이 2026-05-18 03:47 KST 에 마지막으로 재생성."
+    },
+    "sidebar": {
+      "label": "문서",
+      "groups": {
+        "gettingStarted": "시작하기",
+        "core": "Core API",
+        "platform": "플랫폼"
+      },
+      "sections": {
+        "quickstart": "퀵스타트",
+        "apiReference": "API 레퍼런스",
+        "streaming": "스트리밍",
+        "toolUse": "툴 사용",
+        "models": "모델",
+        "rateLimits": "사용량 제한",
+        "authentication": "인증",
+        "errors": "에러 코드"
+      }
     }
   }
 }
