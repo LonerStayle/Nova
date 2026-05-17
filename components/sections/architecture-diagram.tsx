@@ -1,20 +1,26 @@
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { ChevronDown } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
 import { Pill } from "@/components/ui/pill";
 import { cn } from "@/lib/utils";
-import { archLayers } from "@/lib/data/architecture";
+import type { ArchLayer } from "@/lib/data/architecture";
 
-export function ArchitectureDiagram() {
+interface ArchitectureDiagramProps {
+  layers: readonly ArchLayer[];
+}
+
+export function ArchitectureDiagram({ layers }: ArchitectureDiagramProps) {
+  const t = useTranslations("architecture");
   return (
     <div className="mx-auto max-w-4xl">
       <ol className="space-y-3">
-        {archLayers.map((layer, index) => {
+        {layers.map((layer, index) => {
           const Icon = layer.icon;
-          const isLast = index === archLayers.length - 1;
+          const isLast = index === layers.length - 1;
           return (
-            <React.Fragment key={layer.level}>
+            <React.Fragment key={layer.id}>
               <li>
                 <Card
                   className={cn(
@@ -48,7 +54,9 @@ export function ArchitectureDiagram() {
                         <h3 className="text-xl font-semibold tracking-tight">
                           {layer.name}
                         </h3>
-                        <Pill variant="mono">Layer {layer.level}</Pill>
+                        <Pill variant="mono">
+                          {t("layerLabel", { level: layer.level })}
+                        </Pill>
                       </div>
                       <p className="mt-1 text-sm text-muted-foreground">
                         {layer.tagline}

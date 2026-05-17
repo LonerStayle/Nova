@@ -1,14 +1,27 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 
 import { brand } from "@/lib/brand";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ArchitectureDiagram } from "@/components/sections/architecture-diagram";
+import {
+  archLayerIds,
+  archLayerMeta,
+  type ArchLayer,
+} from "@/lib/data/architecture";
 
-export const metadata: Metadata = {
-  title: "Architecture",
-  description: `${brand.company.name} Multi-Agent · AgentOS · Harness · Orchestration — frontier-grade agentic systems architecture.`,
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "architecture" });
+  return {
+    title: t("title"),
+    description: t("metaDescription", { company: brand.company.name }),
+  };
+}
 
 export default async function ArchitecturePage({
   params,
@@ -17,27 +30,49 @@ export default async function ArchitecturePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("architecture");
+  const tLayers = await getTranslations("architecture.layers");
+  const tPatents = await getTranslations("architecture.patents");
+
+  const layers: readonly ArchLayer[] = archLayerIds.map((id) => {
+    const meta = archLayerMeta[id];
+    const components = meta.componentKeys.map((key) => ({
+      name: tLayers(`${id}.components.${key}.name`),
+      description: tLayers(`${id}.components.${key}.description`),
+    }));
+    return {
+      id,
+      level: meta.level,
+      icon: meta.icon,
+      accent: meta.accent,
+      name: tLayers(`${id}.name`),
+      tagline: tLayers(`${id}.tagline`),
+      description: tLayers(`${id}.description`, {
+        model: brand.model.flagship,
+      }),
+      components,
+    };
+  });
 
   return (
     <main className="container mx-auto px-6 py-24">
       <SectionHeading
         as="h1"
-        eyebrow="System Architecture"
-        title="A four-layer agentic system."
-        description="Orchestration → Multi-Agent → AgentOS → Harness — each layer purpose-built for frontier-grade reasoning, observability, and safety."
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        description={t("description")}
       />
 
       <div className="mt-16">
-        <ArchitectureDiagram />
+        <ArchitectureDiagram layers={layers} />
       </div>
 
       <div className="mx-auto mt-20 max-w-3xl text-center">
         <p className="font-mono text-xs uppercase tracking-widest2 text-muted-foreground">
-          Patents &amp; Whitepapers
+          {tPatents("eyebrow")}
         </p>
         <p className="mt-3 text-sm text-muted-foreground">
-          18 patents filed across KR · US · PCT jurisdictions — whitepaper
-          series available on request.
+          {tPatents("body")}
         </p>
       </div>
     </main>

@@ -183,6 +183,119 @@
       }
     }
   },
+  "architecture": {
+    "metaDescription": "{company} Multi-Agent · AgentOS · Harness · Orchestration — frontier-grade agentic systems architecture.",
+    "eyebrow": "System Architecture",
+    "title": "A four-layer agentic system.",
+    "description": "Orchestration → Multi-Agent → AgentOS → Harness — each layer purpose-built for frontier-grade reasoning, observability, and safety.",
+    "layerLabel": "Layer {level}",
+    "patents": {
+      "eyebrow": "Patents & Whitepapers",
+      "body": "18 patents filed across KR · US · PCT jurisdictions — whitepaper series available on request."
+    },
+    "layers": {
+      "orchestration": {
+        "name": "Orchestration",
+        "tagline": "Frontier-grade request routing & response synthesis",
+        "description": "Receives raw user input, decomposes it into structured sub-goals, dispatches across specialized agents, and synthesizes a coherent final response — all under a single streaming envelope.",
+        "components": {
+          "router": {
+            "name": "Request Router",
+            "description": "Intent classification → agent selection"
+          },
+          "decomposer": {
+            "name": "Plan Decomposer",
+            "description": "Goal → DAG of sub-tasks"
+          },
+          "synthesizer": {
+            "name": "Response Synthesizer",
+            "description": "Streams unified output across agents"
+          },
+          "telemetry": {
+            "name": "Telemetry Stream",
+            "description": "OpenTelemetry trace export"
+          }
+        }
+      },
+      "multiAgent": {
+        "name": "Multi-Agent",
+        "tagline": "Role-specialized agent ensemble",
+        "description": "Constellation of role-specialized agents that operate in parallel and consensus. Each agent has its own context window, tool set, and constitutional policy.",
+        "components": {
+          "researcher": {
+            "name": "Researcher Agent",
+            "description": "Long-context retrieval + synthesis"
+          },
+          "coder": {
+            "name": "Coder Agent",
+            "description": "Repository-aware code generation"
+          },
+          "critic": {
+            "name": "Critic Agent",
+            "description": "Self-correction + adversarial verification"
+          },
+          "planner": {
+            "name": "Planner Agent",
+            "description": "Multi-step task decomposition"
+          },
+          "toolUser": {
+            "name": "Tool-User Agent",
+            "description": "Parallel function-calling executor"
+          }
+        }
+      },
+      "agentOs": {
+        "name": "AgentOS",
+        "tagline": "Proprietary agent scheduling, memory & state",
+        "description": "The operating system layer beneath the agents. Handles process isolation, persistent memory, cross-agent IPC, and observability — all on top of a constitutional safety substrate.",
+        "components": {
+          "scheduler": {
+            "name": "Scheduler",
+            "description": "Fair-share + priority queues"
+          },
+          "memory": {
+            "name": "Memory Store",
+            "description": "Episodic · semantic · working"
+          },
+          "ipc": {
+            "name": "Agent IPC",
+            "description": "Strongly-typed message passing"
+          },
+          "state": {
+            "name": "State Manager",
+            "description": "Checkpoint / replay / fork"
+          },
+          "observability": {
+            "name": "Observability",
+            "description": "Distributed tracing → OTel"
+          }
+        }
+      },
+      "harness": {
+        "name": "Harness",
+        "tagline": "Model inference, sandboxing & safety substrate",
+        "description": "The base substrate that runs the {model} foundation model. Handles tokenization, KV-cache, attention computation, and every safety guardrail before output reaches L2.",
+        "components": {
+          "runtime": {
+            "name": "Inference Runtime",
+            "description": "Custom kernel · FP8 · KV-cache"
+          },
+          "sandbox": {
+            "name": "Sandbox",
+            "description": "WASM-isolated tool execution"
+          },
+          "guardrails": {
+            "name": "Safety Guardrails",
+            "description": "Pre-output constitutional checks"
+          },
+          "streamer": {
+            "name": "Token Streamer",
+            "description": "Backpressure-aware streaming"
+          }
+        }
+      }
+    }
+  },
   "about": {
     "eyebrow": "About",
     "heroDescription": "Building frontier-grade AI from Seoul — multimodal reasoning, agentic workflows, and constitutional safety as one integrated stack.",

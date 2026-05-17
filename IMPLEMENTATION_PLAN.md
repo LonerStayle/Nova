@@ -78,7 +78,7 @@
 - [x] 6.6 — LocaleToggle 컴포넌트 (헤더 우측 KR/EN, cookie 저장 + replace)
 - [x] 6.7a — KeyMetrics 본문 + Benchmarks 페이지 (SectionHeading + 4 chart card 의 title/subtitle/caption) 메시지 추출 — homepageMetrics 에 id 추가 + caption 분리 / benchmarks.charts 4 chart caption 한·영 모두 dry humor 보존 (`Hard to lose a benchmark you invented` / `자기가 만든 벤치마크에서 지긴 어렵죠` / "back-fitted" 풍자)
 - [x] 6.7b — Capabilities 페이지 (SectionHeading + 5 capability card 의 category/name/description + specs label) 메시지 추출 — `lib/data/capabilities.ts` 를 id/icon/numeric value 만 노출하도록 재구성 + `capabilities.cards.<id>` messages 한·영. 페이지에서 spec key 순서대로 label 을 lookup 하여 CapabilityCard 에 주입.
-- [ ] 6.7c — Architecture 페이지 (SectionHeading + 4 layer 의 name/tagline/description + components + Patents & Whitepapers 텍스트) 메시지 추출
+- [x] 6.7c — Architecture 페이지 (SectionHeading + 4 layer 의 name/tagline/description + components + Patents & Whitepapers 텍스트) 메시지 추출 — `lib/data/architecture.ts` 를 id/level/icon/accent/componentKeys 만 보유하도록 재구성 + `architecture.layers.<id>` messages 한·영. `ArchitectureDiagram` 을 layers prop 받는 presentational 로 변환, 페이지에서 localized 배열 빌드 후 주입.
 - [ ] 6.7d — Security 페이지 (SectionHeading + 4 section 의 category/tagline/description + metrics label + Model Card 텍스트) 메시지 추출
 - [ ] 6.8 — DemoWidget UI + sampleQueries + 에러 메시지 + 차트 axis/legend 한·영 분리
 - [ ] 6.9 — `public/data/qa.ko.json` 200 entries 한국어 번역 작성 (ralph 자동) + `qa.en.json` 으로 이름 변경 + retrieval(bm25/hybrid) 의 locale prop + `embeddings.{ko,en}.json` 분리 로딩

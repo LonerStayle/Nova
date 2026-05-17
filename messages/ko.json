@@ -183,6 +183,119 @@
       }
     }
   },
+  "architecture": {
+    "metaDescription": "{company} 의 Multi-Agent · AgentOS · Harness · Orchestration — 프론티어급 에이전트 시스템 아키텍처.",
+    "eyebrow": "시스템 아키텍처",
+    "title": "4 레이어 에이전트 시스템.",
+    "description": "Orchestration → Multi-Agent → AgentOS → Harness — 각 레이어가 프론티어급 추론·관측성·안전성을 위해 목적 설계.",
+    "layerLabel": "Layer {level}",
+    "patents": {
+      "eyebrow": "특허 · 백서",
+      "body": "KR · US · PCT 관할 18개 특허 출원 — 백서 시리즈는 요청 시 제공."
+    },
+    "layers": {
+      "orchestration": {
+        "name": "Orchestration",
+        "tagline": "프론티어급 요청 라우팅 · 응답 합성",
+        "description": "사용자 raw 입력을 받아 구조화된 sub-goal 로 분해, 전문 에이전트들에게 dispatch 한 뒤 단일 스트리밍 envelope 안에서 최종 응답을 합성합니다.",
+        "components": {
+          "router": {
+            "name": "Request Router",
+            "description": "의도 분류 → 에이전트 선택"
+          },
+          "decomposer": {
+            "name": "Plan Decomposer",
+            "description": "Goal → sub-task DAG"
+          },
+          "synthesizer": {
+            "name": "Response Synthesizer",
+            "description": "여러 에이전트 출력을 통합 스트리밍"
+          },
+          "telemetry": {
+            "name": "Telemetry Stream",
+            "description": "OpenTelemetry 트레이스 내보내기"
+          }
+        }
+      },
+      "multiAgent": {
+        "name": "Multi-Agent",
+        "tagline": "역할 특화 에이전트 앙상블",
+        "description": "병렬·합의로 동작하는 역할 특화 에이전트 군집. 각 에이전트는 자체 컨텍스트 윈도우·도구셋·constitutional 정책을 가집니다.",
+        "components": {
+          "researcher": {
+            "name": "Researcher Agent",
+            "description": "롱컨텍스트 retrieval + 합성"
+          },
+          "coder": {
+            "name": "Coder Agent",
+            "description": "저장소 인식 코드 생성"
+          },
+          "critic": {
+            "name": "Critic Agent",
+            "description": "자가 교정 + 적대적 검증"
+          },
+          "planner": {
+            "name": "Planner Agent",
+            "description": "다단계 작업 분해"
+          },
+          "toolUser": {
+            "name": "Tool-User Agent",
+            "description": "병렬 함수 호출 실행기"
+          }
+        }
+      },
+      "agentOs": {
+        "name": "AgentOS",
+        "tagline": "자체 에이전트 스케줄링 · 메모리 · 상태",
+        "description": "에이전트 아래에 깔린 운영체제 레이어. 프로세스 격리·영구 메모리·에이전트 간 IPC·관측성을 constitutional 안전 substrate 위에서 처리합니다.",
+        "components": {
+          "scheduler": {
+            "name": "Scheduler",
+            "description": "Fair-share + 우선순위 큐"
+          },
+          "memory": {
+            "name": "Memory Store",
+            "description": "에피소딕 · 시맨틱 · 워킹"
+          },
+          "ipc": {
+            "name": "Agent IPC",
+            "description": "강타입 메시지 전달"
+          },
+          "state": {
+            "name": "State Manager",
+            "description": "체크포인트 / 리플레이 / 포크"
+          },
+          "observability": {
+            "name": "Observability",
+            "description": "분산 트레이싱 → OTel"
+          }
+        }
+      },
+      "harness": {
+        "name": "Harness",
+        "tagline": "모델 추론·샌드박스·안전 substrate",
+        "description": "{model} 파운데이션 모델이 동작하는 기반 substrate. 토큰화·KV-cache·어텐션 계산·모든 안전 가드레일을 L2 출력 도달 전에 처리합니다.",
+        "components": {
+          "runtime": {
+            "name": "Inference Runtime",
+            "description": "커스텀 커널 · FP8 · KV-cache"
+          },
+          "sandbox": {
+            "name": "Sandbox",
+            "description": "WASM 격리 도구 실행"
+          },
+          "guardrails": {
+            "name": "Safety Guardrails",
+            "description": "출력 전 constitutional 검증"
+          },
+          "streamer": {
+            "name": "Token Streamer",
+            "description": "백프레셔 인식 스트리밍"
+          }
+        }
+      }
+    }
+  },
   "about": {
     "eyebrow": "회사 소개",
     "heroDescription": "서울에서 만드는 프론티어급 AI — 멀티모달 추론·에이전트 워크플로·constitutional 안전성을 단일 스택으로 통합합니다.",
