@@ -85,7 +85,35 @@
 - [x] 6.9b — `public/data/qa.ko.json` 200 entries 한국어 번역 — 9 카테고리 모두 (m/b/c/a/s/p/t/u/e/f) 한국어 작성 완료. ID 200 unique 유지, 고유명사(Nexora·Nexora-1·AgentOS·MMLU 등) 보존, 수치 그대로, keywords 도 한·영 mix 로 번역. 풍자 톤(Multi-Agent 가 길 건넌 농담 등) 유지.
 - [x] 6.10 — `scripts/precompute-embeddings.mjs` 의 locale 별 처리 + Voyage 한국어 dataset 임베딩 사전계산. `--locale en|ko|all` CLI 인자 (기본=all 둘 다 처리), `qa.{locale}.json` 읽고 `embeddings.{locale}.json` 출력. en+ko 합쳐도 ~6,000 tokens, Voyage 200M 무료 한도 안. 실제 임베딩 사전계산은 대표님이 `VOYAGE_API_KEY` 가 있는 환경에서 `npm run precompute:embeddings` 1회 실행 — 부재 시 hybrid retrieval 이 graceful BM25-only fallback (이미 6.9a 구현).
 - [x] 6.11 — `app/sitemap.ts` 의 locale 별 URL 양산 (이미 6.5 commit 에서 완료, languages alternates 포함) + 페이지별 `opengraph-image.tsx` locale 분기 (root + 5 페이지 모두 params.locale 받아서 eyebrow/title/description 한·영 분기) + `lib/brand.ts` 정리 (Hero/Footer/Mission 등이 messages 사용하므로 미사용 한국어 fields — company.nameKr·legalNameKr·tagline.secondaryKr·model.description·descriptionKr·model.series·model.releaseDate·disclosure 전체·typography·company.founded 미사용은 모두 제거, OG 가 직접 참조하는 fallback fields 만 유지)
-- [x] 6.12 — 풍자 톤 한·영 양방향 점검 + 검증. typecheck/lint/build 모두 exit 0. messages 키 262개 양 locale 완전 일치 (zero asymmetry), qa.{en,ko}.json 200 entries ID 일대일 매핑. 풍자 톤 양방향 보존: 404 "doesn't exist / 사실 이 사이트의 대부분도", TrustedBy "None of these companies are real / 이 회사들은 모두 가짜", Benchmarks "back-fitted, we promise / 역산하지 않았습니다 정말로요" + "Hard to lose a benchmark you invented / 자기가 만든 벤치마크에서 지긴 어렵죠", About "(the part where we come clean) / (솔직히 말하는 부분)", footer build "fictional / 가공", 404 secondary "Why am I here? / 왜 여기로 왔지?". 4 viewport × 2 locale × 6 페이지 = 48 조합 build 시점 SSG 통과. Lighthouse 실제 측정은 대표님 배포 환경.
+- [x] 6.12 — 풍자 톤 한·영 양방향 점검 + 검증. ralph PROJECT_DONE.
+
+### Phase 7 — Home 페이지 콘텐츠 확장 (대표님 추가 요구사항, 2026-05-17)
+
+> 대표님 피드백: "홈화면 내용이 좀 길어야되는데 너무 짧아".
+> 현재 4 섹션 (Hero / KeyMetrics / TrustedBy / DemoWidget) 만으로는 한국 AI 출시 사이트
+> 톤을 모방하기에 부족. 압도적 길이 + 풍자 완성도 유지하며 추가 섹션.
+>
+> **mandate** (ralph 가 자율 진행 시 따를 원칙):
+> - 한국 AI 업계 출시 사이트 (Upstage·Naver HyperCLOVA·LG EXAONE·KT Mi:dm·Kakao 등) 의 톤·구성·시각 문법을 모방
+> - CLAUDE.md §5 금지 (실존 회사 직접 모사) 절대 준수 — 톤만 차용
+> - 새 컴포넌트는 모두 한·영 messages 분리 (en/ko.json 양쪽 동시)
+> - 풍자 코드 자연스럽게 분산 (HANDOFF-i18n.md §6 dry humor 패턴 유지)
+> - 가공 수치는 그럴듯하면서도 발견 시 농담임이 드러나는 수준 (예: 10경 params, 50 PB corpus 등 이미 박힌 라인 활용)
+> - 페이지 개수 cap = 6 (CLAUDE.md §7) 유지 — Home 안에서만 섹션 추가, 새 라우트 추가 금지
+
+- [ ] 7.1 — Plan 보강: 추가할 섹션 목록·순서·sub-task 세분화. 후보 (ralph 가 1~2 차례 자율 큐레이션):
+        (a) "What is Nexora-1?" 모델 소개 + 4 핵심 능력 mini card
+        (b) Big-numbers / Stats 시각 강조 ("10경 params · 200K · 92.4 MMLU · 5,000 H100")
+        (c) Architecture teaser (4 layer mini → Architecture 페이지 link)
+        (d) Benchmark teaser (BenchmarkBarChart 또는 ParetoScatter 한 개 + caption)
+        (e) Use cases gallery (5~6 가공 use case 카드)
+        (f) Press / mentions (가공 매체 인용 — 실존 매체 직접 모사 금지)
+        (g) Timeline / Roadmap (분기별 진화 — TimelineChart 재활용 or mini)
+        (h) Korean-first messaging band (한국어 first 강조 띠)
+        (i) Final CTA section (Demo + Docs + Careers 3-CTA)
+        → 위 중 6~8개 선택, sub-task 로 분할. 풍자 톤 점검도 각 sub-task 에 포함.
+- [ ] 7.2~7.N — 7.1 plan 보강 결과에 따라 ralph 가 sub-task 추가 → 순차 진행
+- [ ] 7.Z — 풍자 톤 + 한·영 메시지 parity + lint/typecheck/build 모두 exit 0 → `<promise>PROJECT_DONE</promise>` typecheck/lint/build 모두 exit 0. messages 키 262개 양 locale 완전 일치 (zero asymmetry), qa.{en,ko}.json 200 entries ID 일대일 매핑. 풍자 톤 양방향 보존: 404 "doesn't exist / 사실 이 사이트의 대부분도", TrustedBy "None of these companies are real / 이 회사들은 모두 가짜", Benchmarks "back-fitted, we promise / 역산하지 않았습니다 정말로요" + "Hard to lose a benchmark you invented / 자기가 만든 벤치마크에서 지긴 어렵죠", About "(the part where we come clean) / (솔직히 말하는 부분)", footer build "fictional / 가공", 404 secondary "Why am I here? / 왜 여기로 왔지?". 4 viewport × 2 locale × 6 페이지 = 48 조합 build 시점 SSG 통과. Lighthouse 실제 측정은 대표님 배포 환경.
 
 ---
 
