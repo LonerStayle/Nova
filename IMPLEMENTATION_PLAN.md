@@ -26,7 +26,7 @@
 - [x] 상단 네비게이션 컴포넌트 — Home / Benchmarks / Capabilities / Architecture / Security / About 6 라우트. mobile 햄버거 메뉴 포함
 - [x] 푸터 컴포넌트 — 가공 회사 정보 + 패러디 disclosure 한 줄 (CLAUDE.md §3 옵션 A 톤). copyright / nav mirror / 소셜 더미 링크
 - [x] 디자인 토큰 system — Tailwind `theme.extend` 에 color/typography/spacing/radii 정의 + CSS variables (light/dark 모드 모두). "프로덕션급 이상" 시각 톤
-- [ ] 공용 UI primitives — `<SectionHeading>`, `<MetricCard>`, `<Badge>`, `<Callout>`, `<CodeBlock>`, `<Pill>` 등 페이지간 재사용 컴포넌트
+- [x] 공용 UI primitives — `<SectionHeading>`, `<MetricCard>`, `<Badge>`, `<Callout>`, `<CodeBlock>`, `<Pill>` 등 페이지간 재사용 컴포넌트 (Badge 는 shadcn 정본 이미 존재 — section-heading / metric-card / callout / code-block / pill 5종 신규)
 - [x] (iter 11) 전역 메타데이터 자산 — `app/icon.tsx` (32x32 favicon) + `app/apple-icon.tsx` (180x180) + `app/opengraph-image.tsx` (1200x630 hero) — next/og ImageResponse 동적 생성, brand 그라데이션 + 회사명 + tagline 일관. Phase 4 의 페이지별 OG customize 의 전제.
 
 ### Phase 2 — 페이지 콘텐츠 (각 1 task)
