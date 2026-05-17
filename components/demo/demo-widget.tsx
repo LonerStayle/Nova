@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Loader2, RotateCw, Send, Sparkles, X } from "lucide-react";
 
 import { brand } from "@/lib/brand";
@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Pill } from "@/components/ui/pill";
 import { cn } from "@/lib/utils";
 import { hybridRetrieve } from "@/lib/retrieval/hybrid";
+import type { Locale } from "@/lib/retrieval/bm25";
 
 const SAMPLE_QUERY_KEYS = ["mmlu", "agentos", "constitutional"] as const;
 
@@ -40,6 +41,7 @@ const INITIAL_STATE: DemoState = {
 export function DemoWidget() {
   const t = useTranslations("demo");
   const tSample = useTranslations("demo.sampleQueries");
+  const locale = useLocale() as Locale;
   const [state, setState] = React.useState<DemoState>(INITIAL_STATE);
   const [input, setInput] = React.useState("");
   const [toast, setToast] = React.useState<string | null>(null);
@@ -64,7 +66,7 @@ export function DemoWidget() {
         mode: null,
       });
       try {
-        const result = await hybridRetrieve(query);
+        const result = await hybridRetrieve(query, locale);
         if (!result) {
           const message = t("noResult");
           setState({
@@ -96,7 +98,7 @@ export function DemoWidget() {
         setToast(message);
       }
     },
-    [t],
+    [t, locale],
   );
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
