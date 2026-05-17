@@ -1,7 +1,7 @@
 import { Hero } from "@/components/sections/hero";
 import { KeyMetrics } from "@/components/sections/key-metrics";
 import { TrustedBy } from "@/components/sections/trusted-by";
-import { DemoEntrypoint } from "@/components/sections/demo-entrypoint";
+import { DemoWidget } from "@/components/demo/demo-widget";
 
 export default function HomePage() {
   return (
@@ -9,7 +9,7 @@ export default function HomePage() {
       <Hero />
       <KeyMetrics />
       <TrustedBy />
-      <DemoEntrypoint />
+      <DemoWidget />
     </>
   );
 }
