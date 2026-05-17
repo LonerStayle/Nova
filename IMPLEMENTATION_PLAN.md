@@ -82,7 +82,7 @@
 - [x] 6.7d — Security 페이지 (SectionHeading + 4 section 의 category/tagline/description + metrics label + Model Card 텍스트) 메시지 추출 — `lib/data/security.ts` 를 id/icon/metricKeys/values + safetyDataIds/values 만 보유하도록 재구성 + `security.sections.<id>` / `security.safetyChart.{categories,legend,...}` / `security.modelCard` messages 한·영. `SafetyEvaluationChart` 를 data+legend prop 받는 presentational 로 변환.
 - [x] 6.8 — DemoWidget UI + sampleQueries + 에러 메시지 + 차트 axis/legend 한·영 분리 — DemoWidget 전체 UI(eyebrow/heading/description/placeholder/sample 3개/queryLabel/reset/loading/error/mode 캡션/askAgain/toast) 한·영. TimelineChart/CapabilityRadar/ParetoScatter 모두 legend+labels prop 받는 presentational 로 변환. BenchmarkBarChart 는 모델명만 사용해서 변경 없음.
 - [x] 6.9a — retrieval 인프라 locale 분리 — `qa.json` → `qa.en.json` 이름 변경 + `qa.ko.json` placeholder (영문 fallback) + `bm25.ts` 가 locale prop / locale 별 corpus 메모이즈 + `hybrid.ts` 가 locale prop / `embeddings.{ko,en}.json` URL 분기 + demo-widget 이 `useLocale()` 호출해서 전달. ko locale 도 build 통과 (현재는 데모 위젯 응답이 ko/en 모두 영문 — 6.9b 에서 ko dataset 번역)
-- [ ] 6.9b — `public/data/qa.ko.json` 200 entries 한국어 번역 (ralph 자동, chunk 단위로 진행. 풍자 톤 보존 — Nexora 고유명사 유지)
+- [x] 6.9b — `public/data/qa.ko.json` 200 entries 한국어 번역 — 9 카테고리 모두 (m/b/c/a/s/p/t/u/e/f) 한국어 작성 완료. ID 200 unique 유지, 고유명사(Nexora·Nexora-1·AgentOS·MMLU 등) 보존, 수치 그대로, keywords 도 한·영 mix 로 번역. 풍자 톤(Multi-Agent 가 길 건넌 농담 등) 유지.
 - [ ] 6.10 — `scripts/precompute-embeddings.mjs` 의 locale 별 처리 + Voyage 한국어 dataset 임베딩 사전계산
 - [ ] 6.11 — `app/sitemap.ts` 의 locale 별 URL 양산 + 페이지별 `opengraph-image.tsx` locale 분기 + brand.ts 의 한·영 필드 정리
 - [ ] 6.12 — 풍자 톤 한·영 양방향 점검 (HANDOFF-i18n.md §6) + 4 viewport × 2 locale 검증 + lint/typecheck/build/Lighthouse 모두 exit 0 → `<promise>PROJECT_DONE</promise>`
