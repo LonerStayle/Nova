@@ -29,11 +29,11 @@ export const benchmarkScores = [
   },
   {
     benchmark: "HumanEval",
-    "Nexora-1": 87.3,
-    "Apex-7": 82.5,
-    "Quasar-3": 79.1,
-    "Lumera-X": 80.3,
-    "Aetheron-Pro": 75.6,
+    "Nexora-1": 94.1,
+    "Apex-7": 89.2,
+    "Quasar-3": 86.4,
+    "Lumera-X": 84.7,
+    "Aetheron-Pro": 81.3,
   },
   {
     benchmark: "GSM8K",
@@ -45,11 +45,11 @@ export const benchmarkScores = [
   },
   {
     benchmark: "MATH",
-    "Nexora-1": 65.2,
-    "Apex-7": 58.7,
-    "Quasar-3": 54.3,
-    "Lumera-X": 52.1,
-    "Aetheron-Pro": 49.8,
+    "Nexora-1": 85.4,
+    "Apex-7": 80.1,
+    "Quasar-3": 76.3,
+    "Lumera-X": 72.5,
+    "Aetheron-Pro": 68.7,
   },
   {
     benchmark: "AGIEval",

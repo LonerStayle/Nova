@@ -29,17 +29,17 @@ export const homepageMetrics: readonly Metric[] = [
   {
     id: "humanEval",
     label: "HumanEval (pass@1)",
-    value: "87.3",
+    value: "94.1",
     unit: "%",
-    delta: "+5.8",
+    delta: "+6.8",
     deltaTrend: "up",
   },
   {
     id: "math",
     label: "MATH (500 problems)",
-    value: "65.2",
+    value: "85.4",
     unit: "%",
-    delta: "+2.9",
+    delta: "+7.4",
     deltaTrend: "up",
   },
 ] as const;

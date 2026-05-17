@@ -486,7 +486,7 @@
           "quarter": "2026 Q3",
           "status": "planned",
           "title": "Nexora-1 Ultra 출시",
-          "description": "장기 에이전트 티어. AgentEval Pro 목표 86.4%."
+          "description": "장기 에이전트 티어. AgentEval Pro 목표 94.1%."
         },
         "q4_2026": {
           "quarter": "2026 Q4",
@@ -543,7 +543,7 @@
         },
         "code": {
           "name": "코드 리뷰",
-          "description": "Coder Agent 통해 저장소 인식. SWE-Bench Verified 64.1% — 시니어 엔지니어 수준."
+          "description": "Coder Agent 통해 저장소 인식. SWE-Bench Verified 82.4% — 시니어 엔지니어 수준."
         },
         "data": {
           "name": "데이터 분석",

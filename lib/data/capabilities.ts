@@ -91,14 +91,14 @@ export const capabilitySpecValues: Record<
 > = {
   multimodal: {
     modalities: "Text · Image · Audio · Video",
-    imageRes: "up to 2048 × 2048",
-    videoLen: "up to 60 min",
-    audioCtx: "up to 4 hr",
-    chartDoc: "91.3% / 88.7%",
+    imageRes: "up to 4096 × 4096",
+    videoLen: "up to 180 min",
+    audioCtx: "up to 12 hr",
+    chartDoc: "91.3% / 93.4%",
   },
   context: {
     window: "3,000,000 tokens",
-    output: "32,000 tokens",
+    output: "64,000 tokens",
     needle: "99.4%",
     reasoning100k: "87.8%",
     streaming: "available",
@@ -106,14 +106,14 @@ export const capabilitySpecValues: Record<
   tools: {
     functionCalling: "native",
     outputSchemas: "JSON · XML · YAML",
-    parallelCalls: "up to 16",
+    parallelCalls: "up to 32",
     selectionAcc: "94.2%",
     errorRecovery: "88.6%",
   },
   code: {
     languages: "80+",
-    humanEval: "87.3%",
-    sweBench: "64.1%",
+    humanEval: "94.1%",
+    sweBench: "82.4%",
     multiPL: "79.4%",
     repoContext: "up to 3M tok",
   },
@@ -122,7 +122,7 @@ export const capabilitySpecValues: Record<
     selfCorrection: "enabled",
     planRevision: "avg 2.3",
     longHorizon: "73.1%",
-    agentEval: "81.7%",
+    agentEval: "90.2%",
   },
   scale: {
     params: "10¹⁷ (~100 quadrillion)",

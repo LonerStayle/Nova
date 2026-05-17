@@ -486,7 +486,7 @@
           "quarter": "2026 Q3",
           "status": "planned",
           "title": "Nexora-1 Ultra rollout",
-          "description": "Long-horizon agentic tier. AgentEval Pro target: 86.4%."
+          "description": "Long-horizon agentic tier. AgentEval Pro target: 94.1%."
         },
         "q4_2026": {
           "quarter": "2026 Q4",
@@ -543,7 +543,7 @@
         },
         "code": {
           "name": "Code review",
-          "description": "Repository-aware via the Coder Agent. SWE-Bench Verified 64.1% — senior-engineer territory."
+          "description": "Repository-aware via the Coder Agent. SWE-Bench Verified 82.4% — senior-engineer territory."
         },
         "data": {
           "name": "Data analysis",
