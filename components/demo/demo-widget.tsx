@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Pill } from "@/components/ui/pill";
 import { cn } from "@/lib/utils";
+import { hybridRetrieve } from "@/lib/retrieval/hybrid";
 
 const sampleQueries = [
   `What is ${brand.model.flagship}'s MMLU score?`,
@@ -17,11 +18,14 @@ const sampleQueries = [
 
 type DemoStatus = "idle" | "loading" | "success" | "error";
 
+type RetrievalMode = "hybrid" | "bm25-only";
+
 interface DemoState {
   status: DemoStatus;
   query: string;
   answer: string | null;
   error: string | null;
+  mode: RetrievalMode | null;
 }
 
 const INITIAL_STATE: DemoState = {
@@ -29,32 +33,8 @@ const INITIAL_STATE: DemoState = {
   query: "",
   answer: null,
   error: null,
+  mode: null,
 };
-
-/**
- * 임시 mock retrieval — Phase 3 후속 task 들에서 hybrid retrieval (BM25 60% + voyage-4 임베딩 40%) 로 교체.
- * 지금은 keyword 매칭으로 sample 응답만 반환.
- */
-async function mockRetrieve(query: string): Promise<string> {
-  await new Promise((resolve) => setTimeout(resolve, 750));
-
-  const q = query.toLowerCase();
-  if (q.includes("mmlu") || q.includes("score") || q.includes("benchmark")) {
-    return `${brand.model.flagship} achieves 92.4% on MMLU (5-shot) — a +4.1 point improvement over the previous frontier generation. See the Benchmarks page for the full evaluation suite.`;
-  }
-  if (q.includes("agentos") || q.includes("schedule") || q.includes("multi-step")) {
-    return `AgentOS is the L2 layer of our stack. It handles fair-share scheduling across role-specialized agents, episodic/semantic/working memory, strongly-typed agent IPC, and OpenTelemetry-compatible distributed tracing — all on top of a constitutional safety substrate.`;
-  }
-  if (
-    q.includes("constitutional") ||
-    q.includes("safety") ||
-    q.includes("alignment")
-  ) {
-    return `Constitutional safety is enforced at every layer of the stack — pre-output guardrails in the Harness, critic-agent verification in the Multi-Agent layer, and explicit refusal policies in the Orchestration layer. Refusal accuracy is 96.4% on the internal Safety Suite v3.2.`;
-  }
-
-  return `[Mock response] Hybrid retrieval (keyword 60% + embedding 40%) will be wired up in a follow-up iter. For now, echoing: "${query}"`;
-}
 
 export function DemoWidget() {
   const [state, setState] = React.useState<DemoState>(INITIAL_STATE);
@@ -63,16 +43,39 @@ export function DemoWidget() {
   const submit = React.useCallback(async (rawQuery: string) => {
     const query = rawQuery.trim();
     if (!query) return;
-    setState({ status: "loading", query, answer: null, error: null });
+    setState({
+      status: "loading",
+      query,
+      answer: null,
+      error: null,
+      mode: null,
+    });
     try {
-      const answer = await mockRetrieve(query);
-      setState({ status: "success", query, answer, error: null });
+      const result = await hybridRetrieve(query);
+      if (!result) {
+        setState({
+          status: "error",
+          query,
+          answer: null,
+          error: "관련된 응답을 찾을 수 없습니다. 다른 표현으로 시도해 주세요.",
+          mode: null,
+        });
+        return;
+      }
+      setState({
+        status: "success",
+        query,
+        answer: result.entry.answer,
+        error: null,
+        mode: result.mode,
+      });
     } catch (err) {
       setState({
         status: "error",
         query,
         answer: null,
         error: err instanceof Error ? err.message : "Unknown error",
+        mode: null,
       });
     }
   }, []);
@@ -207,8 +210,9 @@ export function DemoWidget() {
 
               {state.status === "success" ? (
                 <p className="mt-3 text-center font-mono text-[10px] uppercase tracking-widest text-muted-foreground/60">
-                  Hybrid retrieval · 60% keyword · 40% embedding ·{" "}
-                  {brand.model.flagship}
+                  {state.mode === "hybrid"
+                    ? `Hybrid retrieval · 60% keyword · 40% embedding · ${brand.model.flagship}`
+                    : `Keyword retrieval (fallback) · ${brand.model.flagship}`}
                 </p>
               ) : null}
             </div>
