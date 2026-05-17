@@ -16,7 +16,7 @@
 - [x] Next.js 14+ (App Router, TypeScript) 프로젝트 초기화 — `package.json` / `tsconfig.json` / `next.config.mjs` / `app/layout.tsx` / `app/page.tsx` placeholder + Tailwind CSS 설정 + ESLint(next/core-web-vitals) + `lint`/`typecheck`/`build` npm scripts. 완료 후 AGENTS.md 의 3개 검증 명령이 exit 0
 - [x] shadcn/ui 초기화 + 기본 컴포넌트 (Button, Card, Badge, Separator) install. `components/ui/` 디렉토리 + `lib/utils.ts` (cn 헬퍼) 셋업
 - [x] 추가 의존성 install — `recharts`, `lucide-react`, `next-themes` (다크모드), `voyageai`(SDK), `@vercel/analytics`
-- [ ] 가공 회사 identity 확정 — `lib/brand.ts` 에 회사명·tagline·primary color palette·typography 토큰 + `app/layout.tsx` 의 Metadata(title/description/og) 반영. (실존 회사명 절대 사용 금지 — CLAUDE.md §5 준수)
+- [x] 가공 회사 identity 확정 — `lib/brand.ts` 에 회사명·tagline·primary color palette·typography 토큰 + `app/layout.tsx` 의 Metadata(title/description/og) 반영. (실존 회사명 절대 사용 금지 — CLAUDE.md §5 준수) → **Nexora Labs / Nexora-1 / "Frontier AI, engineered in Seoul." / indigo→violet 그라데이션 / Inter+JetBrains Mono**
 - [ ] 디렉토리 구조 확립 — `app/(routes)/{benchmarks,capabilities,architecture,security,about}/page.tsx` placeholder + `components/{layout,sections,charts,demo}/` + `public/data/` + `scripts/`
 - [ ] 환경변수 — `.env.example` 에 `VOYAGE_API_KEY` 만. `.env*` 는 .gitignore 처리 확인
 

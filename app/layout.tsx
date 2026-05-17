@@ -1,10 +1,54 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import { brand } from "@/lib/brand";
+
 export const metadata: Metadata = {
-  title: "Nova",
-  description:
-    "Bootstrap placeholder — 가공 회사 identity 및 풍자 메타데이터는 후속 iter 에서 교체됩니다.",
+  metadataBase: new URL(`https://${brand.company.domain}`),
+  title: {
+    default: `${brand.company.name} — ${brand.tagline.primary}`,
+    template: `%s | ${brand.company.name}`,
+  },
+  description: brand.model.description,
+  keywords: [
+    "AI",
+    "AGI",
+    "foundation model",
+    "frontier model",
+    "multimodal",
+    "agentic AI",
+    "AgentOS",
+    "harness",
+    "orchestration",
+    "alignment",
+    "Nexora",
+    "Nexora-1",
+    "Korean AI",
+    "Seoul AI",
+  ],
+  authors: [
+    { name: brand.company.name, url: `https://${brand.company.domain}` },
+  ],
+  creator: brand.company.name,
+  publisher: brand.company.legalName,
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    url: `https://${brand.company.domain}`,
+    siteName: brand.company.name,
+    title: `${brand.company.name} — ${brand.tagline.primary}`,
+    description: brand.tagline.secondary,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${brand.company.name} — ${brand.tagline.primary}`,
+    description: brand.tagline.secondary,
+    creator: brand.social.twitter,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
