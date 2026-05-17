@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { brand } from "@/lib/brand";
+import { routing } from "@/i18n/routing";
 
 const ROUTES: ReadonlyArray<{
   path: string;
@@ -19,10 +20,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = `https://${brand.company.domain}`;
   const lastModified = new Date();
 
-  return ROUTES.map(({ path, changeFrequency, priority }) => ({
-    url: `${baseUrl}${path}`,
-    lastModified,
-    changeFrequency,
-    priority,
-  }));
+  return ROUTES.flatMap(({ path, changeFrequency, priority }) =>
+    routing.locales.map((locale) => ({
+      url: `${baseUrl}/${locale}${path}`,
+      lastModified,
+      changeFrequency,
+      priority,
+      alternates: {
+        languages: Object.fromEntries(
+          routing.locales.map((l) => [l, `${baseUrl}/${l}${path}`]),
+        ),
+      },
+    })),
+  );
 }

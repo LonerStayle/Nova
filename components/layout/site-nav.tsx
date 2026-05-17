@@ -1,22 +1,23 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Menu, X } from "lucide-react";
 
 import { brand } from "@/lib/brand";
 import { cn } from "@/lib/utils";
+import { Link, usePathname } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
+import { LocaleToggle } from "@/components/layout/locale-toggle";
 
 const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/benchmarks", label: "Benchmarks" },
-  { href: "/capabilities", label: "Capabilities" },
-  { href: "/architecture", label: "Architecture" },
-  { href: "/security", label: "Security" },
-  { href: "/about", label: "About" },
+  { href: "/", labelKey: "home" },
+  { href: "/benchmarks", labelKey: "benchmarks" },
+  { href: "/capabilities", labelKey: "capabilities" },
+  { href: "/architecture", labelKey: "architecture" },
+  { href: "/security", labelKey: "security" },
+  { href: "/about", labelKey: "about" },
 ] as const;
 
 function isItemActive(itemHref: string, pathname: string) {
@@ -26,6 +27,7 @@ function isItemActive(itemHref: string, pathname: string) {
 
 export function SiteNav() {
   const pathname = usePathname();
+  const t = useTranslations("nav");
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   // 라우트 변경 시 모바일 메뉴 자동 닫힘
@@ -68,7 +70,7 @@ export function SiteNav() {
         {/* Desktop nav */}
         <nav
           className="hidden items-center gap-1 md:flex"
-          aria-label="Main navigation"
+          aria-label={t("mainNav")}
         >
           {navItems.map((item) => {
             const active = isItemActive(item.href, pathname);
@@ -84,7 +86,7 @@ export function SiteNav() {
                     : "text-muted-foreground hover:text-foreground",
                 )}
               >
-                {item.label}
+                {t(item.labelKey)}
                 {active && (
                   <span
                     aria-hidden="true"
@@ -96,14 +98,15 @@ export function SiteNav() {
           })}
         </nav>
 
-        {/* Right cluster: theme toggle + mobile hamburger */}
+        {/* Right cluster: locale toggle + theme toggle + mobile hamburger */}
         <div className="flex items-center gap-1">
+          <LocaleToggle />
           <ThemeToggle />
           <Button
             variant="ghost"
             size="icon"
             className="md:hidden"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-label={mobileOpen ? t("closeMenu") : t("openMenu")}
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
             onClick={() => setMobileOpen((open) => !open)}
@@ -122,7 +125,7 @@ export function SiteNav() {
         <>
           <button
             type="button"
-            aria-label="Close menu"
+            aria-label={t("closeMenu")}
             onClick={() => setMobileOpen(false)}
             className="fixed inset-0 top-16 z-40 cursor-default bg-background/60 backdrop-blur-sm md:hidden"
           />
@@ -132,7 +135,7 @@ export function SiteNav() {
           >
             <nav
               className="container mx-auto flex flex-col gap-1 px-6 py-4"
-              aria-label="Mobile navigation"
+              aria-label={t("mobileNav")}
             >
               {navItems.map((item) => {
                 const active = isItemActive(item.href, pathname);
@@ -148,7 +151,7 @@ export function SiteNav() {
                         : "text-muted-foreground hover:bg-muted/60 hover:text-foreground",
                     )}
                   >
-                    {item.label}
+                    {t(item.labelKey)}
                   </Link>
                 );
               })}

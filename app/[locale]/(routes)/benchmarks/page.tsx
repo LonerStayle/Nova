@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 
 import { brand } from "@/lib/brand";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -13,7 +14,14 @@ export const metadata: Metadata = {
   description: `${brand.model.flagship} performance on industry-standard evaluation suites — MMLU, HumanEval, GSM8K, MATH, AGIEval, and composite frontier metrics.`,
 };
 
-export default function BenchmarksPage() {
+export default async function BenchmarksPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <main className="container mx-auto px-6 py-24">
       <SectionHeading

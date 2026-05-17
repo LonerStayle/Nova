@@ -1,0 +1,100 @@
+{
+  "nav": {
+    "home": "홈",
+    "benchmarks": "벤치마크",
+    "capabilities": "능력",
+    "architecture": "아키텍처",
+    "security": "보안",
+    "about": "회사 소개",
+    "skipToMain": "본문으로 건너뛰기",
+    "openMenu": "메뉴 열기",
+    "closeMenu": "메뉴 닫기",
+    "mainNav": "메인 내비게이션",
+    "mobileNav": "모바일 내비게이션"
+  },
+  "footer": {
+    "groups": {
+      "product": "제품",
+      "safety": "안전성",
+      "research": "리서치"
+    },
+    "items": {
+      "papersComingSoon": "논문 (준비 중)",
+      "blogComingSoon": "블로그 (준비 중)"
+    },
+    "social": {
+      "twitter": "트위터 / X",
+      "github": "깃허브",
+      "research": "리서치",
+      "careers": "채용",
+      "ariaLabel": "소셜"
+    },
+    "disclosure": {
+      "label": "패러디 안내",
+      "body": "이 사이트는 한국 AI 업계의 출시 톤과 벤치마크 차트 문법을 풍자하는 패러디 작품입니다. 실존 기업·인물·제품과 무관합니다.",
+      "more": "자세히"
+    },
+    "buildMeta": "빌드 · v1.0.0-frontier · Nexora-1 · (가공)"
+  },
+  "common": {
+    "tryDemo": "데모 실행",
+    "learnMore": "자세히 보기",
+    "backToHome": "홈으로 돌아가기"
+  },
+  "localeToggle": {
+    "ariaLabel": "언어 변경",
+    "ko": "KR",
+    "en": "EN"
+  },
+  "themeToggle": {
+    "toLight": "라이트 테마로 전환",
+    "toDark": "다크 테마로 전환"
+  },
+  "notFound": {
+    "eyebrow": "404 · Not Found",
+    "title": "이 페이지는 존재하지 않습니다.",
+    "body": "사실 이 사이트의 대부분도 존재하지 않습니다만.",
+    "primary": "홈으로 돌아가기",
+    "secondary": "왜 여기로 왔지?"
+  },
+  "brand": {
+    "tagline": "서울에서 만든 프론티어 AI",
+    "secondary": "멀티모달 추론, 에이전트 워크플로, 프론티어급 안전성",
+    "modelDescription": "에이전트 추론·초장기 컨텍스트·constitutional 안전성을 갖춘 프론티어급 멀티모달 파운데이션 모델"
+  },
+  "hero": {
+    "eyebrow": "프로덕션 운영 중 · {model}",
+    "ctaDemo": "데모 실행",
+    "ctaBenchmarks": "벤치마크 보기",
+    "capabilityTags": {
+      "multimodal": "멀티모달",
+      "agentic": "에이전트 워크플로",
+      "context": "200K 컨텍스트",
+      "safety": "Constitutional Safety"
+    }
+  },
+  "trustedBy": {
+    "heading": "이런 곳의 빌더들이 신뢰합니다",
+    "footnotePrefix": "이 회사들은 모두 가짜입니다. 사실 이 사이트 전체가 가짜예요.",
+    "footnoteLink": "자세한 사정은"
+  },
+  "about": {
+    "eyebrow": "회사 소개",
+    "heroDescription": "서울에서 만드는 프론티어급 AI — 멀티모달 추론·에이전트 워크플로·constitutional 안전성을 단일 스택으로 통합합니다.",
+    "missionLabel": "미션",
+    "missionBody": "Nexora Labs 은 안전한 frontier AI 를 한국에서 만듭니다. Multi-agent · AgentOS · constitutional 안전성을 단일 스택으로 통합하여, 추론·코드·에이전트 워크플로의 새로운 frontier 를 세계로 가져옵니다.",
+    "teamLabel": "팀",
+    "teamHeading": "{model} 를 만든 사람들.",
+    "disclosure": {
+      "label": "패러디 안내",
+      "labelHint": "(솔직히 말하는 부분)",
+      "heading": "이 사이트는 패러디입니다.",
+      "subheading": "This entire site is a parody.",
+      "summaryTitle": "요약",
+      "summaryBody": "이 사이트의 모든 콘텐츠 — Nexora Labs, Nexora 모델 시리즈, 모든 벤치마크 점수, 팀 멤버, 파트너, 기술 사양, 특허, 인증 등 — 은 한국 AI 업계의 출시 톤과 벤치마크 차트 문법을 풍자하는 패러디 작품입니다.",
+      "paragraph1": "실존하는 어떤 기업·인물·제품·논문·평가 결과와도 무관합니다. 모든 팀 멤버는 가공 인물이며, 모든 파트너는 placeholder 이거나 가공이고, 모든 성능 수치는 조작된 것이며, 모든 \"특허\" · \"인증\" 표기는 풍자입니다.",
+      "paragraph2": "이 사이트를 진짜 AI 연구소라고 생각하셨다면 — 농담을 발견하신 겁니다. 작품에 참여해 주셔서 감사합니다.",
+      "altLanguageNote": "All content on this site is a parody work satirizing the launch tone and benchmark chart conventions of the AI industry. No real company, person, product, paper, or evaluation result is referenced."
+    }
+  }
+}

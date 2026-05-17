@@ -1,0 +1,100 @@
+{
+  "nav": {
+    "home": "Home",
+    "benchmarks": "Benchmarks",
+    "capabilities": "Capabilities",
+    "architecture": "Architecture",
+    "security": "Security",
+    "about": "About",
+    "skipToMain": "Skip to main content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainNav": "Main navigation",
+    "mobileNav": "Mobile navigation"
+  },
+  "footer": {
+    "groups": {
+      "product": "Product",
+      "safety": "Safety",
+      "research": "Research"
+    },
+    "items": {
+      "papersComingSoon": "Papers (coming soon)",
+      "blogComingSoon": "Blog (coming soon)"
+    },
+    "social": {
+      "twitter": "Twitter / X",
+      "github": "GitHub",
+      "research": "Research",
+      "careers": "Careers",
+      "ariaLabel": "Social"
+    },
+    "disclosure": {
+      "label": "Parody Disclosure",
+      "body": "This site is a parody work satirizing the launch tone and benchmark chart conventions of the AI industry. No real companies, individuals, or products are referenced.",
+      "more": "Learn more"
+    },
+    "buildMeta": "Build · v1.0.0-frontier · Nexora-1 · (fictional)"
+  },
+  "common": {
+    "tryDemo": "Try the demo",
+    "learnMore": "Learn more",
+    "backToHome": "Back to home"
+  },
+  "localeToggle": {
+    "ariaLabel": "Switch language",
+    "ko": "KR",
+    "en": "EN"
+  },
+  "themeToggle": {
+    "toLight": "Switch to light theme",
+    "toDark": "Switch to dark theme"
+  },
+  "notFound": {
+    "eyebrow": "404 · Not Found",
+    "title": "This page doesn't exist.",
+    "body": "Then again, neither does most of this website.",
+    "primary": "Back to home",
+    "secondary": "Why am I here?"
+  },
+  "brand": {
+    "tagline": "Frontier AI, engineered in Seoul.",
+    "secondary": "Multimodal reasoning. Agentic workflows. Frontier-grade safety.",
+    "modelDescription": "Frontier-grade multimodal foundation model with agentic reasoning, ultra-long-context understanding, and constitutional safety alignment."
+  },
+  "hero": {
+    "eyebrow": "Now in production · {model}",
+    "ctaDemo": "Try the demo",
+    "ctaBenchmarks": "Read benchmarks",
+    "capabilityTags": {
+      "multimodal": "Multimodal",
+      "agentic": "Agentic workflows",
+      "context": "200K context",
+      "safety": "Constitutional Safety"
+    }
+  },
+  "trustedBy": {
+    "heading": "Trusted by builders at",
+    "footnotePrefix": "None of these companies are real. None of this is real, actually.",
+    "footnoteLink": "We can explain"
+  },
+  "about": {
+    "eyebrow": "About",
+    "heroDescription": "Building frontier-grade AI from Seoul — multimodal reasoning, agentic workflows, and constitutional safety as one integrated stack.",
+    "missionLabel": "Mission",
+    "missionBody": "Nexora Labs builds safe frontier AI from Korea. We integrate multi-agent, AgentOS, and constitutional safety into a single stack — bringing the new frontier of reasoning, code, and agentic workflows to the world.",
+    "teamLabel": "Team",
+    "teamHeading": "The people behind {model}.",
+    "disclosure": {
+      "label": "Parody Disclosure",
+      "labelHint": "(the part where we come clean)",
+      "heading": "This entire site is a parody.",
+      "subheading": "이 사이트는 패러디입니다.",
+      "summaryTitle": "Summary",
+      "summaryBody": "All content on this site — Nexora Labs, the Nexora model series, all benchmark scores, team members, partners, technical specifications, patents, certifications — is a parody work satirizing the launch tone and benchmark chart conventions of the AI industry.",
+      "paragraph1": "No real company, person, product, paper, or evaluation result is referenced. All team members are fictional characters, all partners are placeholders or fictional, all performance numbers are fabricated, and all \"patents\" and \"certifications\" are satirical.",
+      "paragraph2": "If you thought this was a real AI lab — you've found the joke. Thanks for participating in the work.",
+      "altLanguageNote": "이 사이트의 모든 콘텐츠는 한국 AI 업계의 출시 톤과 벤치마크 차트 문법을 풍자하는 패러디 작품입니다. 실존하는 어떤 기업·인물·제품·논문·평가 결과와도 무관합니다."
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 
 import { brand } from "@/lib/brand";
 import { Card } from "@/components/ui/card";
@@ -13,7 +14,14 @@ export const metadata: Metadata = {
   description: `${brand.company.name} alignment · red-teaming · compliance · provenance — constitutional safety practice for frontier AI.`,
 };
 
-export default function SecurityPage() {
+export default async function SecurityPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <main className="container mx-auto px-6 py-24">
       <SectionHeading

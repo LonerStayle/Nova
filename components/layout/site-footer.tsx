@@ -1,29 +1,30 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { BookOpenText, Briefcase, Github, Twitter } from "lucide-react";
 
 import { brand } from "@/lib/brand";
+import { Link } from "@/i18n/routing";
 
 const footerGroups = [
   {
-    heading: "Product",
+    headingKey: "product",
     items: [
-      { href: "/benchmarks", label: "Benchmarks" },
-      { href: "/capabilities", label: "Capabilities" },
-      { href: "/architecture", label: "Architecture" },
+      { href: "/benchmarks", labelKey: "benchmarks" as const, group: "nav" as const },
+      { href: "/capabilities", labelKey: "capabilities" as const, group: "nav" as const },
+      { href: "/architecture", labelKey: "architecture" as const, group: "nav" as const },
     ],
   },
   {
-    heading: "Safety",
+    headingKey: "safety",
     items: [
-      { href: "/security", label: "Security" },
-      { href: "/about", label: "About" },
+      { href: "/security", labelKey: "security" as const, group: "nav" as const },
+      { href: "/about", labelKey: "about" as const, group: "nav" as const },
     ],
   },
   {
-    heading: "Research",
+    headingKey: "research",
     items: [
-      { href: "/", label: "Papers (coming soon)" },
-      { href: "/", label: "Blog (coming soon)" },
+      { href: "/", labelKey: "papersComingSoon" as const, group: "footerItems" as const },
+      { href: "/", labelKey: "blogComingSoon" as const, group: "footerItems" as const },
     ],
   },
 ] as const;
@@ -31,28 +32,41 @@ const footerGroups = [
 const socials = [
   {
     href: `https://twitter.com/${brand.social.twitter.replace("@", "")}`,
-    label: "Twitter / X",
+    labelKey: "twitter" as const,
     icon: Twitter,
   },
   {
     href: `https://github.com/${brand.social.github}`,
-    label: "GitHub",
+    labelKey: "github" as const,
     icon: Github,
   },
   {
     href: `https://${brand.social.research}`,
-    label: "Research",
+    labelKey: "research" as const,
     icon: BookOpenText,
   },
   {
     href: `https://${brand.social.careers}`,
-    label: "Careers",
+    labelKey: "careers" as const,
     icon: Briefcase,
   },
 ] as const;
 
 export function SiteFooter() {
+  const tBrand = useTranslations("brand");
+  const tNav = useTranslations("nav");
+  const tFooter = useTranslations("footer");
   const year = new Date().getFullYear();
+
+  const renderItemLabel = (
+    group: "nav" | "footerItems",
+    key: string,
+  ) => {
+    if (group === "nav") {
+      return tNav(key as Parameters<typeof tNav>[0]);
+    }
+    return tFooter(`items.${key}` as Parameters<typeof tFooter>[0]);
+  };
 
   return (
     <footer className="border-t border-border/40">
@@ -70,20 +84,19 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="text-xs leading-relaxed text-muted-foreground">
-              {brand.tagline.primary}
-              <br />
-              <span className="text-foreground/50">
-                {brand.tagline.primaryKr}
-              </span>
+              {tBrand("tagline")}
             </p>
-            <ul className="flex items-center gap-1 pt-1" aria-label="Social">
-              {socials.map(({ href, label, icon: Icon }) => (
-                <li key={label}>
+            <ul
+              className="flex items-center gap-1 pt-1"
+              aria-label={tFooter("social.ariaLabel")}
+            >
+              {socials.map(({ href, labelKey, icon: Icon }) => (
+                <li key={labelKey}>
                   <a
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
-                    aria-label={label}
+                    aria-label={tFooter(`social.${labelKey}`)}
                     className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                   >
                     <Icon className="h-4 w-4" />
@@ -95,18 +108,18 @@ export function SiteFooter() {
 
           {/* Nav mirror */}
           {footerGroups.map((group) => (
-            <div key={group.heading} className="space-y-3">
+            <div key={group.headingKey} className="space-y-3">
               <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                {group.heading}
+                {tFooter(`groups.${group.headingKey}`)}
               </h3>
               <ul className="space-y-2">
-                {group.items.map((item) => (
-                  <li key={item.label}>
+                {group.items.map((item, idx) => (
+                  <li key={`${item.labelKey}-${idx}`}>
                     <Link
                       href={item.href}
                       className="text-sm text-foreground/80 transition-colors hover:text-foreground"
                     >
-                      {item.label}
+                      {renderItemLabel(item.group, item.labelKey)}
                     </Link>
                   </li>
                 ))}
@@ -119,17 +132,17 @@ export function SiteFooter() {
         <div className="mt-12 border-t border-border/40 pt-6">
           <p className="text-xs leading-relaxed text-muted-foreground">
             <span className="font-semibold text-foreground/80">
-              Parody Disclosure
+              {tFooter("disclosure.label")}
             </span>
             <span aria-hidden="true" className="mx-1.5 text-muted-foreground/50">
               ·
             </span>
-            {brand.disclosure.short}{" "}
+            {tFooter("disclosure.body")}{" "}
             <Link
               href="/about#disclosure"
               className="font-medium text-foreground/70 underline underline-offset-2 transition-colors hover:text-foreground"
             >
-              자세히
+              {tFooter("disclosure.more")}
             </Link>
           </p>
         </div>
@@ -146,7 +159,7 @@ export function SiteFooter() {
             </span>
           </p>
           <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground/60">
-            Build · v1.0.0-frontier · {brand.model.flagship} · (fictional)
+            {tFooter("buildMeta")}
           </p>
         </div>
       </div>

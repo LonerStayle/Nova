@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 
 import { brand } from "@/lib/brand";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -10,7 +11,14 @@ export const metadata: Metadata = {
   description: `${brand.model.flagship} capabilities — multimodal reasoning, long-context understanding, tool use, code generation, and agentic workflows.`,
 };
 
-export default function CapabilitiesPage() {
+export default async function CapabilitiesPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <main className="container mx-auto px-6 py-24">
       <SectionHeading
