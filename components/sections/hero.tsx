@@ -11,6 +11,7 @@ const capabilityTagKeys = [
   "agentic",
   "context",
   "safety",
+  "scale",
 ] as const;
 
 export function Hero() {

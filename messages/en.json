@@ -70,7 +70,8 @@
       "multimodal": "Multimodal",
       "agentic": "Agentic workflows",
       "context": "200K context",
-      "safety": "Constitutional Safety"
+      "safety": "Constitutional Safety",
+      "scale": "10¹⁷ params"
     }
   },
   "trustedBy": {
@@ -179,6 +180,18 @@
           "planRevision": "Plan revision rounds",
           "longHorizon": "Long-horizon completion",
           "agentEval": "AgentEval Pro"
+        }
+      },
+      "scale": {
+        "category": "Scale · Compute",
+        "name": "Industrial-scale training run",
+        "description": "Trained at scales typically reserved for cosmology and government deficits — distributed across 12 data centers, 5,000 H100s, and a non-trivial fraction of the global electricity grid. Numbers this large stopped being meaningful three orders of magnitude ago.",
+        "specs": {
+          "params": "Parameter count",
+          "corpus": "Training corpus",
+          "gpus": "GPU fleet",
+          "compute": "Compute budget",
+          "duration": "Training duration"
         }
       }
     }

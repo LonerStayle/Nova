@@ -70,7 +70,8 @@
       "multimodal": "멀티모달",
       "agentic": "에이전트 워크플로",
       "context": "200K 컨텍스트",
-      "safety": "Constitutional Safety"
+      "safety": "Constitutional Safety",
+      "scale": "10경 params"
     }
   },
   "trustedBy": {
@@ -179,6 +180,18 @@
           "planRevision": "플랜 수정 횟수",
           "longHorizon": "장기 작업 완수율",
           "agentEval": "AgentEval Pro"
+        }
+      },
+      "scale": {
+        "category": "스케일 · 컴퓨트",
+        "name": "산업급 훈련 런",
+        "description": "코스몰로지나 정부 부채 정도에서나 쓰이는 규모로 훈련됨 — 12개 데이터센터, 5,000개 H100, 그리고 전 세계 전력망의 무시 못 할 일부에 분산. 이쯤 되면 숫자가 의미를 잃은 지 이미 세 자릿수 전입니다.",
+        "specs": {
+          "params": "파라미터 수",
+          "corpus": "훈련 코퍼스",
+          "gpus": "GPU 규모",
+          "compute": "컴퓨트 예산",
+          "duration": "훈련 기간"
         }
       }
     }

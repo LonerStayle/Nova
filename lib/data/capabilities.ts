@@ -14,6 +14,7 @@ import {
   Code2,
   Sparkles,
   Wrench,
+  Zap,
   type LucideIcon,
 } from "lucide-react";
 
@@ -23,6 +24,7 @@ export const capabilityIds = [
   "tools",
   "code",
   "agentic",
+  "scale",
 ] as const;
 
 export type CapabilityId = (typeof capabilityIds)[number];
@@ -33,6 +35,7 @@ export const capabilityIcons: Record<CapabilityId, LucideIcon> = {
   tools: Wrench,
   code: Code2,
   agentic: Bot,
+  scale: Zap,
 };
 
 // 각 카드의 spec key 순서 — 페이지가 이 순서로 messages 의 label 을 lookup 한다.
@@ -71,6 +74,13 @@ export const capabilitySpecKeys: Record<CapabilityId, readonly string[]> = {
     "planRevision",
     "longHorizon",
     "agentEval",
+  ],
+  scale: [
+    "params",
+    "corpus",
+    "gpus",
+    "compute",
+    "duration",
   ],
 };
 
@@ -113,5 +123,12 @@ export const capabilitySpecValues: Record<
     planRevision: "avg 2.3",
     longHorizon: "73.1%",
     agentEval: "81.7%",
+  },
+  scale: {
+    params: "10¹⁷ (~100 quadrillion)",
+    corpus: "50 PB curated text",
+    gpus: "5,000 × H100, 12 sites",
+    compute: "2.4 zettaflop",
+    duration: "18 months continuous",
   },
 };
