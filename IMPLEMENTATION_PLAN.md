@@ -70,12 +70,12 @@
 > 1·2·4·5·7 권장안 일괄 채택, 3·6 기본값, qa.ko.json 은 ralph 자동 번역.
 > → next-intl + `app/[locale]/...` + middleware (Accept-Language + cookie) + `qa.{ko,en}.json` 분리.
 
-- [ ] 6.1 — next-intl install + `i18n/routing.ts` + `i18n/request.ts` + `messages/{ko,en}.json` skeleton + `next.config.mjs` 의 next-intl plugin wrap
-- [ ] 6.2 — `middleware.ts` (Accept-Language `ko*` → `/ko/*`, 그 외 → `/en/*`, cookie 우선)
-- [ ] 6.3 — 페이지 디렉토리 마이그레이션 — `app/{layout,page,template,not-found}.tsx` + `app/(routes)/*` → `app/[locale]/...` (api/icon/apple-icon/opengraph-image/sitemap/robots 는 root 유지)
-- [ ] 6.4 — `app/[locale]/layout.tsx` 의 NextIntlClientProvider + dynamic `lang` + `setRequestLocale`
-- [ ] 6.5 — Site nav + footer 메시지 추출 (6 라우트 라벨 / 푸터 그룹 / 소셜 / disclosure 한·영 분리) + i18n Link 사용
-- [ ] 6.6 — LocaleToggle 컴포넌트 (헤더 우측 KR/EN, cookie 저장 + redirect)
+- [x] 6.1 — next-intl install + `i18n/routing.ts` + `i18n/request.ts` + `messages/{ko,en}.json` skeleton + `next.config.mjs` 의 next-intl plugin wrap
+- [x] 6.2 — `middleware.ts` (Accept-Language `ko*` → `/ko/*`, 그 외 → `/en/*`, cookie 우선)
+- [x] 6.3 — 페이지 디렉토리 마이그레이션 — `app/{layout,page,template,not-found}.tsx` + `app/(routes)/*` → `app/[locale]/...` (api/icon/apple-icon/sitemap/robots 는 root 유지, opengraph-image 는 각 페이지 디렉토리 따라 이동)
+- [x] 6.4 — `app/[locale]/layout.tsx` 의 NextIntlClientProvider + dynamic `lang` + `setRequestLocale` + generateMetadata locale 분기
+- [x] 6.5 — Site nav + footer 메시지 추출 (6 라우트 라벨 / 푸터 그룹 / 소셜 / disclosure 한·영 분리) + i18n Link 사용 + About disclosure 한·영 분리
+- [x] 6.6 — LocaleToggle 컴포넌트 (헤더 우측 KR/EN, cookie 저장 + replace)
 - [ ] 6.7 — Hero / KeyMetrics / TrustedBy / 6 페이지 SectionHeading + body 메시지 추출 (한·영)
 - [ ] 6.8 — DemoWidget UI + sampleQueries + 에러 메시지 + 차트 caption 한·영 분리
 - [ ] 6.9 — `public/data/qa.ko.json` 200 entries 한국어 번역 작성 (ralph 자동) + `qa.en.json` 으로 이름 변경 + retrieval(bm25/hybrid) 의 locale prop + `embeddings.{ko,en}.json` 분리 로딩
