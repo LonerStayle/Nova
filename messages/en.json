@@ -817,6 +817,104 @@
       "parallelTitle": "Parallel tool calls",
       "parallelBody": "{model} can emit up to 32 tool_use blocks in a single turn. Execute them in parallel, then return all 32 tool_result blocks in the next user turn. The model treats them as a single batch and resumes after all have returned.",
       "footnote": "Tool descriptions are tokenized like regular input — keep them tight. The {company} eval team measured a 18% token reduction by trimming descriptions, with zero accuracy regression on AgentEval Pro."
+    },
+    "models": {
+      "eyebrow": "Platform",
+      "title": "Models",
+      "intro": "Four models, one API surface. Pick by latency / cost / capability — every model accepts the same request shape and returns the same response shape. Pricing is per 1M tokens, billed in real time, no commitments.",
+      "tableLabel": "Models comparison",
+      "columns": {
+        "model": "Model",
+        "id": "Identifier",
+        "context": "Context",
+        "output": "Output",
+        "parallel": "Parallel tools",
+        "priceIn": "Input / 1M",
+        "priceOut": "Output / 1M",
+        "ttft": "TTFT (p50)",
+        "bestFor": "Best for"
+      },
+      "models": {
+        "nexora1": {
+          "name": "Nexora-1",
+          "bestFor": "Default flagship — production multimodal, agentic workflows, frontier accuracy at production cost."
+        },
+        "nexora1Pro": {
+          "name": "Nexora-1 Pro",
+          "bestFor": "Highest accuracy frontier tier — deep research, long-form synthesis, expensive multi-step reasoning."
+        },
+        "nexora1Ultra": {
+          "name": "Nexora-1 Ultra",
+          "bestFor": "Long-horizon agentic workloads — autonomous task completion, multi-day plans, AgentEval Pro 94.1%."
+        },
+        "nexoraK": {
+          "name": "Nexora-K",
+          "bestFor": "High-volume / latency-sensitive — Korean-first quality at the cost of a small model, sub-250ms TTFT."
+        }
+      },
+      "footnote": "Pricing verified by our fictional finance team on 2026-05-18. Prompt caching applies a 90% discount on cached input tokens — see Authentication."
+    },
+    "rateLimits": {
+      "eyebrow": "Platform",
+      "title": "Rate limits",
+      "intro": "Four tiers, automatic graduation. Every new account starts on Free; spend $100 in 30 days to graduate to Production; spend $5,000 to graduate to Pro. Enterprise is custom.",
+      "tableLabel": "Rate limit tiers",
+      "columns": {
+        "tier": "Tier",
+        "rpm": "Requests / min",
+        "tpm": "Tokens / min",
+        "daily": "Daily cap",
+        "qualify": "Qualifies after"
+      },
+      "tiers": {
+        "free": {
+          "name": "Free",
+          "qualify": "Account creation. No payment method required."
+        },
+        "production": {
+          "name": "Production",
+          "qualify": "$100 spent over 30 days. Auto-promoted."
+        },
+        "pro": {
+          "name": "Pro",
+          "qualify": "$5,000 spent over 30 days. Auto-promoted."
+        },
+        "enterprise": {
+          "name": "Enterprise",
+          "qualify": "Contact sales. Custom RPM / TPM / SLA."
+        }
+      },
+      "headersTitle": "Response headers",
+      "headersBody": "Every response carries rate-limit headers — read them to back off proactively rather than waiting for a 429.",
+      "headersList": {
+        "limit": "Total requests allowed in the current minute window.",
+        "remaining": "Remaining requests in the current minute window.",
+        "reset": "Unix epoch seconds when the current window resets."
+      },
+      "footnote": "Rate limit graduation is automatic; downgrades require human review. The {company} platform team has never, in writing, admitted to downgrading anyone."
+    },
+    "authentication": {
+      "eyebrow": "Platform",
+      "title": "Authentication",
+      "intro": "All requests must include an Authorization header with a Bearer token. Keys are created in the console; both sandbox and production keys use the same header format. The {company} API never accepts query-string or cookie authentication — body, header, and TLS only.",
+      "exampleTitle": "Header example",
+      "exampleFilename": "Authorization header",
+      "rotationTitle": "Key rotation",
+      "rotationBody": "Rotate keys every 90 days. Create a new key, deploy it to production, then revoke the old key from the console. Old keys remain valid for a 24-hour grace period after revocation, then return 401 with auth_revoked.",
+      "bestPracticesTitle": "Best practices",
+      "bestPracticeTitles": {
+        "envVars": "Environment & secrets",
+        "scopes": "Key scoping",
+        "rotation": "Rotation cadence",
+        "audit": "Audit logging"
+      },
+      "bestPractices": {
+        "envVars": "Store keys in environment variables or a secret manager (AWS Secrets Manager, Vault, Doppler). Never hardcode or commit to source control.",
+        "scopes": "Use sandbox keys for development and CI; production keys only on production runtime. The {company} dashboard separates usage by key for cost attribution.",
+        "rotation": "Set a calendar reminder for 90-day rotation. Compromised keys can be revoked from the console with no downtime — the next request from the old key gets 401, the request from the new key gets 200.",
+        "audit": "Every API call is logged to your audit trail at /v1/audit. Logs are retained 90 days by default (Production tier), 12 months on Pro, 7 years on Enterprise — for the small fee of becoming an Enterprise customer."
+      },
+      "footnote": "Bearer scheme aligns with RFC 6750. {company} never issues HMAC, basic-auth, or session-token credentials — anyone offering you one is selling fan fiction."
     }
   }
 }

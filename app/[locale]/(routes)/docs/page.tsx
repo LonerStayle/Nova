@@ -10,6 +10,9 @@ import { QuickstartSection } from "@/components/docs/quickstart-section";
 import { ApiReferenceSection } from "@/components/docs/api-reference-section";
 import { StreamingSection } from "@/components/docs/streaming-section";
 import { ToolUseSection } from "@/components/docs/tool-use-section";
+import { ModelsSection } from "@/components/docs/models-section";
+import { RateLimitsSection } from "@/components/docs/rate-limits-section";
+import { AuthenticationSection } from "@/components/docs/authentication-section";
 
 export async function generateMetadata({
   params,
@@ -107,40 +110,31 @@ export default async function DocsPage({
             <ToolUseSection />
           </section>
 
-          {/* Models placeholder — populated in 8.6 */}
+          {/* Models — 8.6 */}
           <section
             id="models"
             aria-label={tSidebar("sections.models")}
             className="scroll-mt-24"
           >
-            <p className="font-mono text-xs uppercase tracking-widest2 text-muted-foreground">
-              {tSidebar("groups.platform")}
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              {tSidebar("sections.models")}
-            </h2>
+            <ModelsSection />
           </section>
 
-          {/* Rate limits placeholder — populated in 8.6 */}
+          {/* Rate limits — 8.6 */}
           <section
             id="rate-limits"
             aria-label={tSidebar("sections.rateLimits")}
             className="scroll-mt-24"
           >
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              {tSidebar("sections.rateLimits")}
-            </h2>
+            <RateLimitsSection />
           </section>
 
-          {/* Authentication placeholder — populated in 8.6 */}
+          {/* Authentication — 8.6 */}
           <section
             id="authentication"
             aria-label={tSidebar("sections.authentication")}
             className="scroll-mt-24"
           >
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              {tSidebar("sections.authentication")}
-            </h2>
+            <AuthenticationSection />
           </section>
 
           {/* Errors placeholder — populated in 8.7 */}

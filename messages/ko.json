@@ -817,6 +817,104 @@
       "parallelTitle": "병렬 Tool 호출",
       "parallelBody": "{model} 은 단일 턴에 최대 32 개의 tool_use block 을 emit 할 수 있습니다. 병렬 실행 후 다음 user 턴에 32 개의 tool_result block 을 모두 반환. 모델은 단일 batch 로 처리하고 모든 결과가 돌아온 후 재개.",
       "footnote": "Tool description 은 일반 입력처럼 토큰으로 계산됩니다 — 짧게 유지하세요. {company} eval 팀이 description 을 다듬어 18% 토큰 감소, AgentEval Pro 정확도 무손실을 측정했습니다."
+    },
+    "models": {
+      "eyebrow": "Platform",
+      "title": "모델",
+      "intro": "4 개 모델, 단일 API 표면. latency · 비용 · 능력 기준으로 선택 — 모든 모델이 동일한 request/response 형태. 가격은 1M 토큰당, 실시간 과금, 약정 없음.",
+      "tableLabel": "모델 비교표",
+      "columns": {
+        "model": "모델",
+        "id": "ID",
+        "context": "Context",
+        "output": "Output",
+        "parallel": "병렬 tool",
+        "priceIn": "Input / 1M",
+        "priceOut": "Output / 1M",
+        "ttft": "TTFT (p50)",
+        "bestFor": "적합 워크로드"
+      },
+      "models": {
+        "nexora1": {
+          "name": "Nexora-1",
+          "bestFor": "기본 플래그십 — 프로덕션 멀티모달·에이전트 워크플로, 프로덕션 비용에 frontier 정확도."
+        },
+        "nexora1Pro": {
+          "name": "Nexora-1 Pro",
+          "bestFor": "최고 정확도 frontier 티어 — 심층 리서치·장문 합성·고비용 다단계 추론."
+        },
+        "nexora1Ultra": {
+          "name": "Nexora-1 Ultra",
+          "bestFor": "Long-horizon 에이전트 워크로드 — 자율 task 완성·다일 plan, AgentEval Pro 94.1%."
+        },
+        "nexoraK": {
+          "name": "Nexora-K",
+          "bestFor": "고볼륨 · 저지연 — 작은 모델 비용으로 한국어 first 품질, sub-250ms TTFT."
+        }
+      },
+      "footnote": "가격은 2026-05-18 가공 재무팀 검증. Prompt caching 은 캐시된 input 토큰에 90% 할인 적용 — Authentication 참조."
+    },
+    "rateLimits": {
+      "eyebrow": "Platform",
+      "title": "사용량 제한",
+      "intro": "4 티어, 자동 승급. 신규 계정은 Free 부터 — 30일간 $100 소비 시 Production 자동 승급, $5,000 시 Pro. Enterprise 는 별도.",
+      "tableLabel": "사용량 제한 티어",
+      "columns": {
+        "tier": "티어",
+        "rpm": "요청 / 분",
+        "tpm": "토큰 / 분",
+        "daily": "일일 한도",
+        "qualify": "승급 조건"
+      },
+      "tiers": {
+        "free": {
+          "name": "Free",
+          "qualify": "계정 생성. 결제 수단 불필요."
+        },
+        "production": {
+          "name": "Production",
+          "qualify": "30일간 $100 소비. 자동 승급."
+        },
+        "pro": {
+          "name": "Pro",
+          "qualify": "30일간 $5,000 소비. 자동 승급."
+        },
+        "enterprise": {
+          "name": "Enterprise",
+          "qualify": "Sales 문의. 커스텀 RPM / TPM / SLA."
+        }
+      },
+      "headersTitle": "응답 헤더",
+      "headersBody": "모든 응답에 rate-limit 헤더 — 429 까지 기다리지 말고 사전 backoff 에 활용.",
+      "headersList": {
+        "limit": "현재 1분 윈도우의 총 허용 요청 수.",
+        "remaining": "현재 1분 윈도우의 남은 요청 수.",
+        "reset": "현재 윈도우가 리셋되는 Unix epoch (초)."
+      },
+      "footnote": "티어 승급은 자동이지만 강등은 인간 검토 필요. {company} 플랫폼 팀은 누구를 강등시켰다고 공식 인정한 적이 없습니다."
+    },
+    "authentication": {
+      "eyebrow": "Platform",
+      "title": "인증",
+      "intro": "모든 요청은 Authorization 헤더에 Bearer 토큰을 포함해야 합니다. 키는 console 에서 생성 — sandbox/production 키 모두 동일한 헤더 형식. {company} API 는 query-string 또는 cookie 인증을 절대 받지 않습니다 — body · header · TLS 만.",
+      "exampleTitle": "헤더 예제",
+      "exampleFilename": "Authorization 헤더",
+      "rotationTitle": "키 로테이션",
+      "rotationBody": "키는 90일마다 로테이션. 신규 키 생성 → 프로덕션 배포 → console 에서 구 키 폐기. 폐기 후 구 키는 24시간 grace period 동안 유효, 그 뒤 401 auth_revoked.",
+      "bestPracticesTitle": "Best practices",
+      "bestPracticeTitles": {
+        "envVars": "환경 변수 · 시크릿",
+        "scopes": "키 분리",
+        "rotation": "로테이션 주기",
+        "audit": "감사 로깅"
+      },
+      "bestPractices": {
+        "envVars": "키는 환경 변수 또는 시크릿 매니저 (AWS Secrets Manager · Vault · Doppler) 에 저장. 하드코딩 · 소스 컨트롤 커밋 금지.",
+        "scopes": "개발 · CI 는 sandbox 키, 프로덕션 런타임은 production 키만. {company} 대시보드는 키별로 사용량을 분리해 비용 attribution 제공.",
+        "rotation": "90일 로테이션 캘린더 리마인더 권장. 침해된 키는 console 에서 무중단 폐기 — 구 키의 다음 요청은 401, 신 키 요청은 200.",
+        "audit": "모든 API 호출은 /v1/audit 의 audit trail 에 기록. 보관 기간: Production 기본 90일, Pro 12개월, Enterprise 7년 — Enterprise 고객이 되시는 작은 대가만 치르면 됩니다."
+      },
+      "footnote": "Bearer 스킴은 RFC 6750 준수. {company} 는 HMAC · basic-auth · session-token 자격증명을 발급하지 않습니다 — 다른 걸 제안 받으시면 팬픽션입니다."
     }
   }
 }
