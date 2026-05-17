@@ -31,7 +31,7 @@
 
 ### Phase 2 — 페이지 콘텐츠 (각 1 task)
 
-- [ ] Home 페이지 — 히어로(가공 모델명·tagline·KPI 3개·CTA "Try the demo") + "핵심 metric" 강조 섹션 + "Trusted by..." 가공 로고 슬라이더 (실존 로고 금지) + 데모 위젯 entrypoint
+- [x] Home 페이지 — 히어로(가공 모델명·tagline·KPI 3개·CTA "Try the demo") + "핵심 metric" 강조 섹션 + "Trusted by..." 가공 로고 슬라이더 (실존 로고 금지) + 데모 위젯 entrypoint
 - [ ] Benchmarks 페이지 — Recharts 기반 가공 차트 다종 (MMLU/HumanEval/GSM8K 류 가공 vertical, 시계열 진화 차트, 레이더 차트, "Pareto frontier" 산점도) + 각 차트 캡션
 - [ ] Capabilities 페이지 — "Multi-modal reasoning / Long-context / Tool use / Code / Agentic workflows" 카드 그리드 + 각 능력별 가짜 spec sheet
 - [ ] Architecture 페이지 — "Multi-Agent · AgentOS · Harness · Orchestration" 가공 다이어그램 (SVG 또는 React 컴포넌트) + 각 레이어 설명. buzzword 적극 활용
