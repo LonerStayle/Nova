@@ -51,7 +51,7 @@
 ### Phase 4 — 폴리시 / 분석 / SEO
 
 - [x] Vercel Analytics 통합 — `<Analytics />` 컴포넌트 RootLayout 삽입. 별도 백엔드 0
-- [ ] OG/메타 태그 페이지별 customize — `generateMetadata` per route. 각 페이지 OG 이미지 (정적 또는 `opengraph-image.tsx`)
+- [x] OG/메타 태그 페이지별 customize — `generateMetadata` per route. 각 페이지 OG 이미지 (정적 또는 `opengraph-image.tsx`)
 - [ ] sitemap.xml + robots.txt — `app/sitemap.ts` / `app/robots.ts`
 - [ ] 페이지 전환 디테일 — View Transitions API 또는 Framer Motion. 라우트 변경 시 부드러운 전환
 - [ ] 마이크로 인터랙션 패스 — hover/focus/active 모든 인터랙티브 요소, 스크롤 reveal, 차트 hover tooltip
