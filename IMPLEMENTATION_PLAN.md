@@ -22,7 +22,7 @@
 
 ### Phase 1 — 글로벌 레이아웃 / 디자인 시스템
 
-- [ ] RootLayout 골격 — 상단 sticky nav (6 페이지 라우트) + 본문 컨테이너 + 푸터 + 다크/라이트 토글. 페이지 전환 시 nav 활성 표시
+- [x] RootLayout 골격 — 상단 sticky nav (6 페이지 라우트) + 본문 컨테이너 + 푸터 + 다크/라이트 토글. 페이지 전환 시 nav 활성 표시
 - [ ] 상단 네비게이션 컴포넌트 — Home / Benchmarks / Capabilities / Architecture / Security / About 6 라우트. mobile 햄버거 메뉴 포함
 - [ ] 푸터 컴포넌트 — 가공 회사 정보 + 패러디 disclosure 한 줄 (CLAUDE.md §3 옵션 A 톤). copyright / nav mirror / 소셜 더미 링크
 - [ ] 디자인 토큰 system — Tailwind `theme.extend` 에 color/typography/spacing/radii 정의 + CSS variables (light/dark 모드 모두). "프로덕션급 이상" 시각 톤
