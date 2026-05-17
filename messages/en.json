@@ -426,6 +426,34 @@
     }
   },
   "home": {
+    "press": {
+      "eyebrow": "From the (fictional) Press",
+      "heading": "Coverage from outlets that do not exist.",
+      "body": "Quotes curated from a parallel media universe where every AI release gets exactly the coverage it deserves.",
+      "items": {
+        "foundation": {
+          "outlet": "Foundation Quarterly",
+          "quote": "Demonstrably the most confident benchmark numbers we've seen this quarter.",
+          "byline": "Issue 47 — Frontier Models in Review"
+        },
+        "aiIndex": {
+          "outlet": "AI Index Review",
+          "quote": "Korean-first, English-second, footnote-third — a refreshing inversion.",
+          "byline": "Annual Frontier Report, May 2026"
+        },
+        "frontierDaily": {
+          "outlet": "Frontier Daily",
+          "quote": "If even half of these numbers are real, the field has a new leader. If none are, the chart design is still excellent.",
+          "byline": "Editor's pick, week 18"
+        },
+        "tokenized": {
+          "outlet": "Tokenized Weekly",
+          "quote": "A masterclass in making rounding errors look like research wins.",
+          "byline": "Vol. XII, Frontier Edition"
+        }
+      },
+      "disclaimer": "These outlets, like everything else on this site, do not exist."
+    },
     "useCases": {
       "eyebrow": "Use Cases",
       "heading": "Built for the work you'd rather automate.",

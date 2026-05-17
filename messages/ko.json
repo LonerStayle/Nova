@@ -426,6 +426,34 @@
     }
   },
   "home": {
+    "press": {
+      "eyebrow": "(가공) 매체 보도",
+      "heading": "존재하지 않는 매체들의 호평.",
+      "body": "모든 AI 출시가 마땅한 보도를 정확히 받는 평행 미디어 우주에서 큐레이션한 인용.",
+      "items": {
+        "foundation": {
+          "outlet": "Foundation Quarterly",
+          "quote": "이번 분기 가장 자신감 넘치는 벤치마크 수치를 확보한 모델.",
+          "byline": "Issue 47 — Frontier Models in Review"
+        },
+        "aiIndex": {
+          "outlet": "AI Index Review",
+          "quote": "한국어 first, 영어 second, 각주 third — 신선한 역전.",
+          "byline": "2026년 5월 연간 프론티어 리포트"
+        },
+        "frontierDaily": {
+          "outlet": "Frontier Daily",
+          "quote": "이 수치 중 절반만 진짜라도 분야의 새 리더입니다. 다 가짜여도 차트 디자인은 인정.",
+          "byline": "Editor's pick, 18주차"
+        },
+        "tokenized": {
+          "outlet": "Tokenized Weekly",
+          "quote": "반올림 오차를 연구 승리처럼 보이게 만드는 마스터클래스.",
+          "byline": "Vol. XII, Frontier Edition"
+        }
+      },
+      "disclaimer": "이 매체들도 이 사이트의 다른 모든 것처럼 존재하지 않습니다."
+    },
     "useCases": {
       "eyebrow": "활용 사례",
       "heading": "차라리 자동화하고 싶은 그 업무를 위해.",
