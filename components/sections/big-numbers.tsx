@@ -30,14 +30,7 @@ export function BigNumbers() {
 
         <dl className="mx-auto mt-14 grid max-w-5xl grid-cols-2 gap-x-8 gap-y-10 sm:gap-y-12 lg:grid-cols-4">
           {itemKeys.map((key) => {
-            // unit 은 옵션 (mmlu 만 % 를 갖는다)
-            let unit: string | null = null;
-            try {
-              const u = tItems(`${key}.unit`);
-              if (u && u !== `${key}.unit`) unit = u;
-            } catch {
-              unit = null;
-            }
+            const unit = tItems(`${key}.unit`);
             return (
               <div
                 key={key}

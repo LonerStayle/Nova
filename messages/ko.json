@@ -617,10 +617,12 @@
       "items": {
         "params": {
           "value": "10경",
+          "unit": "",
           "label": "파라미터"
         },
         "context": {
           "value": "200K",
+          "unit": "",
           "label": "컨텍스트 토큰"
         },
         "mmlu": {
@@ -630,6 +632,7 @@
         },
         "gpus": {
           "value": "5,000",
+          "unit": "",
           "label": "H100 배포"
         }
       },

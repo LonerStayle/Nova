@@ -617,10 +617,12 @@
       "items": {
         "params": {
           "value": "10¹⁷",
+          "unit": "",
           "label": "Parameters"
         },
         "context": {
           "value": "200K",
+          "unit": "",
           "label": "Context tokens"
         },
         "mmlu": {
@@ -630,6 +632,7 @@
         },
         "gpus": {
           "value": "5,000",
+          "unit": "",
           "label": "H100s deployed"
         }
       },
