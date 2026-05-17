@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "precompute:embeddings": "node scripts/precompute-embeddings.mjs"
   },
   "dependencies": {
     "@radix-ui/react-separator": "^1.1.0",
